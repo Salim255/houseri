@@ -1,9 +1,9 @@
 /* ============================================================
- *  JENKINS PIPELINE — HOUSERI + SERVER SMART DEPLOYMENT
+ *  JENKINS PIPELINE — HOUSORI + SERVER SMART DEPLOYMENT
  *  ------------------------------------------------------------
  *  This pipeline:
  *    - Fetches code from GitHub
- *    - Detects which folders changed (houseri/server)
+ *    - Detects which folders changed (housori/server)
  *    - Builds only the changed Docker images
  *    - Runs docker compose to deploy updated services
  *    - Provides clean logs and clear structure
@@ -44,7 +44,7 @@ pipeline {
                     } else {
                         // Detect client changes
                         env.CLIENT_CHANGED = sh(
-                            script: "git diff --name-only HEAD HEAD~1 | grep '^houseri/' || true",
+                            script: "git diff --name-only HEAD HEAD~1 | grep '^housori/' || true",
                             returnStdout: true
                         ).trim()
 
@@ -64,17 +64,17 @@ pipeline {
         /* ---------------------------------------------------------
          * 3. BUILD CLIENT (ONLY IF CHANGED)
          * --------------------------------------------------------- */
-        stage('Build  Houseri Client') {
+        stage('Build  Housori Client') {
             steps {
                 script {
                     if (env.CLIENT_CHANGED != "") {
                         sh '''
                             echo "Building CLIENT Docker image..."
-                            cd houseri
-                            docker build -t houseri-client .
+                            cd housori
+                            docker build -t housori-client .
                         '''
                     } else {
-                        echo "Houseri Client unchanged — skipping build."
+                        echo "Housori Client unchanged — skipping build."
                     }
                 }
             }
@@ -83,17 +83,17 @@ pipeline {
         /* ---------------------------------------------------------
          * 4. BUILD SERVER (ONLY IF CHANGED)
          * --------------------------------------------------------- */
-        stage('Build Houseri Server') {
+        stage('Build Housori Server') {
             steps {
                 script {
                     if (env.SERVER_CHANGED != "") {
                         sh '''
                             echo "Building SERVER Docker image..."
                             cd server
-                            docker build -t houseri-server .
+                            docker build -t housori-server .
                         '''
                     } else {
-                        echo "Houseri Server unchanged — skipping build."
+                        echo "Housori Server unchanged — skipping build."
                     }
                 }
             }
@@ -103,20 +103,19 @@ pipeline {
             steps {
                 script {
 
-                    echo "Preparing environment files for Houseri..."
+                    echo "Preparing environment files for Housori..."
 
                     /************************************************************
                     * BACKEND .env
                     * ----------------------------------------------------------
-                    * We use a Jenkins FILE credential (ID: houseri-server.env)
+                    * We use a Jenkins FILE credential (ID: housori-server.env)
                     * This credential contains the entire .env file content.
                     * Jenkins mounts it as a temporary file, and we copy it
                     * into server/.env inside the workspace.
                     ************************************************************/
-                    withCredentials([file(credentialsId: 'houseri-server-env', variable: 'BACKEND_ENV')]) {
+                    withCredentials([file(credentialsId: 'housori-server-env', variable: 'BACKEND_ENV')]) {
                         sh '''
                             echo "Injecting backend .env..."
-                            mkdir -p servers/server
                             cat "$BACKEND_ENV" > server/.env
                             chmod 600 server/.env
                         '''
