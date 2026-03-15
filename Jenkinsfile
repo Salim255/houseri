@@ -113,7 +113,7 @@ pipeline {
                     * Jenkins mounts it as a temporary file, and we copy it
                     * into server/.env inside the workspace.
                     ************************************************************/
-                    withCredentials([file(credentialsId: 'housori-server-env', variable: 'BACKEND_ENV')]) {
+                    withCredentials([file(credentialsId: 'houseri-server-env', variable: 'BACKEND_ENV')]) {
                         sh '''
                             echo "Injecting backend .env..."
                             cat "$BACKEND_ENV" > server/.env
