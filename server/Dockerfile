@@ -80,7 +80,7 @@ COPY --from=build /app/dist ./dist
 # WHY:
 # - Railway, Render, Heroku, Docker Compose, etc.
 #   all inject PORT dynamically.
-ENV PORT=3000
+ENV PORT=3001
 
 # Expose the port (for Docker Compose or local dev)
 EXPOSE $PORT

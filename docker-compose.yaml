@@ -48,7 +48,7 @@ services:
     # - Clean separation between build and runtime.
 
     ports:
-      - "5000:5000"
+      - "3001:5000"
     # Why important:
     # - Exposes backend API to the host.
     # - Left side = host port, right side = container port.
@@ -93,7 +93,7 @@ services:
     # - Jenkins writes this file before deployment.
 
     ports:
-      - "3000:3000"
+      - "3001:3001"
     # Why important:
     # - Exposes the frontend to the host.
     # - Change if your frontend uses another port.
