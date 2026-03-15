@@ -99,6 +99,37 @@ pipeline {
             }
         }
 
+        stage('Prepare environment') {
+            steps {
+                script {
+
+                    echo "Preparing environment files for Houseri..."
+
+                    /************************************************************
+                    * BACKEND .env
+                    * ----------------------------------------------------------
+                    * We use a Jenkins FILE credential (ID: houseri-server.env)
+                    * This credential contains the entire .env file content.
+                    * Jenkins mounts it as a temporary file, and we copy it
+                    * into server/.env inside the workspace.
+                    ************************************************************/
+                    withCredentials([file(credentialsId: 'houseri-server-env', variable: 'BACKEND_ENV')]) {
+                        sh '''
+                            echo "Injecting backend .env..."
+                            mkdir -p servers/server
+                            cat "$BACKEND_ENV" > server/.env
+                            chmod 600 server/.env
+                        '''
+                    }
+
+                    echo "Backend .env created successfully."
+                }
+
+                // Debug: show the file exists (permissions only, not content)
+                sh 'ls -l server'
+            }
+        }
+
         /* ---------------------------------------------------------
          * 5. DEPLOY USING DOCKER COMPOSE
          * --------------------------------------------------------- */
