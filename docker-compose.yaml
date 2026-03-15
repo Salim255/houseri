@@ -20,7 +20,7 @@ services:
   # ------------------------------------------------------------
   # HOUSERI BACKEND SERVICE
   # ------------------------------------------------------------
-  houseri-server:
+  housori-server:
     container_name: housori-server
     # Why important:
     # - Gives the container a fixed name.
@@ -69,7 +69,7 @@ services:
   # ------------------------------------------------------------
   # HOUSERI FRONTEND SERVICE
   # ------------------------------------------------------------
-  houseri-client:
+  housori-client:
     container_name: housori-client
     # Why important:
     # - Same reason as backend: easier debugging and logs.
