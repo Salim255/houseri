@@ -1,9 +1,9 @@
 /* ============================================================
- *  JENKINS PIPELINE — CLIENT + SERVER SMART DEPLOYMENT
+ *  JENKINS PIPELINE — HOUSERI + SERVER SMART DEPLOYMENT
  *  ------------------------------------------------------------
  *  This pipeline:
  *    - Fetches code from GitHub
- *    - Detects which folders changed (client/server)
+ *    - Detects which folders changed (houseri/server)
  *    - Builds only the changed Docker images
  *    - Runs docker compose to deploy updated services
  *    - Provides clean logs and clear structure
@@ -44,7 +44,7 @@ pipeline {
                     } else {
                         // Detect client changes
                         env.CLIENT_CHANGED = sh(
-                            script: "git diff --name-only HEAD HEAD~1 | grep '^client/' || true",
+                            script: "git diff --name-only HEAD HEAD~1 | grep '^houseri/' || true",
                             returnStdout: true
                         ).trim()
 
@@ -64,17 +64,17 @@ pipeline {
         /* ---------------------------------------------------------
          * 3. BUILD CLIENT (ONLY IF CHANGED)
          * --------------------------------------------------------- */
-        stage('Build Client') {
+        stage('Build  Houseri Client') {
             steps {
                 script {
                     if (env.CLIENT_CHANGED != "") {
                         sh '''
                             echo "Building CLIENT Docker image..."
-                            cd client
-                            docker build -t kundul-client .
+                            cd houseri
+                            docker build -t houseri-client .
                         '''
                     } else {
-                        echo "Client unchanged — skipping build."
+                        echo "Houseri Client unchanged — skipping build."
                     }
                 }
             }
@@ -83,17 +83,17 @@ pipeline {
         /* ---------------------------------------------------------
          * 4. BUILD SERVER (ONLY IF CHANGED)
          * --------------------------------------------------------- */
-        stage('Build Server') {
+        stage('Build Houseri Server') {
             steps {
                 script {
                     if (env.SERVER_CHANGED != "") {
                         sh '''
                             echo "Building SERVER Docker image..."
                             cd server
-                            docker build -t kundul-server .
+                            docker build -t houseri-server .
                         '''
                     } else {
-                        echo "Server unchanged — skipping build."
+                        echo "Houseri Server unchanged — skipping build."
                     }
                 }
             }
