@@ -106,7 +106,7 @@ pipeline {
             steps {
                 sh '''
                     echo "Running Docker Compose deployment..."
-                    docker-compose up -d --build
+                    docker compose up -d --build
                 '''
             }
         }
