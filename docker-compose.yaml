@@ -75,7 +75,7 @@ services:
     # - Same reason as backend: easier debugging and logs.
 
     build:
-      context: ./client
+      context: ./houseri
       dockerfile: Dockerfile
     # Why important:
     # - Lets Jenkins OR Compose rebuild the frontend.
