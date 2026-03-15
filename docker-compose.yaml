@@ -86,8 +86,8 @@ services:
     # - Matches the image name Jenkins builds.
     # - Ensures consistency between CI and runtime.
 
-    env_file:
-      - ./client/.env
+    #env_file:
+      #- ./client/.env
     # Why important:
     # - Frontend config (API URL, environment mode, etc.)
     # - Jenkins writes this file before deployment.
