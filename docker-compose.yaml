@@ -1,0 +1,123 @@
+# ============================================================
+#  DOCKER COMPOSE — HOUSERI (Client + Server Deployment)
+#  ------------------------------------------------------------
+#  This file defines how the Houseri application runs in Docker.
+#  It includes:
+#    - Backend API service (houseri-server)
+#    - Frontend client service (houseri-client)
+#    - Shared network for internal communication
+#    - Automatic rebuild support for Jenkins
+# ============================================================
+
+version: "3.9"  
+# Why important:
+# - Version 3.9 is the latest stable Compose spec.
+# - Works with modern Docker and supports all features you need.
+
+
+services:
+
+  # ------------------------------------------------------------
+  # HOUSERI BACKEND SERVICE
+  # ------------------------------------------------------------
+  houseri-server:
+    container_name: houseri-server
+    # Why important:
+    # - Gives the container a fixed name.
+    # - Makes logs, debugging, and docker commands easier.
+
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    # Why important:
+    # - Jenkins builds the image, but Compose ALSO supports rebuilding.
+    # - If Jenkins skips backend build, Compose still knows how to build it.
+    # - Keeps your deployment flexible.
+
+    image: houseri-server:latest
+    # Why important:
+    # - Jenkins tags the backend image with this name.
+    # - Compose will use the image built by Jenkins.
+    # - Ensures consistency between CI and runtime.
+
+    env_file:
+      - ./server/.env
+    # Why important:
+    # - Keeps secrets and config OUT of the image.
+    # - Jenkins writes .env before deployment.
+    # - Clean separation between build and runtime.
+
+    ports:
+      - "5000:5000"
+    # Why important:
+    # - Exposes backend API to the host.
+    # - Left side = host port, right side = container port.
+    # - Change if your backend uses another port.
+
+    restart: always
+    # Why important:
+    # - Auto-restarts if the backend crashes.
+    # - Essential for production reliability.
+
+    networks:
+      - houseri-network
+    # Why important:
+    # - Allows backend to communicate with frontend internally.
+    # - No need to expose internal ports to the internet.
+
+
+  # ------------------------------------------------------------
+  # HOUSERI FRONTEND SERVICE
+  # ------------------------------------------------------------
+  houseri-client:
+    container_name: houseri-client
+    # Why important:
+    # - Same reason as backend: easier debugging and logs.
+
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    # Why important:
+    # - Lets Jenkins OR Compose rebuild the frontend.
+    # - Keeps your deployment flexible.
+
+    image: houseri-client:latest
+    # Why important:
+    # - Matches the image name Jenkins builds.
+    # - Ensures consistency between CI and runtime.
+
+    env_file:
+      - ./client/.env
+    # Why important:
+    # - Frontend config (API URL, environment mode, etc.)
+    # - Jenkins writes this file before deployment.
+
+    ports:
+      - "3000:3000"
+    # Why important:
+    # - Exposes the frontend to the host.
+    # - Change if your frontend uses another port.
+
+    restart: always
+    # Why important:
+    # - Auto-restart on crash.
+    # - Essential for production.
+
+    networks:
+      - houseri-network
+    # Why important:
+    # - Allows frontend to call backend using:
+    #       http://houseri-server:5000
+    # - No need to expose backend publicly.
+
+
+# ------------------------------------------------------------
+# SHARED NETWORK
+# ------------------------------------------------------------
+networks:
+  houseri-network:
+    driver: bridge
+    # Why important:
+    # - Creates an isolated internal network.
+    # - Frontend and backend communicate securely.
+    # - Prevents external access to internal services.
