@@ -5,7 +5,7 @@ export function corsConfig(app: INestApplication) {
     'http://localhost:3000',
     'http://localhost:57644',
     'http://localhost:4200',
-    'https://api.housori.salimcode.site',
+    'https://housori.salimcode.site',
     'https://housori.onrender.com',
   ];
   app.enableCors({
