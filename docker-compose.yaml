@@ -93,7 +93,7 @@ services:
     # - Jenkins writes this file before deployment.
 
     ports:
-      - "3002:3002"
+      - "3002:80"
     # Why important:
     # - Exposes the frontend to the host.
     # - Change if your frontend uses another port.

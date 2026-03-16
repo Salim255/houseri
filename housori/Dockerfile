@@ -49,7 +49,7 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expose port 3000 (matches your docker-compose)
-EXPOSE 3002
+EXPOSE 80
 
 # Start NGINX
 CMD ["nginx", "-g", "daemon off;"]
