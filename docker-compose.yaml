@@ -48,7 +48,7 @@ services:
     # - Clean separation between build and runtime.
 
     ports:
-      - "3001:5000"
+      - "3001:3000"
     # Why important:
     # - Exposes backend API to the host.
     # - Left side = host port, right side = container port.
