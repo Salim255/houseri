@@ -47,7 +47,7 @@ export class ProductModel {
       // SEND RESPONSE
       return { products, meta };
     } catch (error) {
-      console.log(error);
+
       // generic message—don't leak which part failed
       if (error instanceof Error) {
         // Re-throw known errors without modification

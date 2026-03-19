@@ -39,7 +39,6 @@ export class CheckoutComponent implements OnInit, OnDestroy{
     this.cartStateSubscription = this.cartService
     .getCartState
     .subscribe(cartState => {
-      console.log(cartState, "hello");
       if (cartState) {
         const {cartItems, ...rest} = cartState;
         this.cartItems.set(cartItems);

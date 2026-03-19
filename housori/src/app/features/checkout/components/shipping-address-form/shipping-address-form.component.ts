@@ -34,14 +34,13 @@ export class ShippingAddressForm{
   ngOnInit(): void {
     this.buildForm();
     this.shippingFields.get('country')?.valueChanges.subscribe(result=> {
-      console.log(this.shippingFields.valid)
+
     })
   }
 
 
   onPlaceOrder(){
     if (this.shippingFields.invalid){
-      console.log('Hell of rom invalid');
       this.shippingFields.markAllAsTouched();
       return;
     };

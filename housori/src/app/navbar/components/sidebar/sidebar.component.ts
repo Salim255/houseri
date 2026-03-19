@@ -18,7 +18,7 @@ export class SidebarComponent {
     this.navbarService.onCloseSideBar();
   }
   onLogin(): void {
-    console.log("hello")
+
     this.authService.setAuthType(AuthType.LOGIN);
     this.onClose();
   }

@@ -65,7 +65,7 @@ export class FilterComponent {
     if (typeof shipping === 'boolean') this.params = this.params.set('shipping', shipping);
 
     this.productsService.getAllProducts(this.params).subscribe(data =>{
-      console.log(data)
+
     });
   }
   resetFilter(){
@@ -107,7 +107,7 @@ export class FilterComponent {
     })
 
      this.filterFormFields.get('shipping')?.valueChanges.subscribe(value => {
-      console.log(value);
+
       this.shippingValue.set(value);
     })
 

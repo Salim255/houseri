@@ -23,11 +23,11 @@ export class OrdersComponent {
     this.ordersSubscription = this.orderService
       .getOrders()
       .subscribe(orders => {
-        console.log(orders.data.orders);
+
 
         if (orders.data.orders) {
           this.ordersList = orders.data.orders;
-          console.log(this.ordersList);
+
         }
       });
   }

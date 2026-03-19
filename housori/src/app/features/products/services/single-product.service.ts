@@ -7,7 +7,7 @@ export class SingleProductService {
   singleProductSubject = new BehaviorSubject<Product | null>(null);
 
   setSingleProduct(clickedProduct: Product ): void {
-    console.log(clickedProduct, 'hello');
+
     this.singleProductSubject.next(clickedProduct);
   }
 

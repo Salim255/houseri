@@ -46,54 +46,57 @@ export class PaymentComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.stripe = await loadStripe(`${this.ENV.stripePK}`); // Replace with your Stripe publishable key
-    console.log(this.stripe, "test strip key ")
-    if (!this.stripe) {
-      return;
+    try {
+      this.stripe = await loadStripe(`${this.ENV.stripePK}`); // Replace with your Stripe publishable key
+      if (!this.stripe) {
+        return;
+      }
+    } catch (error) {
+      console.log(error);
     }
-
     this.subscribeToClientSecret();
   }
 
+  close(): void{
+    this.router.navigate(['/orders']);
+  }
   subscribeToClientSecret(){
      this.clientSecretSubscription = this.checkoutService.getClientSecret.subscribe((clientSecret) => {
-      const clientSecret2 = "cs_test_b1QrQ5svPBm9KultXJTAdbNwFRypO2nmo5OEwlp5PIxFnJm9Y1FL5UUVrO_secret_fidwbEhqYWAnPydmcHZxamgneCUl"
-      console.log("coming secret:" , clientSecret, "test strip key ", clientSecret2)
+      //const clientSecret2 = "cs_test_b1QrQ5svPBm9KultXJTAdbNwFRypO2nmo5OEwlp5PIxFnJm9Y1FL5UUVrO_secret_fidwbEhqYWAnPydmcHZxamgneCUl"
       if (clientSecret) {
         this.clientSecret = clientSecret;
-        this.paymentElementWithCheckout();
-      }
-
-      if (!clientSecret) {
-        console.log("Nono sectiot key 👹👹👹")
-        this.clientSecret = clientSecret2;
         this.paymentElementWithCheckout();
       }
     });
   }
   async paymentElementWithCheckout(){
-    if (!this.clientSecret) return;
+    try {
+      if (!this.clientSecret) return;
       this.checkout = await this.stripe!.initCheckout({
       fetchClientSecret: () => this.clientSecret,
       elementsOptions: {
         appearance: this.appearance
       }
-    } as any);
+      } as any);
 
-    this.paymentElement =
-      this.checkout.createPaymentElement(
-        {
-          layout: {
-            type: 'tabs', // or 'accordion'
+      this.paymentElement =
+        this.checkout.createPaymentElement(
+          {
+            layout: {
+              type: 'tabs', // or 'accordion'
+            },
           },
-        },
-      );
-    this.paymentElement!.mount('#payment-element');
-    this.stripeReady = true;
+        );
+      this.paymentElement!.mount('#payment-element');
+      this.stripeReady = true;
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async handleSubmitWithCheckout() {
-    this.isLoading = true;
+    try {
+      this.isLoading = true;
     this.errorMessage = '';
     const result =
       await this.checkout!.confirm({ redirect: 'if_required' });
@@ -120,6 +123,8 @@ export class PaymentComponent implements OnInit {
       )
       this.router.navigate(['/orders']);
     }, 1000);
-
+    } catch (error) {
+      console.log(error);
+    }
   }
 }

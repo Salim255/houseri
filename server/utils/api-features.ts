@@ -35,7 +35,6 @@ export class APIFeatures<T extends Document> {
     } else if (typeof this.queryString['price[gte]'] === 'string') {
       queryObject.price = {};
       queryObject.price.$gte = this.queryString['price[gte]'];
-      //console.log(queyObject);
     } else if (typeof this.queryString['price[gt]'] === 'string') {
       queryObject.price = {};
       queryObject.price.$gt = this.queryString['price[gt]'];
@@ -116,7 +115,7 @@ export class APIFeatures<T extends Document> {
 
     // Product per page
     const limit = this.queryString.limit * 1 || 4;
-    console.log(page);
+
     // So this number here is all the results come before the request that we are requesting now
     const skip = (page - 1) * limit; // page -1 means the previous page
 
@@ -134,7 +133,7 @@ export class APIFeatures<T extends Document> {
     // The total products in the DB
     const total = await this.query.model.find().clone().countDocuments();
     const total2 = await this.query.clone().countDocuments();
-    console.log(total2, total, currentPage);
+
     // All possible pages
     const pageCount = Math.ceil(total / productsByPage);
 

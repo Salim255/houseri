@@ -7,7 +7,7 @@ export class PaginationService {
   private currentPageSubject = new BehaviorSubject<number | null>(null);
 
   setCurrentPage(currentPage: number | null){
-    console.log("Hello from current", currentPage);
+
     this.currentPageSubject.next(currentPage);
   }
 
