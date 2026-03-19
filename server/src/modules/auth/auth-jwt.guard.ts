@@ -53,7 +53,6 @@ export class AuthJwtGuard implements CanActivate {
   private extractTokenFromCookies(request: Request): string | undefined {
     // Type cast cookies as object with 'jwt' property for TypeScript safety
     const cookies = request.cookies as { jwt?: string } | undefined;
-  
     return cookies?.jwt;
   }
 }

@@ -11,6 +11,23 @@
   align-items: center;
   z-index: 1000;
 
+  &__close-modal {
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+    z-index: 100;
+    background: unset;
+    border: none;
+    transition: all .2s ease-in;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.03);
+    }
+    ion-icon {
+      font-size: 3rem;
+      //color: black;
+    }
+  }
   &__container {
     backdrop-filter: blur(20px);
     background-color: rgba(192, 192, 192, 0.1);
