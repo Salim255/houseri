@@ -44,7 +44,7 @@ export class ProductsListComponent {
 
   goToPage(event: any): void {
     const { pageNumber } = event;
-    console.log(pageNumber);
+
     if (this.currentPage() === pageNumber) return;
     this.currentPage.set(pageNumber);
     this.fetchProducts();

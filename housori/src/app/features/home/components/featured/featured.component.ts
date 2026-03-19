@@ -26,10 +26,8 @@ export class FeaturedComponent implements OnInit {
     this.featuredSubscription = this.productsService
     .getFeaturedProductsSource$
     .subscribe(data => {
-      //console.log(data?.products);
       if (data?.products) {
         this.products = [...data.products];
-        console.log(this.products );
       }
     })
   }

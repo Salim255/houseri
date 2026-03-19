@@ -12,7 +12,7 @@ export class OrdersItemComponent {
   @Input() orderItem!: OrderItem;
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('order item changes', this.orderItem);
+
   }
 
   get getImageUrl(): string {

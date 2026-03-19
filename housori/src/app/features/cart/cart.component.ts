@@ -25,7 +25,6 @@ export class CartComponent {
     this.cartStateSubscription =
       this.cartService.getCartState.subscribe(
         (cartState) => {
-          console.log(cartState, 'hello world');
           this.cartState.set(cartState)
         });
   }

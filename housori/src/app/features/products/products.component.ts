@@ -33,7 +33,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.productsSubscription = this.productsService.productsSourceBehavior
     .subscribe({
       next: (data) => {
-      //console.log(products);
+
       if (data){
        this.allProducts.set(data.products);
        this.metaData.set(data.meta);

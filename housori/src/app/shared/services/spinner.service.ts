@@ -19,7 +19,7 @@ export class SpinnerService {
   constructor(){}
 
   showSpinner(): void{
-    console.log("Hello world")
+
     if (this.loadingCount === 0) {
       // Delay showing spinner (e.g. 100ms)
       this.showTimeout = setTimeout(() => {

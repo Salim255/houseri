@@ -18,7 +18,7 @@ export class ProductsService {
   async getAllProducts(
     filters: ProductFilterDto,
   ): Promise<{ products: Product[]; meta: ApiMetaData }> {
-    //console.log(filters);
+    
     const data: { products: Product[]; meta: ApiMetaData } =
       await this.productModel.findAll(filters);
     return data;

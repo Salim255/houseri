@@ -47,7 +47,6 @@ export class PaymentComponent implements OnInit {
 
   async ngOnInit() {
     this.stripe = await loadStripe(`${this.ENV.stripePK}`); // Replace with your Stripe publishable key
-    console.log(this.stripe, "test strip key ")
     if (!this.stripe) {
       return;
     }
@@ -58,14 +57,12 @@ export class PaymentComponent implements OnInit {
   subscribeToClientSecret(){
      this.clientSecretSubscription = this.checkoutService.getClientSecret.subscribe((clientSecret) => {
       const clientSecret2 = "cs_test_b1QrQ5svPBm9KultXJTAdbNwFRypO2nmo5OEwlp5PIxFnJm9Y1FL5UUVrO_secret_fidwbEhqYWAnPydmcHZxamgneCUl"
-      console.log("coming secret:" , clientSecret, "test strip key ", clientSecret2)
       if (clientSecret) {
         this.clientSecret = clientSecret;
         this.paymentElementWithCheckout();
       }
 
       if (!clientSecret) {
-        console.log("Nono sectiot key 👹👹👹")
         this.clientSecret = clientSecret2;
         this.paymentElementWithCheckout();
       }
