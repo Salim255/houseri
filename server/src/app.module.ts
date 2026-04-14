@@ -8,7 +8,10 @@ import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { OrderModule } from './modules/orders/orders.module';
 import { PaymentsModule } from './modules/payments/payments.module';
-
+// Why important:
+// - Imports all the feature modules of your application.
+// - ConfigModule is global, so it can be used anywhere without re-importing.
+// - Keeps your app organized and modular.
 @Module({
   imports: [
     PaymentsModule,

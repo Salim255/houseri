@@ -32,7 +32,7 @@ export class CheckoutComponent implements OnInit, OnDestroy{
     this.orderIsPlacedSubscription = this.checkoutService
       .getOrderIsPlaced
       .subscribe(isPlaced => {
-         this.orderIsPlaced.set(isPlaced) }
+        this.orderIsPlaced.set(isPlaced) }
       )
   }
   subscribeToCartState(){

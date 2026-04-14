@@ -14,27 +14,18 @@ version: "3.9"
 # - Version 3.9 is the latest stable Compose spec.
 # - Works with modern Docker and supports all features you need.
 
-
+name: housori-app
+# Why important:
+# - Sets a project name for your containers and network.
+# - Makes it easier to manage multiple projects on the same host.
 services:
 
   # ------------------------------------------------------------
   # HOUSERI BACKEND SERVICE
   # ------------------------------------------------------------
   housori-server:
-    container_name: housori-server
-    # Why important:
-    # - Gives the container a fixed name.
-    # - Makes logs, debugging, and docker commands easier.
 
-    build:
-      context: ./server
-      dockerfile: Dockerfile
-    # Why important:
-    # - Jenkins builds the image, but Compose ALSO supports rebuilding.
-    # - If Jenkins skips backend build, Compose still knows how to build it.
-    # - Keeps your deployment flexible.
-
-    image: housori-server:latest
+    image: crawan/housori-server:latest
     # Why important:
     # - Jenkins tags the backend image with this name.
     # - Compose will use the image built by Jenkins.
@@ -70,18 +61,7 @@ services:
   # HOUSERI FRONTEND SERVICE
   # ------------------------------------------------------------
   housori-client:
-    container_name: housori-client
-    # Why important:
-    # - Same reason as backend: easier debugging and logs.
-
-    build:
-      context: ./housori
-      dockerfile: Dockerfile
-    # Why important:
-    # - Lets Jenkins OR Compose rebuild the frontend.
-    # - Keeps your deployment flexible.
-
-    image: housori-client:latest
+    image: crawan/housori-client:latest
     # Why important:
     # - Matches the image name Jenkins builds.
     # - Ensures consistency between CI and runtime.
