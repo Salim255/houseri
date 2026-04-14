@@ -1,156 +1,184 @@
-/* ============================================================
- *  JENKINS PIPELINE — HOUSORI + SERVER SMART DEPLOYMENT
- *  ------------------------------------------------------------
- *  This pipeline:
- *    - Fetches code from GitHub
- *    - Detects which folders changed (housori/server)
- *    - Builds only the changed Docker images
- *    - Runs docker compose to deploy updated services
- *    - Provides clean logs and clear structure
- * ============================================================ */
-
 pipeline {
     agent any
 
+    environment {
+        CLIENT_IMAGE = "crawan/housori-client"
+        SERVER_IMAGE = "crawan/housori-server"
+
+        CLIENT_DIR = "housori"
+        SERVER_DIR = "server"
+    }
+
     stages {
 
-        /* ---------------------------------------------------------
-         * 1. CHECKOUT SOURCE CODE
-         * --------------------------------------------------------- */
+        /***********************************
+         * 1. CHECKOUT
+         ***********************************/
         stage('Checkout') {
             steps {
                 checkout scm
             }
         }
 
-        /* ---------------------------------------------------------
+        /***********************************
          * 2. DETECT CHANGES
-         * ---------------------------------------------------------
-         * We detect whether client/ or server/ changed.
-         * This version avoids Declarative env{} and uses env.* directly.
-         * --------------------------------------------------------- */
+         ***********************************/
         stage('Detect Changes') {
             steps {
                 script {
 
-                    // Default values
-                    env.CLIENT_CHANGED = ""
-                    env.SERVER_CHANGED = ""
+                    echo "🔍 Detecting changes..."
 
-                    // First build → rebuild everything
-                    if (env.BUILD_NUMBER == "1") {
-                        env.CLIENT_CHANGED = "force"
-                        env.SERVER_CHANGED = "force"
-                    } else {
-                        // Detect client changes
-                        env.CLIENT_CHANGED = sh(
-                            script: "git diff --name-only HEAD HEAD~1 | grep '^housori/' || true",
-                            returnStdout: true
-                        ).trim()
+                    def changes = sh(
+                        script: "git diff --name-only HEAD~1 HEAD || true",
+                        returnStdout: true
+                    ).trim()
 
-                        // Detect server changes
-                        env.SERVER_CHANGED = sh(
-                            script: "git diff --name-only HEAD HEAD~1 | grep '^server/' || true",
-                            returnStdout: true
-                        ).trim()
-                    }
+                    echo "Changed files:\n${changes}"
 
-                    echo "Client changed: ${env.CLIENT_CHANGED != ''}"
-                    echo "Server changed: ${env.SERVER_CHANGED != ''}"
+                    def CLIENT_CHANGED = changes.contains("${CLIENT_DIR}/")
+                    def SERVER_CHANGED = changes.contains("${SERVER_DIR}/")
+
+                    env.CLIENT_CHANGED = CLIENT_CHANGED.toString()
+                    env.SERVER_CHANGED = SERVER_CHANGED.toString()
+
+                    echo "Client changed → ${CLIENT_CHANGED}"
+                    echo "Server changed → ${SERVER_CHANGED}"
                 }
             }
         }
 
-        /* ---------------------------------------------------------
-         * 3. BUILD CLIENT (ONLY IF CHANGED)
-         * --------------------------------------------------------- */
-        stage('Build  Housori Client') {
+        /***********************************
+         * 3. BUILD CLIENT
+         ***********************************/
+        stage('Build Housori Client') {
+            when {
+                expression { env.CLIENT_CHANGED == "true" }
+            }
             steps {
-                script {
-                    if (env.CLIENT_CHANGED != "") {
-                        sh '''
-                            echo "Building CLIENT Docker image..."
-                            cd housori
-                            docker build -t housori-client .
-                        '''
-                    } else {
-                        echo "Housori Client unchanged — skipping build."
-                    }
-                }
+                echo "🚀 Building CLIENT image..."
+
+                sh """
+                    cd ${CLIENT_DIR}
+                    docker build \
+                        -t ${CLIENT_IMAGE}:${BUILD_NUMBER} \
+                        -t ${CLIENT_IMAGE}:latest \
+                        .
+                """
             }
         }
 
-        /* ---------------------------------------------------------
-         * 4. BUILD SERVER (ONLY IF CHANGED)
-         * --------------------------------------------------------- */
+        /***********************************
+         * 4. BUILD SERVER
+         ***********************************/
         stage('Build Housori Server') {
+            when {
+                expression { env.SERVER_CHANGED == "true" }
+            }
+            steps {
+                echo "🚀 Building SERVER image..."
+
+                withCredentials([file(credentialsId: 'houseri-server-env', variable: 'BACKEND_ENV')]) {
+                    sh '''
+                        echo "Injecting backend .env..."
+                        cat "$BACKEND_ENV" > server/.env
+                        chmod 600 server/.env
+                    '''
+                }
+
+                sh """
+                    cd ${SERVER_DIR}
+                    docker build \
+                        -t ${SERVER_IMAGE}:${BUILD_NUMBER} \
+                        -t ${SERVER_IMAGE}:latest \
+                        .
+                """
+            }
+        }
+
+        /***********************************
+         * 5. DOCKER LOGIN
+         ***********************************/
+        stage('Docker Login') {
+            when {
+                expression {
+                    env.CLIENT_CHANGED == "true" || env.SERVER_CHANGED == "true"
+                }
+            }
+            steps {
+                withCredentials([usernamePassword(
+                    credentialsId: 'dockerhub-creds',
+                    usernameVariable: 'DOCKER_USER',
+                    passwordVariable: 'DOCKER_PASS'
+                )]) {
+                    sh '''
+                        echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+                    '''
+                }
+            }
+        }
+
+        /***********************************
+         * 6. PUSH IMAGES
+         ***********************************/
+        stage('Push Images') {
+            when {
+                expression {
+                    env.CLIENT_CHANGED == "true" || env.SERVER_CHANGED == "true"
+                }
+            }
             steps {
                 script {
-                    if (env.SERVER_CHANGED != "") {
-                        sh '''
-                            echo "Building SERVER Docker image..."
-                            cd server
-                            docker build -t housori-server .
-                        '''
-                    } else {
-                        echo "Housori Server unchanged — skipping build."
+
+                    if (env.CLIENT_CHANGED == "true") {
+                        echo "📤 Pushing CLIENT image..."
+                        sh """
+                            docker push ${CLIENT_IMAGE}:${BUILD_NUMBER}
+                            docker push ${CLIENT_IMAGE}:latest
+                        """
+                    }
+
+                    if (env.SERVER_CHANGED == "true") {
+                        echo "📤 Pushing SERVER image..."
+                        sh """
+                            docker push ${SERVER_IMAGE}:${BUILD_NUMBER}
+                            docker push ${SERVER_IMAGE}:latest
+                        """
                     }
                 }
             }
         }
 
-        stage('Prepare environment') {
-            steps {
-                script {
-
-                    echo "Preparing environment files for Housori..."
-
-                    /************************************************************
-                    * BACKEND .env
-                    * ----------------------------------------------------------
-                    * We use a Jenkins FILE credential (ID: housori-server.env)
-                    * This credential contains the entire .env file content.
-                    * Jenkins mounts it as a temporary file, and we copy it
-                    * into server/.env inside the workspace.
-                    ************************************************************/
-                    withCredentials([file(credentialsId: 'houseri-server-env', variable: 'BACKEND_ENV')]) {
-                        sh '''
-                            echo "Injecting backend .env..."
-                            cat "$BACKEND_ENV" > server/.env
-                            chmod 600 server/.env
-                        '''
-                    }
-
-                    echo "Backend .env created successfully."
-                }
-
-                // Debug: show the file exists (permissions only, not content)
-                sh 'ls -l server'
-            }
-        }
-
-        /* ---------------------------------------------------------
-         * 5. DEPLOY USING DOCKER COMPOSE
-         * --------------------------------------------------------- */
+        /***********************************
+         * 7. DEPLOY (PULL ONLY)
+         ***********************************/
         stage('Deploy with Docker Compose') {
             steps {
-                sh '''
-                    echo "Running Docker Compose deployment..."
-                    docker-compose up -d --build
-                '''
+                echo "📦 Deploying with docker-compose..."
+
+                sh """
+                    docker-compose pull
+                    docker-compose up -d
+                """
             }
         }
     }
 
-    /* ---------------------------------------------------------
-     * 6. POST ACTIONS
-     * --------------------------------------------------------- */
+    /***********************************
+     * POST
+     ***********************************/
     post {
-        success {
-            echo "Deployment completed successfully."
+        always {
+            echo "🧹 Cleaning Docker..."
+            sh "docker system prune -af || true"
         }
+
+        success {
+            echo "✅ Deployment successful"
+        }
+
         failure {
-            echo "Deployment failed."
+            echo "❌ Deployment failed"
         }
     }
 }
