@@ -1,46 +1,47 @@
 import { RouterModule, Routes } from "@angular/router";
 import { LayoutComponent } from "./layout.component";
 import { NgModule } from "@angular/core";
+import { AuthGuard } from "../auth/guard/AuthGuard";
 
 const routes: Routes = [
   {
-    path: "",
+    path: "dashboard",
     component: LayoutComponent,
-      children: [
-      {
-        path: '',
-        redirectTo: 'home',
-        pathMatch: 'full'
-      },
-      {
-        path: 'home',
-        loadChildren: ()=> import('../home/home.module').then(m => m.HomeModule)
-      },
-      {
-        path: 'about',
-        loadChildren: () => import('../about/about.module').then(m => m.AboutModule)
-      },
-      {
-        path: 'products',
-        loadChildren: () => import('../products/products.module').then(m => m.ProductsModule)
-      },
-       {
-        path: 'orders',
-        loadChildren: () => import('../orders/orders.module').then(m => m.OrdersModule)
-      },
-      {
-        path: 'checkout',
-        loadChildren: () => import('../checkout/checkout.module').then(m => m.CheckoutModule)
-      },
-      {
-        path: 'cart',
-        loadChildren: () => import('../cart/cart.module').then(m => m.CartModule)
-      },
-
+    canActivate: [AuthGuard] ,
+    children: [
+        {
+          path: '',
+          redirectTo: 'home',
+          pathMatch: 'full'
+        },
+        {
+          path: 'home',
+          loadChildren: ()=> import('../home/home.module').then(m => m.HomeModule)
+        },
+        {
+          path: 'about',
+          loadChildren: () => import('../about/about.module').then(m => m.AboutModule)
+        },
+        {
+          path: 'products',
+          loadChildren: () => import('../products/products.module').then(m => m.ProductsModule)
+        },
+        {
+          path: 'orders',
+          loadChildren: () => import('../orders/orders.module').then(m => m.OrdersModule)
+        },
+        {
+          path: 'checkout',
+          loadChildren: () => import('../checkout/checkout.module').then(m => m.CheckoutModule)
+        },
+        {
+          path: 'cart',
+          loadChildren: () => import('../cart/cart.module').then(m => m.CartModule)
+        },
     ]
   },
   {
-    path: 'auth',
+    path: '',
     loadChildren: () => import('../auth/auth.module').then((m) => m.AuthModule)
   },
   {
