@@ -5,6 +5,7 @@ import { AuthType } from "../auth/services/auth.service";
 import { AuthService } from "../auth/services/auth.service";
 import {CoreService} from "../../core/services/core.service";
 import { LikeContent, NavbarService } from "./services/navbar.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-navbar",
@@ -26,6 +27,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   navLinks: LikeContent[];
 
   constructor(
+    private router: Router,
     private navbarService: NavbarService,
     private coreService: CoreService,
     private authService: AuthService,
@@ -83,11 +85,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.authType() === AuthType.GUEST || this.userIsAuthenticated
     );
   }
+
   onSignUp(): void{
     this.authService.setAuthType(AuthType.LOGIN);
+
   }
+
   onRegister(): void{
     this.authService.setAuthType(AuthType.SIGNUP);
+
   }
 
   get showAuthBar(): boolean {

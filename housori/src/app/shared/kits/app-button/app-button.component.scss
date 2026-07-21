@@ -56,7 +56,9 @@
 
     transition:
         all .2s ease-in;
+    box-shadow: var(--box-shadow-light);
 
+    border-radius: 999px;
 }
 
 
@@ -124,9 +126,7 @@
     border:
         none;
 
-    box-shadow: var(--shadow-md);
     border-radius: 999px;
-
 }
 
 
@@ -175,8 +175,8 @@
     transform:
         translateY(-2px);
 
-    box-shadow:
-        var(--shadow-sm);
+     box-shadow:
+        var(--shadow-lg);
 
 }
 
@@ -205,7 +205,6 @@
 
     box-shadow:
         var(--shadow-sm);
-
 }
 
 

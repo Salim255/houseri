@@ -99,7 +99,7 @@
 
 
         min-height:
-            4.8rem;
+            4rem;
 
 
 
@@ -149,47 +149,14 @@
 
             background-color .2s ease;
 
-
-
-
-
-
-
-
         &::placeholder {
-
-
-            color:
-                var(--text-secondary);
-
-
-
-            opacity:
-                .7;
-
-
+          color: var(--text-secondary);
+          opacity: .7;
         }
-
-
-
-
-
-
 
         &:hover {
-
-
-            border-color:
-                var(--border-strong);
-
-
+          border-color: var(--border-strong);
         }
-
-
-
-
-
-
 
         &:focus {
 
@@ -252,17 +219,9 @@
 
         flex-direction:
             column;
-
-
         gap:
             var(--space-4);
-
-
-
         width:
             100%;
-
-
-
     }
 }

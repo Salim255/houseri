@@ -32,10 +32,11 @@ const routes: Routes = [
         path: 'checkout',
         loadChildren: () => import('../checkout/checkout.module').then(m => m.CheckoutModule)
       },
-       {
+      {
         path: 'cart',
         loadChildren: () => import('../cart/cart.module').then(m => m.CartModule)
       },
+
     ]
   },
   {

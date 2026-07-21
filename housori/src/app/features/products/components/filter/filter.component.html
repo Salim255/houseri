@@ -25,6 +25,8 @@
         <div class="filter__actions">
 
             <app-button
+               [fullWidth]="true"
+                type="submit"
                 variant="primary"
                 (click)="submitSearch()">
 
@@ -33,6 +35,7 @@
             </app-button>
 
             <app-button
+                [fullWidth]="true"
                 variant="secondary"
                 (click)="resetFilter()">
 
