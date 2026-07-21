@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject, catchError, Observable, tap, throwError } from "rxjs";
 import { AuthHttpService, AuthResponsePayload, AuthStatusPayload } from "./auth-http.service";
 import { HttpResponse } from "@angular/common/http";
+import { User } from "../../users/model/user.model";
 
 export enum AuthType {
   LOGIN = 'log-in',
@@ -12,7 +13,7 @@ export enum AuthType {
 @Injectable({providedIn: 'root'})
 export class AuthService {
   private userIsAuthenticatedSubject = new BehaviorSubject<boolean>(false);
-
+  private userSubject = new BehaviorSubject<User| null>(null)
   private authTypeSubject = new BehaviorSubject<AuthType>(AuthType.GUEST);
 
   constructor(private authHttpService: AuthHttpService ){}
@@ -38,6 +39,7 @@ export class AuthService {
       }) //// Wrap false in an Observable using 'of'
     )
   }
+
   get userIsAuthenticated(): Observable<boolean> {
     return this.userIsAuthenticatedSubject.asObservable();
   }
