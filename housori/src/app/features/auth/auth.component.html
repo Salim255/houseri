@@ -1,13 +1,111 @@
-<section class="auth" *ngIf="showAuthModal">
-  <h1 class="auth__header heading-primary"> {{getCurrentAuthType}}</h1>
-  <div class="auth__content">
-    <div class="form">
-      <app-auth-form [authType]="authType()"></app-auth-form>
+<section
+    class="auth"
+    *ngIf="showAuthModal">
+
+
+    <div class="auth__card">
+
+
+        <header class="auth__header">
+
+
+            <span class="auth__badge">
+
+                Account
+
+            </span>
+
+
+
+            <h1 class="heading-primary">
+
+                {{ getCurrentAuthType }}
+
+            </h1>
+
+
+
+            <p class="auth__subtitle">
+
+                Manage your account and continue your shopping experience.
+
+            </p>
+
+
+        </header>
+
+
+
+
+
+
+        <div class="auth__body">
+
+
+            <div class="auth__form">
+
+                <app-auth-form
+                    [authType]="authType()">
+                </app-auth-form>
+
+
+            </div>
+
+
+
+
+
+
+            <div class="auth__actions">
+
+
+                <app-button
+                    variant="primary"
+                    [fullWidth]="true"
+                    type="button"
+                    (click)="onSubmit()">
+
+                    {{ getCurrentAuthType }}
+
+                </app-button>
+
+
+
+
+
+                <app-button
+                    variant="secondary"
+                    [fullWidth]="true"
+                    type="button"
+                    (click)="onGuest()">
+
+                    Continue as guest
+
+                </app-button>
+
+
+
+
+
+                <app-button
+                    variant="outline"
+                    [fullWidth]="true"
+                    type="button"
+                    (click)="onSwitch()">
+
+                    Switch to {{ switchTo }}
+
+                </app-button>
+
+
+            </div>
+
+
+
+        </div>
+
+
     </div>
-    <div class="btns">
-      <button class="btn btn__primary btn__primary--full" type="button"  (click)="onSubmit()">{{ getCurrentAuthType }}</button>
-      <button class="btn btn__primary btn__primary--full" (click)="onGuest()">Guest user</button>
-      <button class="btn btn__primary btn__primary--outline" (click)="onSwitch()" fill="outline">Switch to {{ switchTo }}</button>
-    </div>
-  </div>
+
+
 </section>

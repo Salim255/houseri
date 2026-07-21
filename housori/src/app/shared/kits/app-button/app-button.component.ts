@@ -12,6 +12,7 @@ export class AppButtonComponent {
   variant:
   'primary'
   | 'secondary'
+  | 'outline'
   | 'danger'
   | 'ghost'
   = 'primary';

@@ -185,8 +185,8 @@
 .app-button--primary:hover:not(:disabled)::after {
 
     transform:
-        scaleX(1.4)
-        scaleY(1.6);
+        scaleX(1.1)
+        scaleY(1.4);
 
     opacity: 0;
 
@@ -330,7 +330,7 @@
 
     background: var(--bg-secondary);
 
-    transform: scaleX(1.4) scaleY(1.6);
+    transform: scaleX(1.1) scaleY(1.4);
 
     opacity: 0;
 
