@@ -6,16 +6,12 @@
 
 
 .app-layout {
+    height: 100dvh;
+    background: var(--bg-main);
 
-    min-height:
-
-        100vh;
-
-
-    background:
-
-        var(--bg-main);
-
+    display: grid;
+    grid-template-rows: auto 1fr;
+    overflow: hidden;
 }
 
 
@@ -26,16 +22,14 @@
 
 
 .app-layout__content {
+   /* critical for scroll inside grid */
+  min-height: 0;
 
-    width:
+ flex: 1;
+  width: 100%;
 
-        100%;
-
-
-    padding-top:
-
-        7.2rem;
-
+  /* enable scrolling */
+  overflow-y: auto;
 }
 
 
@@ -47,40 +41,16 @@
 
 @include respond(tab-land) {
 
-    .app-layout__content {
-
-        padding-top:
-
-            7rem;
-
-    }
-
 }
 
 
 
 @include respond(tab-port) {
 
-    .app-layout__content {
-
-        padding-top:
-
-            6.6rem;
-
-    }
-
 }
 
 
 
 @include respond(phone) {
-
-    .app-layout__content {
-
-        padding-top:
-
-            5.8rem;
-
-    }
 
 }

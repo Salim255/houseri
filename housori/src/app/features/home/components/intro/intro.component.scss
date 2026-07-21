@@ -7,46 +7,21 @@
 
 .intro {
 
-    display:
+    display: grid;
 
-        grid;
+    grid-template-columns: 1fr 1fr;
 
+    align-items: center;
 
-    grid-template-columns:
+    gap: var(--space-8);
 
-        1fr
-        1fr;
+    padding: var(--space-8);
 
+    //background: var(--bg-main);
 
-    align-items:
+   // border-radius: var(--radius-xl);
 
-        center;
-
-
-    gap:
-
-        var(--space-8);
-
-
-    padding:
-
-        var(--space-8);
-
-
-    background:
-
-        var(--bg-main);
-
-
-    border-radius:
-
-        var(--radius-xl);
-
-
-    border:
-
-        1px solid
-        var(--border-default);
+    //border: 1px solid var(--border-default);
 
 }
 
@@ -60,63 +35,29 @@
 
 
 .intro__description {
+    display: flex;
 
+    flex-direction: column;
 
-    display:
+    align-items: flex-start;
 
-        flex;
-
-
-    flex-direction:
-
-        column;
-
-
-    align-items:
-
-        flex-start;
-
-
-    gap:
-
-        var(--space-5);
-
+    gap: var(--space-5);
 }
-
 
 
 .intro__description h1 {
 
+    margin: 0;
 
-    margin:
+    color: var(--text-primary);
 
-        0;
+    font-family: var(--font-heading);
 
+    font-size: var(--fs-4xl);
 
-    color:
+    font-weight: var(--fw-bold);
 
-        var(--text-primary);
-
-
-    font-family:
-
-        var(--font-heading);
-
-
-    font-size:
-
-        var(--fs-4xl);
-
-
-    font-weight:
-
-        var(--fw-bold);
-
-
-    line-height:
-
-        1.2;
-
+    line-height: 1.2;
 }
 
 
@@ -124,29 +65,19 @@
 .intro__description p {
 
 
-    margin:
-
-        0;
+    margin: 0;
 
 
-    max-width:
-
-        45rem;
+    max-width: 45rem;
 
 
-    color:
-
-        var(--text-secondary);
+    color: var(--text-secondary);
 
 
-    font-size:
-
-        var(--fs-lg);
+    font-size: var(--fs-lg);
 
 
-    line-height:
-
-        1.6;
+    line-height: 1.6;
 
 }
 
@@ -158,17 +89,9 @@
 
 
 .intro__description .btn {
-
-
-    margin-top:
-
-        var(--space-3);
+    margin-top: var(--space-3);
 
 }
-
-
-
-
 
 /* ==========================================================
    IMAGE
@@ -177,20 +100,11 @@
 
 .intro__hero {
 
-
-    width:
-
-        100%;
+    width: 100%;
 
 
-    height:
-
-        38rem;
-
-
-    object-fit:
-
-        cover;
+    height: 38rem;
+    object-fit: cover;
 
 
     border-radius:
@@ -215,47 +129,6 @@
 ========================================================== */
 
 
-@include respond(tab-land){
-
-
-    .intro {
-
-        padding:
-
-            var(--space-7);
-
-
-        gap:
-
-            var(--space-7);
-
-    }
-
-
-    .intro__description h1 {
-
-        font-size:
-
-            var(--fs-3xl);
-
-    }
-
-
-    .intro__hero {
-
-        height:
-
-            32rem;
-
-    }
-
-
-}
-
-
-
-
-
 /* ==========================================================
    TABLET PORTRAIT
 ========================================================== */
@@ -265,37 +138,18 @@
 
 
     .intro {
-
-        grid-template-columns:
-
-            1fr;
-
-
-        gap:
-
-            var(--space-6);
-
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
     }
 
 
     .intro__description {
-
-        align-items:
-
-            flex-start;
-
+      align-items: flex-start;
     }
-
 
     .intro__hero {
-
-        height:
-
-            30rem;
-
+      height:30rem;
     }
-
-
 }
 
 
@@ -305,63 +159,3 @@
 /* ==========================================================
    MOBILE
 ========================================================== */
-
-
-@include respond(phone){
-
-
-    .intro {
-
-
-        padding:
-
-            var(--space-5);
-
-
-        border-radius:
-
-            var(--radius-lg);
-
-
-    }
-
-
-
-    .intro__description h1 {
-
-
-        font-size:
-
-            var(--fs-2xl);
-
-    }
-
-
-
-    .intro__description p {
-
-
-        font-size:
-
-            var(--fs-base);
-
-    }
-
-
-
-    .intro__hero {
-
-
-        height:
-
-            22rem;
-
-
-        border-radius:
-
-            var(--radius-lg);
-
-    }
-
-
-}

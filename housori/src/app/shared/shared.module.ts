@@ -30,6 +30,7 @@ import { AppButtonComponent } from "./kits/app-button/app-button.component";
     IonicModule,
   ],
   exports: [
+    AppButtonComponent,
     ProductCardComponent,
     Placeholder,
     PaginationComponent,
