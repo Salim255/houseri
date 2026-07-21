@@ -1,16 +1,15 @@
 @mixin page-layout() {
-  border-top-left-radius: 2rem;
-  border-top-right-radius: 2rem;
+  border-radius: var(--radius-xl);
   background-color: var(--bg-secondary);
   width: 90%;
   min-height: calc(100vh - 10rem);
-  padding: var(--x-l-spacing);
+  padding: var(--space-8);
   margin: auto;
 
-  @include respond(phone){
-    padding: var(--sm-spacing);
+  @include respond(phone) {
+    padding: var(--space-5);
     width: 98%;
-  };
+  }
 }
 
 // MEDIA QUERY MANGER

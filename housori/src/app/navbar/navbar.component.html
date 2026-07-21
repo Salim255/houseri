@@ -1,37 +1,81 @@
-<header>
-  <section class="header-auth">
-    <ng-container *ngIf="showAuthBar">
-      <div class="header-auth__login" (click)="onSignUp()">
-        <a>Sign in</a> / <a> Guest</a>
-      </div>
-      <div (click)="onRegister()" class="header-auth__register">
-        <a> Create Account</a>
-      </div>
-    </ng-container>
-  </section>
-  <nav class="header-navbar">
-    <a routerLink="/" class="header-navbar__logo" (click)="onMenu()">
-      <ion-icon name="menu"></ion-icon>
-      <span>Housori </span>
-    </a>
-    <ul class="header-navbar__links">
-      <li class="navbar-item" *ngFor="let link of navLinks">
-        <a
-          class="navbar-item__link navbar-item__link--inactive"
-          [routerLink]="link.path"
-          routerLinkActive="navbar-item__link--active"
-          [routerLinkActiveOptions]="{ exact: link.exact || false }"
-        >
-          {{ link.label }}
-        </a>
-      </li>
-    </ul>
-    <div routerLink="/cart"  class="header-navbar__cart navbar-item__link--inactive">
-      <ion-badge color="primary">{{ numItemInCart }}</ion-badge>
-      <ion-icon name="cart-outline"></ion-icon>
-    </div>
-  </nav>
-</header>
-<app-sidebar *ngIf="openMenu()"></app-sidebar>
-<router-outlet></router-outlet>
+<header class="header">
 
+    <section class="header__top">
+
+        <div class="header-auth">
+
+            <button
+                class="header-auth__link"
+                (click)="onSignUp()">
+
+                Sign in
+
+            </button>
+
+            <span class="header-auth__divider"></span>
+
+            <button
+                class="header-auth__button"
+                (click)="onRegister()">
+
+                Create account
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <nav class="header__nav">
+
+        <a
+            routerLink="/"
+            class="header-logo">
+
+            <ion-icon name="cube-outline"></ion-icon>
+
+            <span>Housori</span>
+
+        </a>
+
+        <ul class="header-menu">
+
+            <li *ngFor="let link of navLinks">
+
+                <a
+                    [routerLink]="link.path"
+                    routerLinkActive="header-menu__link--active"
+                    class="header-menu__link">
+
+                    {{ link.label }}
+
+                </a>
+
+            </li>
+
+        </ul>
+
+        <div class="header-actions">
+
+            <button
+                class="header-actions__cart"
+                routerLink="/cart">
+
+                <ion-icon
+                    name="cart-outline">
+
+                </ion-icon>
+
+                <ion-badge>
+
+                    {{ numItemInCart }}
+
+                </ion-badge>
+
+            </button>
+
+        </div>
+
+    </nav>
+
+</header>

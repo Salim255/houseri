@@ -1,0 +1,264 @@
+/* ==========================================================
+   APP BUTTON
+========================================================== */
+
+.app-button {
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+
+    min-height: 4.4rem;
+
+    padding:
+        0
+        var(--space-5);
+
+    border:
+        1px solid
+        transparent;
+
+    border-radius:
+        var(--radius-lg);
+
+    background:
+        transparent;
+
+    color:
+        var(--text-primary);
+
+    font-family:
+        var(--font-base);
+
+    font-size:
+        var(--fs-base);
+
+    font-weight:
+        var(--fw-medium);
+
+    line-height: 1;
+
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    user-select: none;
+
+    transition:
+        background-color .18s ease,
+        border-color .18s ease,
+        color .18s ease,
+        opacity .18s ease,
+        box-shadow .18s ease;
+}
+
+
+/* ==========================================================
+   FULL WIDTH
+========================================================== */
+
+.app-button--full {
+
+    width: 100%;
+}
+
+
+/* ==========================================================
+   PRIMARY
+========================================================== */
+
+.app-button--primary {
+
+    background:
+        var(--color-primary);
+
+    color:
+        var(--text-inverse);
+}
+
+.app-button--primary:hover:not(:disabled) {
+
+    background:
+        var(--color-primary-hover);
+}
+
+.app-button--primary:focus-visible {
+
+    outline: none;
+
+    box-shadow:
+        0 0 0 .3rem
+        var(--color-primary-soft);
+}
+
+
+/* ==========================================================
+   SECONDARY
+========================================================== */
+
+.app-button--secondary {
+
+    background:
+        var(--bg-main);
+
+    border-color:
+        var(--border-default);
+
+    color:
+        var(--text-primary);
+}
+
+.app-button--secondary:hover:not(:disabled) {
+
+    background:
+        var(--bg-secondary);
+
+    border-color:
+        var(--border-strong);
+}
+
+.app-button--secondary:focus-visible {
+
+    outline: none;
+
+    box-shadow:
+        0 0 0 .3rem
+        var(--color-primary-soft);
+}
+
+
+/* ==========================================================
+   GHOST
+========================================================== */
+
+.app-button--ghost {
+
+    background:
+        transparent;
+
+    color:
+        var(--text-secondary);
+}
+
+.app-button--ghost:hover:not(:disabled) {
+
+    background:
+        var(--color-primary-soft);
+
+    color:
+        var(--color-primary);
+}
+
+.app-button--ghost:focus-visible {
+
+    outline: none;
+
+    box-shadow:
+        0 0 0 .3rem
+        var(--color-primary-soft);
+}
+
+
+/* ==========================================================
+   DANGER
+========================================================== */
+
+.app-button--danger {
+
+    background:
+        var(--color-danger);
+
+    color:
+        var(--text-inverse);
+}
+
+.app-button--danger:hover:not(:disabled) {
+
+    background:
+        var(--danger-700);
+}
+
+.app-button--danger:focus-visible {
+
+    outline: none;
+
+    box-shadow:
+        0 0 0 .3rem
+        var(--color-danger-soft);
+}
+
+
+/* ==========================================================
+   LABEL
+========================================================== */
+
+.app-button__label {
+
+    display: inline-flex;
+    align-items: center;
+}
+
+
+/* ==========================================================
+   SPINNER
+========================================================== */
+
+.app-button__spinner {
+
+    width: 1.4rem;
+    height: 1.4rem;
+
+    border-radius: 50%;
+
+    border:
+        2px solid
+        rgba(255,255,255,.35);
+
+    border-top-color:
+        currentColor;
+
+    animation:
+        app-button-spin
+        .7s linear infinite;
+}
+
+
+/* ==========================================================
+   LOADING
+========================================================== */
+
+.app-button--loading {
+
+    pointer-events: none;
+}
+
+
+/* ==========================================================
+   DISABLED
+========================================================== */
+
+.app-button:disabled {
+
+    opacity: .55;
+
+    cursor: not-allowed;
+}
+
+
+/* ==========================================================
+   ACTIVE
+========================================================== */
+.app-button:active:not(:disabled) {
+    opacity: .92;
+}
+
+
+/* ==========================================================
+   ANIMATION
+========================================================== */
+@keyframes app-button-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
