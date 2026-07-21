@@ -9,9 +9,13 @@ import { ToastrModule } from 'ngx-toastr';
 import { SpinnerComponent } from "./components/spinner/spinner.component";
 import { RouterModule } from "@angular/router";
 import { ProductCardComponent } from "./components/product-card/product-card.component";
+import { AppCardComponent } from "./kits/app-card/app-card.component";
+import { AppButtonComponent } from "./kits/app-button/app-button.component";
 
 @NgModule({
   declarations: [
+    AppCardComponent,
+    AppButtonComponent,
     ProductCardComponent,
     Placeholder,
     PaginationComponent,

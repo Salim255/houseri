@@ -1,0 +1,86 @@
+@import "../../../themes/styles/mixins";
+
+/* ==========================================================
+   APP LAYOUT
+========================================================== */
+
+
+.app-layout {
+
+    min-height:
+
+        100vh;
+
+
+    background:
+
+        var(--bg-main);
+
+}
+
+
+
+/* ==========================================================
+   CONTENT
+========================================================== */
+
+
+.app-layout__content {
+
+    width:
+
+        100%;
+
+
+    padding-top:
+
+        7.2rem;
+
+}
+
+
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+
+@include respond(tab-land) {
+
+    .app-layout__content {
+
+        padding-top:
+
+            7rem;
+
+    }
+
+}
+
+
+
+@include respond(tab-port) {
+
+    .app-layout__content {
+
+        padding-top:
+
+            6.6rem;
+
+    }
+
+}
+
+
+
+@include respond(phone) {
+
+    .app-layout__content {
+
+        padding-top:
+
+            5.8rem;
+
+    }
+
+}

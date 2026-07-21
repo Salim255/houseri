@@ -1,0 +1,728 @@
+@import "../../../themes/styles/mixins";
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.header {
+   position:
+
+        fixed;
+
+
+    top:
+
+        0;
+
+
+    left:
+
+        0;
+
+
+    right:
+
+        0;
+
+
+    z-index:
+
+        1000;
+
+
+    width:
+
+        100%;
+
+
+    background:
+
+        var(--bg-main);
+
+
+    border-bottom:
+
+        1px solid
+        var(--border-default);
+
+
+    box-shadow:
+
+        var(--shadow-sm);
+
+
+
+}
+
+
+
+/* ==========================================================
+   TOP AUTH BAR
+========================================================== */
+
+.header__top {
+
+    display:
+
+        flex;
+
+    justify-content:
+
+        flex-end;
+
+    align-items:
+
+        center;
+
+
+    padding:
+
+        var(--space-3)
+        var(--space-8);
+
+
+    background:
+
+        var(--bg-secondary);
+
+}
+
+
+
+.header__auth {
+
+    display:
+
+        flex;
+
+    align-items:
+
+        center;
+
+    gap:
+
+        var(--space-3);
+
+}
+
+
+
+.header__auth-link,
+.header__auth-button {
+
+    border:
+
+        none;
+
+    background:
+
+        transparent;
+
+
+    padding:
+
+        0;
+
+
+    cursor:
+
+        pointer;
+
+
+    color:
+
+        var(--text-secondary);
+
+
+    font-family:
+
+        var(--font-base);
+
+
+    font-size:
+
+        var(--fs-sm);
+
+
+    transition:
+
+        color .18s ease;
+
+}
+
+
+
+.header__auth-link:hover,
+.header__auth-button:hover {
+
+    color:
+
+        var(--color-primary);
+
+}
+
+
+
+.header__auth-button {
+
+    font-weight:
+
+        var(--fw-medium);
+
+}
+
+
+
+.header__auth-divider {
+
+    width:
+
+        1px;
+
+
+    height:
+
+        1.4rem;
+
+
+    background:
+
+        var(--border-default);
+
+}
+
+
+
+/* ==========================================================
+   MAIN NAVIGATION
+========================================================== */
+
+.header__nav {
+
+    display:
+
+        flex;
+
+
+    align-items:
+
+        center;
+
+
+    justify-content:
+
+        space-between;
+
+
+    gap:
+
+        var(--space-6);
+
+
+    height:
+
+        5.6rem;
+
+
+    padding-inline:
+
+        var(--space-8);
+
+}
+
+
+
+/* ==========================================================
+   LOGO
+========================================================== */
+
+.header__logo {
+
+    display:
+
+        flex;
+
+
+    align-items:
+
+        center;
+
+
+    gap:
+
+        var(--space-3);
+
+
+    text-decoration:
+
+        none;
+
+
+    color:
+
+        var(--text-primary);
+
+
+    font-family:
+
+        var(--font-heading);
+
+
+    font-size:
+
+        var(--fs-xl);
+
+
+    font-weight:
+
+        var(--fw-bold);
+
+
+    white-space:
+
+        nowrap;
+
+}
+
+
+
+.header__logo ion-icon {
+
+    color:
+
+        var(--color-primary);
+
+
+    font-size:
+
+        2rem;
+
+}
+
+
+
+/* ==========================================================
+   MENU
+========================================================== */
+
+.header__menu {
+
+    display:
+
+        flex;
+
+
+    align-items:
+
+        center;
+
+
+    gap:
+
+        var(--space-7);
+
+
+    list-style:
+
+        none;
+
+
+    padding:
+
+        0;
+
+
+    margin:
+
+        0;
+
+}
+
+
+
+.header__menu-link {
+
+    position:
+
+        relative;
+
+
+    display:
+
+        inline-flex;
+
+
+    align-items:
+
+        center;
+
+
+    height:
+
+        100%;
+
+
+    text-decoration:
+
+        none;
+
+
+    color:
+
+        var(--text-secondary);
+
+
+    font-size:
+
+        var(--fs-base);
+
+
+    font-weight:
+
+        var(--fw-medium);
+
+
+    transition:
+
+        color .18s ease;
+
+}
+
+
+
+.header__menu-link:hover {
+
+    color:
+
+        var(--text-primary);
+
+}
+
+
+
+.header__menu-link--active {
+
+    color:
+
+        var(--color-primary);
+
+}
+
+
+
+.header__menu-link--active::after {
+
+    content:"";
+
+
+    position:
+
+        absolute;
+
+
+    bottom:
+
+        -0.2rem;
+
+
+    left:
+
+        0;
+
+
+    width:
+
+        100%;
+
+
+    height:
+
+        2px;
+
+
+    background:
+
+        var(--color-primary);
+
+
+    border-radius:
+
+        var(--radius-pill);
+
+}
+
+
+
+/* ==========================================================
+   ACTIONS
+========================================================== */
+
+.header__actions {
+
+    display:
+
+        flex;
+
+
+    align-items:
+
+        center;
+
+}
+
+
+
+.header__cart {
+
+    position:
+
+        relative;
+
+
+    display:
+
+        flex;
+
+
+    align-items:
+
+        center;
+
+
+    justify-content:
+
+        center;
+
+
+    width:
+
+        3.8rem;
+
+
+    height:
+
+        3.8rem;
+
+
+    border-radius:
+
+        var(--radius-lg);
+
+
+    border:
+
+        1px solid transparent;
+
+
+    background:
+
+        transparent;
+
+
+    color:
+
+        var(--text-primary);
+
+
+    cursor:
+
+        pointer;
+
+
+    transition:
+
+        background .18s ease,
+        border-color .18s ease;
+
+}
+
+
+
+.header__cart:hover {
+
+    background:
+
+        var(--bg-secondary);
+
+
+    border-color:
+
+        var(--border-default);
+
+}
+
+
+
+.header__cart ion-icon {
+
+    font-size:
+
+        2rem;
+
+}
+
+
+
+.header__cart ion-badge {
+
+    position:
+
+        absolute;
+
+
+    top:
+
+        -0.3rem;
+
+
+    right:
+
+        -0.3rem;
+
+
+    display:
+
+        flex;
+
+
+    align-items:
+
+        center;
+
+
+    justify-content:
+
+        center;
+
+
+    min-width:
+
+        1.8rem;
+
+
+    height:
+
+        1.8rem;
+
+
+    padding-inline:
+
+        var(--space-1);
+
+
+    border-radius:
+
+        var(--radius-pill);
+
+
+    font-size:
+
+        var(--fs-xs);
+
+}
+
+
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+
+/*
+1200px and below
+Tablet landscape
+*/
+
+@include respond(tab-land){
+
+    .header__nav {
+
+        padding-inline:
+
+            var(--space-6);
+
+    }
+
+
+    .header__menu {
+
+        gap:
+
+            var(--space-5);
+
+    }
+
+}
+
+
+
+/*
+900px and below
+Tablet portrait
+*/
+
+@include respond(tab-port){
+
+    .header__nav {
+
+        padding-inline:
+
+            var(--space-5);
+
+    }
+
+
+    .header__menu {
+
+        gap:
+
+            var(--space-4);
+
+    }
+
+}
+
+
+
+/*
+600px and below
+Mobile
+*/
+
+@include respond(phone){
+
+
+    .header__top {
+
+        display:
+
+            none;
+
+    }
+
+
+
+    .header__nav {
+
+        height:
+
+            5rem;
+
+
+        padding-inline:
+
+            var(--space-5);
+
+    }
+
+
+
+    .header__menu {
+
+        display:
+
+            none;
+
+    }
+
+
+}

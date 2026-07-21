@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit, signal } from "@angular/core";
-import { CartDetails, CartService } from "../features/cart/services/cart-service";
+import { CartDetails, CartService } from "../cart/services/cart-service";
 import { Subscription } from "rxjs";
-import { AuthType } from "../features/auth/services/auth.service";
-import { AuthService } from "../features/auth/services/auth.service";
-import {CoreService} from "../core/services/core.service";
+import { AuthType } from "../auth/services/auth.service";
+import { AuthService } from "../auth/services/auth.service";
+import {CoreService} from "../../core/services/core.service";
 import { LikeContent, NavbarService } from "./services/navbar.service";
 
 @Component({

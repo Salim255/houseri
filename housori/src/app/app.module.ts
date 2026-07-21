@@ -23,6 +23,7 @@ import { AuthModule } from './features/auth/auth.module';
     AppComponent
   ],
   imports: [
+    IonicModule,
     AuthModule,
     SharedModule,
     CoreModule,

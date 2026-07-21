@@ -2,69 +2,94 @@
 
     <section class="header__top">
 
-        <div class="header-auth">
+        <div class="header__auth">
 
             <button
-                class="header-auth__link"
+                class="header__auth-link"
                 (click)="onSignUp()">
 
                 Sign in
 
             </button>
 
-            <span class="header-auth__divider"></span>
+
+            <span class="header__auth-divider"></span>
+
 
             <button
-                class="header-auth__button"
+                class="header__auth-button"
                 (click)="onRegister()">
 
                 Create account
 
             </button>
 
+
         </div>
 
     </section>
 
+
+
     <nav class="header__nav">
+
 
         <a
             routerLink="/"
-            class="header-logo">
+            class="header__logo">
 
-            <ion-icon name="cube-outline"></ion-icon>
 
-            <span>Housori</span>
+            <ion-icon
+                name="cube-outline">
+            </ion-icon>
+
+
+            <span>
+                Housori
+            </span>
+
 
         </a>
 
-        <ul class="header-menu">
+
+
+        <ul class="header__menu">
+
 
             <li *ngFor="let link of navLinks">
 
+
                 <a
                     [routerLink]="link.path"
-                    routerLinkActive="header-menu__link--active"
-                    class="header-menu__link">
+                    routerLinkActive="header__menu-link--active"
+                    class="header__menu-link">
+
 
                     {{ link.label }}
 
+
                 </a>
+
 
             </li>
 
+
         </ul>
 
-        <div class="header-actions">
+
+
+        <div class="header__actions">
+
 
             <button
-                class="header-actions__cart"
+                class="header__cart"
                 routerLink="/cart">
+
 
                 <ion-icon
                     name="cart-outline">
-
                 </ion-icon>
+
 
                 <ion-badge>
 
@@ -72,10 +97,16 @@
 
                 </ion-badge>
 
+
             </button>
+
 
         </div>
 
+
     </nav>
 
+
 </header>
+
+<router-outlet></router-outlet>

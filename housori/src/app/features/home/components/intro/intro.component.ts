@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { HomeService } from "../../services/home.service";
 
 @Component({
@@ -8,7 +8,7 @@ import { HomeService } from "../../services/home.service";
   standalone: false,
 })
 
-export class IntroComponent {
+export class IntroComponent  implements OnInit{
   homeHeader: string ="";
   description: string = "";
   constructor(private homeService : HomeService ){}

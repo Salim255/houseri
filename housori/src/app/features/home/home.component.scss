@@ -1,16 +1,185 @@
 @import '../../../themes/styles/mixins';
 
-.home {
-  &__container {
-    padding-top: 14rem;
-    .home-content {
-      @include page-layout();
+/* ==========================================================
+   HOME PAGE
+========================================================== */
 
-      @include respond(tab-port) {
-        display: flex;
-        flex-direction: column;
-        gap: var(--2x-l-spacing);
-      }
+
+.home {
+  width: 100vh;
+  padding: var(--space-8) 0;
+
+}
+
+
+
+/* ==========================================================
+   PAGE CONTAINER
+========================================================== */
+
+
+.home__container {
+    width: 90%;
+
+    min-height: calc(100vh - 10rem);
+
+    margin:
+
+        0 auto;
+
+
+    padding:
+
+        var(--space-8);
+
+
+    border-radius:
+
+        var(--radius-xl);
+
+
+    background: var(--bg-secondary);
+
+}
+
+
+
+/* ==========================================================
+   CONTENT FLOW
+========================================================== */
+
+
+.home__content {
+
+
+    display:
+
+        flex;
+
+
+    flex-direction:
+
+        column;
+
+
+    gap:
+
+        var(--space-8);
+
+}
+
+
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+
+@include respond(tab-land){
+
+
+    .home__container {
+
+        width:
+
+            94%;
+
+
+        padding:
+
+            var(--space-7);
+
     }
-  }
+
+
+}
+
+
+
+@include respond(tab-port){
+
+
+    .home {
+
+        padding:
+
+            var(--space-6)
+            0;
+
+    }
+
+
+
+    .home__container {
+
+        width:
+
+            96%;
+
+
+        padding:
+
+            var(--space-6);
+
+    }
+
+
+
+    .home__content {
+
+        gap:
+
+            var(--space-7);
+
+    }
+
+
+}
+
+
+
+
+@include respond(phone){
+
+
+    .home {
+
+        padding:
+
+            var(--space-4)
+            0;
+
+    }
+
+
+
+    .home__container {
+
+        width:
+
+            98%;
+
+
+        padding:
+
+            var(--space-5);
+
+
+        border-radius:
+
+            var(--radius-lg);
+
+    }
+
+
+
+    .home__content {
+
+        gap:
+
+            var(--space-6);
+
+    }
+
+
 }

@@ -5,9 +5,11 @@
 }
 
 
+
 /* ==========================================================
    CARD
 ========================================================== */
+
 
 .app-card {
 
@@ -15,35 +17,118 @@
 
     flex-direction: column;
 
-    gap: var(--space-5);
 
     background:
 
         var(--bg-main);
+
 
     border:
 
         1px solid
         var(--border-default);
 
+
     border-radius:
 
         var(--radius-xl);
 
+
+    overflow: hidden;
+
+
     transition:
+
         border-color .18s ease,
-        background-color .18s ease,
         box-shadow .18s ease,
         transform .18s ease;
 
 }
 
 
+
 /* ==========================================================
-   PADDING
+   HEADER
 ========================================================== */
 
-.app-card--padding {
+
+.app-card__header {
+
+    padding:
+
+        var(--space-6);
+
+
+    padding-bottom:
+
+        var(--space-4);
+
+
+    border-bottom:
+
+        1px solid
+        var(--border-default);
+
+}
+
+
+
+.app-card__title {
+
+    margin: 0;
+
+
+    color:
+
+        var(--text-primary);
+
+
+    font-family:
+
+        var(--font-heading);
+
+
+    font-size:
+
+        var(--fs-xl);
+
+
+    font-weight:
+
+        var(--fw-bold);
+
+}
+
+
+
+.app-card__subtitle {
+
+    margin:
+
+        var(--space-2)
+        0
+        0;
+
+
+    color:
+
+        var(--text-secondary);
+
+
+    font-size:
+
+        var(--fs-sm);
+
+}
+
+
+
+/* ==========================================================
+   BODY
+========================================================== */
+
+
+.app-card__body {
 
     padding:
 
@@ -52,86 +137,65 @@
 }
 
 
+
 /* ==========================================================
-   DEFAULT
+   FOOTER
 ========================================================== */
 
-.app-card--default {
 
-    box-shadow:
+.app-card__footer {
 
-        none;
+    display:
+
+        flex;
+
+
+    justify-content:
+
+        flex-end;
+
+
+    align-items:
+
+        center;
+
+
+    gap:
+
+        var(--space-3);
+
+
+    padding:
+
+        var(--space-5)
+        var(--space-6);
+
+
+    border-top:
+
+        1px solid
+        var(--border-default);
 
 }
 
 
+
 /* ==========================================================
-   OUTLINED
+   HOVER
 ========================================================== */
 
-.app-card--outlined {
+
+.app-card--hoverable:hover {
+
 
     border-color:
 
         var(--border-strong);
 
-}
-
-
-/* ==========================================================
-   ELEVATED
-========================================================== */
-
-.app-card--elevated {
-
-    border-color:
-
-        transparent;
 
     box-shadow:
 
         var(--shadow-sm);
 
-}
-
-
-/* ==========================================================
-   HOVERABLE
-========================================================== */
-
-.app-card--hoverable:hover {
-
-    border-color:
-
-        var(--color-primary);
-
-    box-shadow:
-
-        var(--shadow-md);
-
-}
-
-
-/* ==========================================================
-   RESPONSIVE
-========================================================== */
-
-@include respond(phone){
-
-    .app-card{
-
-        gap:
-
-            var(--space-4);
-
-    }
-
-    .app-card--padding{
-
-        padding:
-
-            var(--space-5);
-
-    }
 
 }

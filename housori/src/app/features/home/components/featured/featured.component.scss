@@ -1,19 +1,224 @@
 @import '../../../../../themes/styles/mixins';
 
-.featured-products {
-  padding-bottom: var(--x-l-spacing);
-  .featured-content {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap:  var(--x-l-spacing);
-    padding: 0 2rem;
-    app-product-card {
-      width: 100%;
+/* ==========================================================
+   FEATURED PRODUCTS
+========================================================== */
+
+
+.featureds {
+
+    display:
+
+        flex;
+
+
+    flex-direction:
+
+        column;
+
+
+    gap:
+
+        var(--space-6);
+
+
+    padding:
+
+        var(--space-8);
+
+
+    background:
+
+        var(--bg-main);
+
+
+    border:
+
+        1px solid
+        var(--border-default);
+
+
+    border-radius:
+
+        var(--radius-xl);
+
+}
+
+
+
+/* ==========================================================
+   TITLE
+========================================================== */
+
+
+.featureds .heading-secondary {
+
+
+    margin:
+
+        0;
+
+
+    color:
+
+        var(--text-primary);
+
+
+    font-family:
+
+        var(--font-heading);
+
+
+    font-size:
+
+        var(--fs-3xl);
+
+
+    font-weight:
+
+        var(--fw-bold);
+
+}
+
+
+
+/* ==========================================================
+   PRODUCTS GRID
+========================================================== */
+
+
+.featureds__content {
+
+
+    display:
+
+        grid;
+
+
+    grid-template-columns:
+
+        repeat(4, minmax(0, 1fr));
+
+
+    gap:
+
+        var(--space-6);
+
+}
+
+
+
+
+
+/* ==========================================================
+   TABLET LANDSCAPE
+========================================================== */
+
+
+@include respond(tab-land){
+
+
+    .featureds__content {
+
+
+        grid-template-columns:
+
+            repeat(3, minmax(0, 1fr));
+
     }
-    @include respond(tab-port){
-      flex-direction: column;
-      padding: 0 .5rem;
-    };
-  }
+
+}
+
+
+
+
+
+/* ==========================================================
+   TABLET PORTRAIT
+========================================================== */
+
+
+@include respond(tab-port){
+
+
+    .featureds {
+
+
+        padding:
+
+            var(--space-6);
+
+    }
+
+
+
+    .featureds__content {
+
+
+        grid-template-columns:
+
+            repeat(2, minmax(0, 1fr));
+
+
+        gap:
+
+            var(--space-5);
+
+    }
+
+}
+
+
+
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+
+@include respond(phone){
+
+
+    .featureds {
+
+
+        padding:
+
+            var(--space-5);
+
+
+        border-radius:
+
+            var(--radius-lg);
+
+    }
+
+
+
+    .featureds .heading-secondary {
+
+
+        font-size:
+
+            var(--fs-2xl);
+
+    }
+
+
+
+    .featureds__content {
+
+
+        grid-template-columns:
+
+            1fr;
+
+
+        gap:
+
+            var(--space-5);
+
+    }
+
 }
