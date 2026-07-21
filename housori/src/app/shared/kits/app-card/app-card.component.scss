@@ -1,0 +1,137 @@
+:host {
+
+    display: block;
+
+}
+
+
+/* ==========================================================
+   CARD
+========================================================== */
+
+.app-card {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--space-5);
+
+    background:
+
+        var(--bg-main);
+
+    border:
+
+        1px solid
+        var(--border-default);
+
+    border-radius:
+
+        var(--radius-xl);
+
+    transition:
+        border-color .18s ease,
+        background-color .18s ease,
+        box-shadow .18s ease,
+        transform .18s ease;
+
+}
+
+
+/* ==========================================================
+   PADDING
+========================================================== */
+
+.app-card--padding {
+
+    padding:
+
+        var(--space-6);
+
+}
+
+
+/* ==========================================================
+   DEFAULT
+========================================================== */
+
+.app-card--default {
+
+    box-shadow:
+
+        none;
+
+}
+
+
+/* ==========================================================
+   OUTLINED
+========================================================== */
+
+.app-card--outlined {
+
+    border-color:
+
+        var(--border-strong);
+
+}
+
+
+/* ==========================================================
+   ELEVATED
+========================================================== */
+
+.app-card--elevated {
+
+    border-color:
+
+        transparent;
+
+    box-shadow:
+
+        var(--shadow-sm);
+
+}
+
+
+/* ==========================================================
+   HOVERABLE
+========================================================== */
+
+.app-card--hoverable:hover {
+
+    border-color:
+
+        var(--color-primary);
+
+    box-shadow:
+
+        var(--shadow-md);
+
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@include respond(phone){
+
+    .app-card{
+
+        gap:
+
+            var(--space-4);
+
+    }
+
+    .app-card--padding{
+
+        padding:
+
+            var(--space-5);
+
+    }
+
+}
