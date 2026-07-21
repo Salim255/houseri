@@ -1,22 +1,88 @@
 <div class="single-product">
-  <div class="single-product__container">
-    <div class="single-product__content">
-      <figure class="single-product__figure">
-        <div class="single-product__img">
-          <img  alt="single product" [src]="firstImage">
-        </div>
-        <figcaption class="single-product__description">
-          <p class="single-product__name">{{ title}}</p>
-          <p class="single-product__price"> {{ productPrice | currency }} </p>
-          <p class="single-product__paragraph">{{ description }}</p>
-          <button
-            class="btn btn__primary btn__primary--full single-product__add-btn"
-            (click)="onAddProduct()">
-            add to basket
-          </button>
-        </figcaption>
-      </figure>
-    </div>
-  </div>
-</div>
 
+
+    <div class="single-product__container">
+
+
+        <div class="single-product__content">
+
+
+            <figure class="single-product__figure">
+
+
+                <div class="single-product__image">
+
+
+                    <img
+                        loading="lazy"
+                        alt="single product"
+                        [src]="firstImage">
+
+
+                </div>
+
+
+
+
+
+                <figcaption class="single-product__details">
+
+
+                    <span class="single-product__badge">
+
+                        Featured Product
+
+                    </span>
+
+
+
+                    <h1 class="single-product__name">
+
+                        {{ title }}
+
+                    </h1>
+
+
+
+
+                    <p class="single-product__price">
+
+                        {{ productPrice | currency }}
+
+                    </p>
+
+
+
+
+                    <p class="single-product__description">
+
+                        {{ description }}
+
+                    </p>
+
+
+
+
+                    <div class="single-product__actions">
+
+                        <app-button
+                          [variant]="'primary'"
+                          (click)="onAddProduct()">
+                           Add to basket
+                        </app-button>
+                    </div>
+
+
+                </figcaption>
+
+
+            </figure>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>

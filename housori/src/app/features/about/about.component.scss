@@ -1,39 +1,291 @@
 @import '../../../themes/styles/mixins';
 
+
 .about {
-  &__container {
-    padding-top: 14rem;
+    &__container {
+        padding-top: var(--space-8);
+    }
 
     .about-content {
-      @include page-layout();
-      display: flex;
-      gap: 4rem;
-      justify-content: center;
-      align-items: center;
-      @include respond(tab-port) {
-        gap: var(--2x-l-spacing);
-        flex-direction: column;
-        align-items: unset;
-        justify-content: unset;
-      }
-      &__text {
-        flex: .4;
+
+
+        @include page-layout();
+
+
+
+        display:
+            grid;
+
+
+        grid-template-columns:
+            .9fr 1.1fr;
+
+
+        align-items:
+            center;
+
+
+
+        gap:
+            var(--space-8);
+
+
+
+
         @include respond(tab-port) {
-          flex: unset;
+
+
+            grid-template-columns:
+                1fr;
+
+
         }
-        p {
-          line-height: 1.5;
-          margin-bottom: var(--l-spacing);
-        }
-      }
-      &__hero {
-        flex: .6;
-        img {
-          border-radius: 2rem;
-          width: 100%;
-          object-fit: cover;
-        }
-      }
+
     }
-  }
+
+
+
+
+    &-badge {
+
+
+        display:
+            inline-flex;
+
+
+        align-items:
+            center;
+
+
+
+        width:
+            fit-content;
+
+
+
+        padding:
+            var(--space-2)
+            var(--space-4);
+
+
+
+        margin-bottom:
+            var(--space-5);
+
+
+
+        border-radius:
+            var(--radius-pill);
+
+
+
+        background:
+            var(--color-primary-soft);
+
+
+
+        color:
+            var(--color-primary);
+
+
+
+        font-size:
+            var(--fs-sm);
+
+
+
+        font-weight:
+            var(--fw-medium);
+
+
+
+    }
+
+
+
+
+
+
+    &-description {
+
+
+        color:
+            var(--text-secondary);
+
+
+
+        font-size:
+            var(--fs-lg);
+
+
+
+        line-height:
+            1.7;
+
+
+
+        max-width:
+            55rem;
+
+
+
+        margin-bottom:
+            var(--space-7);
+
+
+    }
+
+
+
+
+
+    &-actions {
+
+
+        display:
+            flex;
+
+
+        align-items:
+            center;
+
+
+
+        .app-button {
+
+
+            min-width:
+                18rem;
+
+
+        }
+
+
+
+        @include respond(phone) {
+
+
+            .app-button {
+
+
+                width:
+                    100%;
+
+
+            }
+
+
+        }
+
+
+    }
+
+
+
+
+
+    .hero-wrapper {
+
+
+        position:
+            relative;
+
+
+
+        overflow:
+            hidden;
+
+
+
+        border-radius:
+            var(--radius-2xl);
+
+
+
+        box-shadow:
+            var(--shadow-md);
+
+
+
+
+        img {
+
+
+            display:
+                block;
+
+
+
+            width:
+                100%;
+
+
+
+            height: 50%;
+
+
+
+            object-fit:
+                cover;
+
+
+
+            transition:
+                transform .4s ease;
+
+
+
+        }
+
+
+
+
+        &:hover img {
+
+
+            transform:
+                scale(1.03);
+
+
+        }
+
+
+
+
+
+        @include respond(tab-port) {
+
+
+            img {
+
+
+
+
+
+            }
+
+
+        }
+
+
+
+
+
+        @include respond(phone) {
+
+
+            img {
+
+
+
+
+
+            }
+
+
+        }
+
+    }
+
+
 }

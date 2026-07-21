@@ -1,20 +1,79 @@
 <div class="about">
+
     <div class="about__container">
+
+
         <div class="about-content">
-           <section  class="about-content__text" >
-              <h1 class="heading-primary">About Housori</h1>
-              <div class="text-intro">
-                <p>Welcome to our application! We are dedicated to providing the best service possible. <br>
-                Our team is committed to ensuring customer satisfaction and delivering high-quality products. <br>
-                Thank you for choosing us!</p>
-              </div>
-              <div class="text-sub-intro">
-                <a  routerLink="/products" class="btn btn__primary btn__primary--full"> Shopping </a>
-              </div>
-           </section>
-          <section class="about-content__hero">
-            <img [src]="aboutHero" alt="About Us Img">
-         </section>
+
+
+            <section class="about-content__text">
+
+
+                <span class="about-badge">
+
+                    Premium Furniture Experience
+
+                </span>
+
+
+
+                <h1 class="heading-primary">
+
+                    About Housori
+
+                </h1>
+
+
+
+                <p class="about-description">
+
+                    Welcome to Housori. We create a modern shopping experience
+                    where quality furniture meets elegant design.
+
+                    <br><br>
+
+                    Our mission is to help you discover beautiful pieces
+                    that transform your living spaces with comfort and style.
+
+                </p>
+
+
+
+                <div class="about-actions">
+
+                  <app-button
+                    (click)="onNavigate()"
+                    variant="primary">
+                     Explore Collection
+                  </app-button>
+                </div>
+
+
+            </section>
+
+
+
+
+
+            <section class="about-content__hero">
+
+
+                <div class="hero-wrapper">
+
+                    <img
+                        loading="lazy"
+                        [src]="aboutHero"
+                        alt="Housori furniture">
+
+                </div>
+
+
+            </section>
+
+
         </div>
-  </div>
+
+
+    </div>
+
 </div>
