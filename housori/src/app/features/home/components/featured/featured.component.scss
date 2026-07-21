@@ -5,31 +5,14 @@
 ========================================================== */
 
 
-.featureds {
+.featured {
 
-    display:
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    padding: var(--space-8);
 
-        flex;
-
-
-    flex-direction:
-
-        column;
-
-
-    gap:
-
-        var(--space-6);
-
-
-    padding:
-
-        var(--space-8);
-
-
-    background:
-
-        var(--bg-main);
+    background: var(--bg-main);
 
 
     border:
@@ -51,7 +34,7 @@
 ========================================================== */
 
 
-.featureds .heading-secondary {
+.featured .heading-secondary {
 
 
     margin:
@@ -87,22 +70,10 @@
 ========================================================== */
 
 
-.featureds__content {
-
-
-    display:
-
-        grid;
-
-
-    grid-template-columns:
-
-        repeat(4, minmax(0, 1fr));
-
-
-    gap:
-
-        var(--space-6);
+.featured__content {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-6);
 
 }
 
@@ -118,7 +89,7 @@
 @include respond(tab-land){
 
 
-    .featureds__content {
+    .featured__content {
 
 
         grid-template-columns:
@@ -139,20 +110,7 @@
 
 
 @include respond(tab-port){
-
-
-    .featureds {
-
-
-        padding:
-
-            var(--space-6);
-
-    }
-
-
-
-    .featureds__content {
+    .featured__content {
 
 
         grid-template-columns:
@@ -180,7 +138,7 @@
 @include respond(phone){
 
 
-    .featureds {
+    .featured {
 
 
         padding:
@@ -193,32 +151,13 @@
             var(--radius-lg);
 
     }
-
-
-
-    .featureds .heading-secondary {
-
-
-        font-size:
-
-            var(--fs-2xl);
+    .featured.heading-secondary {
+        font-size:  var(--fs-2xl);
 
     }
-
-
-
-    .featureds__content {
-
-
-        grid-template-columns:
-
-            1fr;
-
-
-        gap:
-
-            var(--space-5);
-
+    .featured__content {
+        grid-template-columns:  1fr;
+        gap: var(--space-5);
     }
 
 }
