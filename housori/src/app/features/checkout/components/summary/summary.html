@@ -1,27 +1,99 @@
 <div class="summary">
-    <section class="summary__orders">
-      <h2 class="heading-secondary">Order Summary</h2>
-      <div class="summary__items">
-        <app-summary-item  *ngFor="let item of getItems" [item]="item"></app-summary-item>
-      </div>
-      <div class="summary__total">
-        <app-order-total [pageName]="'payment'" [totalDetails]="getTotalDetails"></app-order-total>
-      </div>
-  </section>
-  <section class="summary__shipping">
-    <h2 class="heading-secondary">Shipping Information</h2>
-    <div>
-      <dl class="summary__shipping-recipient">
-        <dt> Recipient </dt>
-        <dd> {{ fullName }}</dd>
-      </dl>
-      <dl class="summary__shipping-address">
-        <dt>Address</dt>
-        <div>
-          <dd> {{ addressLine }}</dd>
-          <dd> {{ cityCountry }}</dd>
+
+
+    <section class="summary__section summary__orders">
+
+
+        <h2 class="summary__title">
+            Order Summary
+        </h2>
+
+
+
+        <div class="summary__items">
+
+            <app-summary-item
+                *ngFor="let item of getItems"
+                [item]="item">
+            </app-summary-item>
+
         </div>
-        </dl>
-    </div>
-  </section>
+
+
+
+
+        <div class="summary__total">
+
+            <app-order-total
+                [pageName]="'payment'"
+                [totalDetails]="getTotalDetails">
+            </app-order-total>
+
+        </div>
+
+
+    </section>
+
+
+
+
+
+    <section class="summary__section summary__shipping">
+
+
+        <h2 class="summary__title">
+            Shipping Information
+        </h2>
+
+
+
+        <div class="summary__shipping-content">
+
+
+            <div class="summary__info">
+
+
+                <span class="summary__label">
+                    Recipient
+                </span>
+
+
+                <p class="summary__value">
+                    {{ fullName }}
+                </p>
+
+
+            </div>
+
+
+
+
+
+            <div class="summary__info">
+
+
+                <span class="summary__label">
+                    Address
+                </span>
+
+
+                <p class="summary__value">
+                    {{ addressLine }}
+                </p>
+
+
+                <p class="summary__value">
+                    {{ cityCountry }}
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
 </div>

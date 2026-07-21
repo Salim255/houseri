@@ -1,45 +1,381 @@
 @import '../../../../../../themes/styles/mixins';
 
+
+
 .summary-item {
-  display: flex;
-  width: 100%;
-  margin-bottom: var(--sm-spacing);;
-  &__product {
-    flex: .7;
-  }
-  &__figure {
-      display: flex;
-      margin: 0;
-      padding: 0;
-      gap:  var(--sm-spacing);
-      img {
-        height: 10rem;
-        width: 16rem;
-        border-radius: var(--radius-lg);
-        @include respond(phone) {
-          height: 10rem;
-          width: 12rem;
-        }
-      }
-  }
-  &__name{
-    font-size: var(--text-2xl);
-  }
-  &__price-qnt {
-    flex: .3;
-    display: flex;
-    justify-content: space-between;
-    gap: var(--md-spacing);
-    dl{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: var(--sm-spacing);
-      font-size: var(--text-2xl);
+
+
+    display:
+        flex;
+
+
+    justify-content:
+        space-between;
+
+
+
+    align-items:
+        center;
+
+
+
+    width:
+        100%;
+
+
+
+    padding:
+        var(--space-3) 0;
+
+
+
+    border-bottom:
+        1px solid
+        var(--border-default);
+
+
+
+
+
+
+    &:last-child {
+
+        border-bottom:
+            none;
+
     }
 
-    span, dd {
-      font-size: var(--text-lg);
+
+
+
+
+
+
+
+    &__figure {
+
+
+        display:
+            flex;
+
+
+        align-items:
+            center;
+
+
+
+        gap:
+            var(--space-4);
+
+
+
+        margin:
+            0;
+
+
+
+        flex: 1;
+
+
+
     }
-  }
+
+
+
+
+
+
+
+
+    img {
+
+
+        width:
+            8rem;
+
+
+
+        height:
+            8rem;
+
+
+
+        object-fit:
+            cover;
+
+
+
+        border-radius:
+            var(--radius-lg);
+
+
+
+        box-shadow:
+            var(--shadow-sm);
+
+
+
+
+        @include respond(phone) {
+
+
+            width:
+                6.5rem;
+
+
+            height:
+                6.5rem;
+
+
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+    &__details {
+
+
+        display:
+            flex;
+
+
+        flex-direction:
+            column;
+
+
+    }
+
+
+
+
+
+
+
+
+    &__name {
+
+
+        font-size:
+            var(--fs-base);
+
+
+
+        font-weight:
+            var(--fw-medium);
+
+
+
+        color:
+            var(--text-primary);
+
+
+
+        max-width:
+            20rem;
+
+
+
+        line-height:
+            1.4;
+
+
+
+    }
+
+
+
+
+
+
+
+
+    &__meta {
+
+
+        display:
+            flex;
+
+
+
+        align-items:
+            center;
+
+
+
+        gap:
+            var(--space-6);
+
+
+
+    }
+
+
+
+
+
+
+
+
+    &__quantity {
+
+
+        display:
+            flex;
+
+
+
+        flex-direction:
+            column;
+
+
+
+        align-items:
+            center;
+
+
+
+        gap:
+            var(--space-1);
+
+
+    }
+
+
+
+
+
+
+
+
+    &__label {
+
+
+        font-size:
+            var(--fs-xs);
+
+
+
+        text-transform:
+            uppercase;
+
+
+
+        color:
+            var(--text-muted);
+
+
+
+        font-weight:
+            var(--fw-medium);
+
+
+
+    }
+
+
+
+
+
+
+
+
+    &__value {
+
+
+        font-size:
+            var(--fs-base);
+
+
+
+        color:
+            var(--text-primary);
+
+
+
+        font-weight:
+            var(--fw-bold);
+
+
+
+    }
+
+
+
+
+
+
+
+
+    &__price {
+
+
+        font-size:
+            var(--fs-lg);
+
+
+
+        color:
+            var(--color-primary);
+
+
+
+        font-weight:
+            var(--fw-bold);
+
+
+
+        white-space:
+            nowrap;
+
+
+
+    }
+
+
+
+
+
+
+
+
+    @include respond(phone) {
+
+
+        gap:
+            var(--space-3);
+
+
+
+        &__meta {
+
+
+            gap:
+                var(--space-3);
+
+
+        }
+
+
+
+        &__name {
+
+
+            font-size:
+                var(--fs-sm);
+
+
+        }
+
+
+    }
+
+
+
 }

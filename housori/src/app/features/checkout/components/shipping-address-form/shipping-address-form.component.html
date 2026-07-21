@@ -1,17 +1,44 @@
- <form class="form" [formGroup]="shippingFields" (ngSubmit)="onPlaceOrder()">
-    <div class="form__group" *ngFor="let field of fromFields">
-      <label class="form__label" for="fullName"> {{ field.label}}</label>
-      <input
-        class="form__input"
-        [formControlName]="field.formControlName"
-        [placeholder]="field.placeHolder" />
+<form
+    class="shipping-form"
+    [formGroup]="shippingFields"
+    (ngSubmit)="onPlaceOrder()">
+
+
+    <div
+        class="shipping-form__group"
+        *ngFor="let field of fromFields">
+
+
+        <label
+            class="shipping-form__label">
+
+            {{ field.label }}
+
+        </label>
+
+
+
+        <input
+            class="shipping-form__input"
+            [formControlName]="field.formControlName"
+            [placeholder]="field.placeHolder" />
+
+
     </div>
-  <div class="form__btn">
-    <button
-      class="btn btn__primary btn__primary--full"
-      type="submit"
-      >
-        Place your order
-    </button>
-  </div>
+
+
+
+
+
+    <div class="shipping-form__actions">
+
+
+        <app-button
+            [variant]="'primary'"
+            type="submit">
+
+            Place your order
+        </app-button>
+
+    </div>
 </form>

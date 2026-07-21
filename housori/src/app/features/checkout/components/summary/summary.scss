@@ -1,39 +1,315 @@
 @import '../../../../../themes/styles/mixins';
 
-.summary{
-  display: flex;
-  flex-direction: column;
-  &__items {
-    max-height: 30rem;
-    overflow: auto;
-    @include respond(tab-port){
-      max-height: unset;
-    }
-  }
-  &__shipping {
-    margin-top: var(--x-l-spacing);
-    font-size: var(--text-2xl);
-    dd {
-      font-size: var(--text-lg);
-    }
-  }
-  &__shipping-recipient{
-    display: flex;
-    gap: var(--sm-spacing);
-    margin-bottom: var(--sm-spacing);
-  }
-  &__total {
-     margin-top: var(--sm-spacing);
-  }
-  &__shipping-address{
-    display: flex;
-    gap: var(--sm-spacing);
-    div {
-      flex: 1;
-      dd:first-child {
-        margin-bottom: var(--xs-spacing);
-      }
-    }
-  }
-}
 
+
+.summary {
+
+
+    display:
+        flex;
+
+
+    flex-direction:
+        column;
+
+
+    gap:
+        var(--space-7);
+
+
+
+
+
+
+
+    &__section {
+
+
+        background:
+            var(--bg-main);
+
+
+
+        border:
+            1px solid
+            var(--border-default);
+
+
+
+        border-radius:
+            var(--radius-xl);
+
+
+
+        padding:
+            var(--space-6);
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+    &__title {
+
+
+        margin-bottom:
+            var(--space-5);
+
+
+
+        font-family:
+            var(--font-heading);
+
+
+
+        font-size:
+            var(--fs-2xl);
+
+
+
+        font-weight:
+            var(--fw-bold);
+
+
+
+        color:
+            var(--text-primary);
+
+
+
+    }
+
+
+
+
+
+
+
+
+    &__items {
+
+
+        max-height:
+            30rem;
+
+
+
+        overflow-y:
+            auto;
+
+
+
+        display:
+            flex;
+
+
+
+        flex-direction:
+            column;
+
+
+
+        gap:
+            var(--space-3);
+
+
+
+
+
+        @include respond(tab-port) {
+
+
+            max-height:
+                none;
+
+
+        }
+
+
+
+    }
+
+
+
+
+
+
+
+
+    &__total {
+
+
+        margin-top:
+            var(--space-5);
+
+
+
+        padding-top:
+            var(--space-5);
+
+
+
+        border-top:
+            1px solid
+            var(--border-default);
+
+
+
+    }
+
+
+
+
+
+
+
+
+    &__shipping-content {
+
+
+        display:
+            flex;
+
+
+
+        flex-direction:
+            column;
+
+
+
+        gap:
+            var(--space-5);
+
+
+    }
+
+
+
+
+
+
+
+
+    &__info {
+
+
+        display:
+            flex;
+
+
+
+        flex-direction:
+            column;
+
+
+
+        gap:
+            var(--space-2);
+
+
+    }
+
+
+
+
+
+
+
+
+    &__label {
+
+
+        font-size:
+            var(--fs-sm);
+
+
+
+        font-weight:
+            var(--fw-medium);
+
+
+
+        color:
+            var(--text-muted);
+
+
+
+        text-transform:
+            uppercase;
+
+
+
+        letter-spacing:
+            .05rem;
+
+
+
+    }
+
+
+
+
+
+
+
+
+    &__value {
+
+
+        margin:
+            0;
+
+
+
+        font-size:
+            var(--fs-base);
+
+
+
+        font-weight:
+            var(--fw-medium);
+
+
+
+        color:
+            var(--text-primary);
+
+
+
+        line-height:
+            1.5;
+
+
+    }
+
+
+
+
+
+
+    @include respond(phone) {
+
+
+        &__section {
+
+
+            padding:
+                var(--space-5);
+
+
+        }
+
+
+    }
+
+
+
+}

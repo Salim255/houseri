@@ -1,43 +1,218 @@
 @import '../../../../../themes/styles/mixins';
 
-.form {
-  @include respond(tab-port){
-    padding-bottom: var(--x-l-spacing);
-  }
-  &__group {
-    display: flex;
-    flex-direction: column;
-    font-size: var(--text-lg);
-    margin-bottom: var(--xs-spacing);
-  }
-  &__label {
-    margin-bottom: var(--3xs-spacing);
-  }
-  &__input {
-    background-color: transparent;
-    border-radius: var(--radius-strong);
-    background-color: var(--bg-main);
-    padding: .8rem 1.6rem;
-    font-size: var(--text-lg);
-    transition: all .2s;
-    color: var(--grey-2);
-    &::placeholder {
-      font-style: italic;
-      font-size: var(--text-md);
-      opacity: .5;
+
+
+.shipping-form {
+
+
+    display:
+        flex;
+
+
+    flex-direction:
+        column;
+
+
+
+    gap:
+        var(--space-5);
+
+
+
+
+
+
+
+    &__group {
+
+
+        display:
+            flex;
+
+
+
+        flex-direction:
+            column;
+
+
+
+        gap:
+            var(--space-2);
+
+
     }
-    &:hover {
-      transform: translateY(-1px);
-      box-shadow: var(--box-shadow-light-small);
+
+
+
+
+
+
+
+    &__label {
+
+
+        color:
+            var(--text-primary);
+
+
+
+        font-size:
+            var(--fs-base);
+
+
+
+        font-weight:
+            var(--fw-medium);
+
+
+
     }
-  }
-  &__btn {
-   text-align: center;
-   margin-top: var(--x-l-spacing);
-   button {
-    display: inline-block;
-   }
-  }
+
+
+
+
+
+
+
+
+    &__input {
+
+
+        width:
+            100%;
+
+
+
+        min-height:
+            4.8rem;
+
+
+
+        padding:
+            0
+            var(--space-4);
+
+
+
+        border:
+            1px solid
+            var(--border-default);
+
+
+
+        border-radius:
+            var(--radius-lg);
+
+
+
+        background:
+            var(--bg-main);
+
+
+
+        color:
+            var(--text-primary);
+
+
+
+        font-family:
+            var(--font-base);
+
+
+
+        font-size:
+            var(--fs-base);
+
+
+
+        transition:
+            border-color .2s ease,
+            box-shadow .2s ease;
+
+
+
+        outline:
+            none;
+
+
+
+
+
+        &::placeholder {
+
+
+            color:
+                var(--text-muted);
+
+
+
+            font-size:
+                var(--fs-sm);
+
+
+        }
+
+
+
+
+
+
+        &:hover {
+
+
+            border-color:
+                var(--border-strong);
+
+
+        }
+
+
+
+
+
+
+        &:focus {
+
+
+            border-color:
+                var(--color-primary);
+
+
+
+            box-shadow:
+                0 0 0 .3rem
+                var(--color-primary-soft);
+
+
+        }
+
+
+
+    }
+
+
+
+
+
+
+
+
+    &__actions {
+
+
+        display:
+            flex;
+
+
+        justify-content:
+            flex-end;
+
+
+
+
+
+    }
+
+
+
 }
-
-
