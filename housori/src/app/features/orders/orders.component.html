@@ -1,23 +1,97 @@
 <div class="orders">
-  <div class="orders__container">
-    <section class="orders__content">
-      <div class="orders__header">
-        <h1 class="heading-primary">Your orders</h1>
-      </div>
-      <div class="orders__list">
-        <div class="orders__nb" >
-          <p>Total Orders: {{ ordersList.length }}</p>
-        </div>
-        <app-list-header></app-list-header>
-        <div
-          class="orders__item"
-          *ngFor="let order of ordersList; let index = index">
-            <app-orders-item [orderItem]="order.items[0]" [updatedAt]="order.updatedAt"></app-orders-item>
-        </div>
-      </div>
-      <div class="orders__place-holder">
-        <app-place-holder *ngIf="isEmpty" [componentName]="'orders'"></app-place-holder>
-      </div>
-  </section>
-  </div>
+
+
+    <div class="orders__container">
+
+
+        <section class="orders__content">
+
+
+            <header class="orders__header">
+
+
+                <div>
+
+                    <span class="orders__badge">
+                        Account
+                    </span>
+
+
+                    <h2 class="heading-primary">
+
+                        Your orders
+
+                    </h2>
+
+                </div>
+
+
+
+                <div class="orders__counter">
+
+                    Total Orders:
+
+                    <strong>
+                        {{ ordersList.length }}
+                    </strong>
+
+                </div>
+
+
+            </header>
+
+
+
+
+
+            <div class="orders__list"
+                 *ngIf="!isEmpty">
+
+
+                <app-list-header></app-list-header>
+
+
+
+                <div
+                    class="orders__item"
+                    *ngFor="let order of ordersList">
+
+
+                    <app-orders-item
+                        [orderItem]="order.items[0]"
+                        [updatedAt]="order.updatedAt">
+
+                    </app-orders-item>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+            <div
+                class="orders__placeholder"
+                *ngIf="isEmpty">
+
+
+                <app-place-holder
+                    [componentName]="'orders'">
+
+                </app-place-holder>
+
+
+            </div>
+
+
+
+        </section>
+
+
+    </div>
+
+
 </div>

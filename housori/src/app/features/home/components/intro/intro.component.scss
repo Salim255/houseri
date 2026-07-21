@@ -101,9 +101,10 @@
 .intro__hero {
 
     width: 100%;
+    min-height: 100%;
 
 
-    height: 38rem;
+    height: 50%;
     object-fit: cover;
 
 
@@ -111,13 +112,16 @@
 
         var(--radius-xl);
 
-
+      transition:
+                transform .4s ease;
     border:
 
         1px solid
         var(--border-default);
 
-
+      &:hover {
+          transform: scale(1.03);
+      }
 }
 
 
