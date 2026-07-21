@@ -18,15 +18,11 @@
 
     gap: var(--space-3);
 
-    min-height: 4.8rem;
+    min-height: 4rem;
 
-    padding:
-        1.5rem
-        3rem;
+    padding: 1.5rem 3rem;
 
-    border:
-        1px solid
-        transparent;
+
 
     border-radius:
         var(--radius-xl);
@@ -128,8 +124,7 @@
     border:
         none;
 
-    box-shadow:
-        var(--shadow-sm);
+    box-shadow: var(--shadow-md);
     border-radius: 999px;
 
 }
@@ -178,10 +173,10 @@
 .app-button--primary:hover:not(:disabled) {
 
     transform:
-        translateY(-3px);
+        translateY(-2px);
 
     box-shadow:
-        var(--shadow-md);
+        var(--shadow-sm);
 
 }
 
@@ -266,62 +261,136 @@
 
 .app-button--secondary {
 
-    background:
+    position: relative;
 
-        var(--bg-main);
+    overflow: visible;
 
-    color:
+    z-index: 1;
 
-        var(--text-primary);
+    background: var(--bg-main);
 
-    border-color:
+    color: var(--text-primary);
 
-        var(--border-default);
+    border-color: var(--border-default);
+
+    box-shadow: var(--shadow-sm);
+    border-radius: 999px;
+}
+
+
+
+/* ==========================================================
+   RIPPLE
+========================================================== */
+
+.app-button--secondary::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -1;
+
+    border-radius: inherit;
+
+    background: var(--bg-main);
+
+    border: inherit;
+
+    transition:
+        transform .4s ease,
+        opacity .4s ease,
+        background-color .4s ease;
 
 }
 
 
+
+/* ==========================================================
+   HOVER
+========================================================== */
 
 .app-button--secondary:hover:not(:disabled) {
 
-    background:
+    background: var(--bg-secondary);
 
-        var(--bg-secondary);
+    border-color: var(--border-strong);
 
-    border-color:
+    transform: translateY(-2px);
 
-        var(--border-strong);
-
-    transform:
-
-        translateY(-2px);
-
-    box-shadow:
-
-        var(--shadow-sm);
+    box-shadow: var(--shadow-md);
 
 }
 
 
+
+.app-button--secondary:hover:not(:disabled)::after {
+
+    background: var(--bg-secondary);
+
+    transform: scaleX(1.4) scaleY(1.6);
+
+    opacity: 0;
+
+}
+
+
+
+/* ==========================================================
+   ACTIVE
+========================================================== */
 
 .app-button--secondary:active:not(:disabled) {
 
-    transform:
+    transform: translateY(-1px);
 
-        translateY(-1px);
+    box-shadow: var(--shadow-sm);
 
 }
 
 
+
+/* ==========================================================
+   FOCUS
+========================================================== */
 
 .app-button--secondary:focus-visible {
 
     outline: none;
 
     box-shadow:
+        0 0 0 .3rem var(--color-primary-soft),
+        var(--shadow-md);
 
-        0 0 0 .3rem
-        var(--color-primary-soft);
+}
+
+
+
+/* ==========================================================
+   DISABLED
+========================================================== */
+
+.app-button--secondary:disabled {
+
+    background: var(--grey-100);
+
+    color: var(--grey-400);
+
+    border-color: var(--grey-200);
+
+    box-shadow: none;
+
+    cursor: not-allowed;
+
+}
+
+
+
+.app-button--secondary:disabled::after {
+
+    display: none;
 
 }
 
