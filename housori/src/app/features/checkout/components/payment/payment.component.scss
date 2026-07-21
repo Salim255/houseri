@@ -1,93 +1,635 @@
 @import '../../../../../themes/styles/mixins';
 
-.payment-modal{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
 
-  &__close-modal {
-    position: absolute;
-    right: 2rem;
-    top: 2rem;
-    z-index: 100;
-    background: unset;
-    border: none;
-    transition: all .2s ease-in;
-    &:hover {
-      cursor: pointer;
-      transform: scale(1.03);
-    }
-    ion-icon {
-      font-size: 3rem;
-      //color: black;
-    }
-  }
-  &__container {
-    backdrop-filter: blur(20px);
-    background-color: rgba(192, 192, 192, 0.1);
-    // Soft glass-style shadow
-    box-shadow:
-        0 4px 20px rgba(0, 0, 0, 0.2),   // main soft shadow
-        0 2px 6px rgba(0, 0, 0, 0.1);
-    padding: var(--l-spacing);
-    width: 100%;
-    height: 100%;
-    margin: auto;
-    display: flex;
-    gap: var(--x-l-spacing);
 
-    @include respond(tab-port){
-      flex-direction: column;
-      overflow-y: auto;
-      padding-bottom: var(--x-l-spacing);
+.payment-modal {
+
+
+    position:
+        fixed;
+
+
+    inset:
+        0;
+
+
+
+    display:
+        flex;
+
+
+
+    justify-content:
+        center;
+
+
+
+    align-items:
+        center;
+
+
+
+    background:
+        rgba(16, 24, 40, .45);
+
+
+
+    backdrop-filter:
+        blur(8px);
+
+
+
+    z-index:
+        1000;
+
+
+
+
+
+
+   &__badge {
+
+
+        display:
+            inline-flex;
+
+
+        align-items:
+            center;
+
+
+
+        width:
+            fit-content;
+
+
+
+        padding:
+            var(--space-2)
+            var(--space-4);
+
+
+
+        margin-bottom:
+            var(--space-5);
+
+
+
+        border-radius:
+            var(--radius-pill);
+
+
+
+        background:
+            var(--color-primary-soft);
+
+
+
+        color:
+            var(--color-primary);
+
+
+
+        border:
+            1px solid
+            var(--color-primary-soft);
+
+
+
+        font-size:
+            var(--fs-sm);
+
+
+
+        font-weight:
+            var(--fw-bold);
+
+
+
+        text-transform:
+            uppercase;
+
+
+
+        letter-spacing:
+            .05rem;
+
+
     }
-    .billing {
-      &__methods {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 1rem;
-      }
-      &__secure {
-        display: flex;
-        gap: 2px;
-        ion-icon {
-          align-self: center;
+
+    &__close-modal {
+
+
+        position:
+            absolute;
+
+
+
+        top:
+            var(--space-6);
+
+
+
+        right:
+            var(--space-6);
+
+
+
+        display:
+            flex;
+
+
+
+        align-items:
+            center;
+
+
+
+        justify-content:
+            center;
+
+
+
+        width:
+            4rem;
+
+
+
+        height:
+            4rem;
+
+
+
+        border:
+            none;
+
+
+
+        border-radius:
+            var(--radius-full);
+
+
+
+        background:
+            var(--bg-main);
+
+
+
+        color:
+            var(--text-secondary);
+
+
+
+        box-shadow:
+            var(--shadow-sm);
+
+
+
+        cursor:
+            pointer;
+
+
+
+        transition:
+            transform .2s ease,
+            color .2s ease;
+
+
+
+
+
+
+        &:hover {
+
+
+            transform:
+                rotate(90deg);
+
+
+
+            color:
+                var(--color-primary);
+
+
         }
-      }
-      &__title {
-        font-weight: 600;
-        font-size: var(--text-lg);
-      }
-    }
-  }
-  &__form {
-    flex: .5;
-    display: flex;
-    flex-direction: column;
-    @include respond(tab-port){
-      flex: unset;
-    }
-    #payment-element {
-     // min-height: 35%;
-    }
-  }
-  &__summary{
-    flex: .5;
-  }
 
-  &__submit-btn {
-    margin-top: 3rem;
-    width: 50%;
-    align-self: center;
-    @include respond(tab-port){
-      width: 100%;
+
+
+
+        ion-icon {
+
+
+            font-size:
+                var(--fs-2xl);
+
+
+        }
+
+
     }
-  }
+
+
+
+
+
+
+
+
+
+    &__container {
+
+
+        width:
+            min(120rem, 95%);
+
+
+
+        max-height:
+            90vh;
+
+
+
+        overflow-y:
+            auto;
+
+
+
+        display:
+            grid;
+
+
+
+        grid-template-columns:
+            1fr 1fr;
+
+
+
+        gap:
+            var(--space-8);
+
+
+
+        padding:
+            var(--space-8);
+
+
+
+        background:
+            var(--bg-secondary);
+
+
+
+        border:
+            1px solid
+            var(--border-default);
+
+
+
+        border-radius:
+            var(--radius-2xl);
+
+
+
+        box-shadow:
+            var(--shadow-lg);
+
+
+
+
+
+
+        @include respond(tab-port) {
+
+
+            grid-template-columns:
+                1fr;
+
+
+
+            padding:
+                var(--space-5);
+
+
+
+            max-height:
+                95vh;
+
+
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+
+    &__form,
+    &__summary {
+
+
+
+
+
+
+
+
+
+
+        padding:
+            var(--space-6);
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+    &__form {
+
+
+        display:
+            flex;
+
+
+
+        flex-direction:
+            column;
+
+
+    }
+
+
+
+
+
+
+
+
+
+    .billing {
+
+
+
+        &__methods {
+
+
+            display:
+                flex;
+
+
+
+            justify-content:
+                space-between;
+
+
+
+            align-items:
+                center;
+
+
+
+            margin:
+                var(--space-5)
+                0;
+
+
+
+            padding-bottom:
+                var(--space-4);
+
+
+
+            border-bottom:
+                1px solid
+                var(--border-default);
+
+
+
+            @include respond(phone) {
+
+
+                flex-direction:
+                    column;
+
+
+
+                align-items:
+                    flex-start;
+
+
+
+                gap:
+                    var(--space-3);
+
+
+            }
+
+
+        }
+
+
+
+
+
+
+
+
+        &__title {
+
+
+            margin:
+                0;
+
+
+
+            color:
+                var(--text-primary);
+
+
+
+            font-size:
+                var(--fs-base);
+
+
+
+            font-weight:
+                var(--fw-bold);
+
+
+
+        }
+
+
+
+
+
+
+
+
+        &__secure {
+
+
+            display:
+                flex;
+
+
+
+            align-items:
+                center;
+
+
+
+            gap:
+                var(--space-2);
+
+
+
+            color:
+                var(--color-primary);
+
+
+
+            font-size:
+                var(--fs-sm);
+
+
+
+            font-weight:
+                var(--fw-medium);
+
+
+
+            p {
+
+
+                margin:
+                    0;
+
+
+            }
+
+
+
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+
+    #payment-element {
+
+
+        margin-top:
+            var(--space-5);
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+    .error-message {
+
+
+        margin-top:
+            var(--space-4);
+
+
+
+        padding:
+            var(--space-3);
+
+
+
+        border-radius:
+            var(--radius-lg);
+
+
+
+        background:
+            var(--danger-50);
+
+
+
+        color:
+            var(--color-danger);
+
+
+
+        font-size:
+            var(--fs-sm);
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+    &__submit-btn {
+
+
+        margin-top:
+            var(--space-6);
+
+
+
+        width:
+            60%;
+
+
+
+        align-self:
+            center;
+
+
+
+
+
+
+        @include respond(tab-port) {
+
+
+            width:
+                100%;
+
+
+        }
+
+
+    }
+
+
 
 }

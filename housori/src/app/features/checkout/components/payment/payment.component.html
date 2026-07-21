@@ -8,7 +8,9 @@
       id="payment-form"
       (submit)="handleSubmitWithCheckout();
       $event.preventDefault()" novalidate>
-      <h2 class="heading-secondary">Billing Information</h2>
+      <span class="payment-modal__badge">
+          Billing Information
+      </span>
       <div class="billing__methods">
         <p class="billing__title">Payment methods</p>
         <div class="billing__secure">
