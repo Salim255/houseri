@@ -1,12 +1,33 @@
 <div class="items-item">
-  <figure class="items-item__details">
-    <img class="details-img" [src]="product.images[0]" alt="Product">
-    <figcaption class="details-title">
-      <p class="product-name"> {{ product.name }} </p>
-      <p class="product-company"> {{ product.company }} </p>
-    </figcaption>
-  </figure>
-  <section class="items-item__price">
-    <span >{{ product.price | currency }}</span>
-  </section>
+
+    <figure class="items-item__details">
+
+        <img
+            class="items-item__image"
+            [src]="product.images[0]"
+            alt="Product-img">
+
+
+        <figcaption class="items-item__content">
+
+            <p class="items-item__name">
+                {{ product.name }}
+            </p>
+
+
+            <p class="items-item__company">
+                {{ product.company }}
+            </p>
+
+        </figcaption>
+
+    </figure>
+
+
+    <section class="items-item__price">
+
+        {{ product.price | currency }}
+
+    </section>
+
 </div>

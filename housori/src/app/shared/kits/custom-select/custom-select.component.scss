@@ -1,70 +1,377 @@
+@import '../../../../themes/styles/mixins';
+
+
+
+
 .custom-select {
-  position: relative;
-  cursor: pointer;
 
-  &__selected {
-    border-radius: var(--radius-strong);
-    padding: 1rem 1.6rem;
     position: relative;
-    font-size: var(--text-lg);
-    background-color: var(--bg-main);
-    box-shadow: var(--box-shadow-light-small);
-    span {
-      display: inline-block;
-    }
-     &:after {
-      content: "";
-      position: absolute;
-      top: 1.6rem;
-      right: 1rem;
-      width: 0;
-      height: 0;
-      border: .6rem solid transparent;
-      border-color: var(--color-primary)  transparent  transparent transparent ;
+    width: 100%;
+    cursor: pointer;
+
+
+    /* ==========================================================
+       SELECTED VALUE
+    ========================================================== */
+
+    &__selected {
+
+        height: 4.8rem;
+
+        display: flex;
+        align-items: center;
+
+        padding: 0 var(--space-5);
+
+        background:
+            var(--bg-main);
+
+        border:
+            1px solid
+            var(--border-default);
+
+        border-radius:
+            var(--radius-lg);
+
+        color:
+            var(--text-primary);
+
+        font-family:
+            var(--font-base);
+
+        font-size:
+            var(--fs-lg);
+
+        font-weight:
+            var(--fw-medium);
+
+
+        transition:
+            border-color .2s ease,
+            box-shadow .2s ease,
+            background-color .2s ease;
+
+
+        span {
+
+            flex: 1;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+
+            white-space: nowrap;
+        }
+
+
+        /* Arrow */
+
+        &::after {
+
+            content: "";
+
+            width: .8rem;
+            height: .8rem;
+
+            border-right:
+                2px solid
+                var(--text-secondary);
+
+            border-bottom:
+                2px solid
+                var(--text-secondary);
+
+            transform:
+                rotate(45deg);
+
+            transition:
+                transform .2s ease,
+                border-color .2s ease;
+
+
+            margin-left:
+                var(--space-4);
+
+            margin-top:
+                -.4rem;
+        }
+
+
+        &:hover {
+
+            border-color:
+                var(--border-strong);
+
+        }
+
+
+        &--active {
+
+            border-color:
+                var(--color-primary);
+
+            box-shadow:
+                0 0 0 .3rem
+                var(--color-primary-soft);
+
+
+            &::after {
+
+                transform:
+                    rotate(225deg);
+
+                margin-top:
+                    .4rem;
+
+                border-color:
+                    var(--color-primary);
+            }
+        }
     }
 
-     &--active:after {
-      border-color: transparent transparent var(--color-primary) transparent;
-      top: .7rem;
-    }
-  }
 
-  &__items {
-    position: absolute;
-    backdrop-filter: blur(5px);
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 1rem;
-    left: 0;
-    right: 0;
-    z-index: 99;
-    color: var(--text-color-base);
-    box-shadow: var(--box-shadow-light);
-    margin-top: .5rem;
-    &--hidden {
-      display: none;
+
+    /* ==========================================================
+       DROPDOWN PANEL
+    ========================================================== */
+
+
+    &__items {
+
+        position:
+
+            absolute;
+
+        top:
+            calc(100% + .8rem);
+
+        left:
+            0;
+
+        right:
+            0;
+
+
+        z-index:
+            100;
+
+
+        max-height:
+            28rem;
+
+        overflow-y:
+            auto;
+
+
+        padding:
+            var(--space-2);
+
+
+        margin:
+            0;
+
+
+        list-style:
+            none;
+
+
+        background:
+            var(--bg-main);
+
+
+        border:
+            1px solid
+            var(--border-default);
+
+
+        border-radius:
+            var(--radius-lg);
+
+
+        box-shadow:
+            var(--shadow-lg);
+
+
+
+        animation:
+            dropdown-open .18s ease;
+
+
+
+        &--hidden {
+
+            display:
+                none;
+        }
+
+
+
+        /*
+           Scrollbar
+        */
+
+        &::-webkit-scrollbar {
+
+            width:
+                .6rem;
+        }
+
+
+        &::-webkit-scrollbar-thumb {
+
+            background:
+                var(--grey-300);
+
+            border-radius:
+                var(--radius-pill);
+        }
+
+
+        li {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+
+            min-height:
+                4.4rem;
+
+
+            padding:
+                0 var(--space-4);
+
+
+            border-radius:
+                var(--radius-md);
+
+
+            color:
+                var(--text-secondary);
+
+
+            font-size:
+                var(--fs-base);
+
+
+            font-weight:
+                var(--fw-medium);
+
+
+            transition:
+
+                background-color .18s ease,
+                color .18s ease;
+
+
+
+            &:hover {
+
+                background:
+                    var(--grey-100);
+
+                color:
+                    var(--color-primary);
+            }
+
+
+
+            &.custom-select__item--selected {
+
+
+                background:
+                    var(--color-primary-soft);
+
+
+                color:
+                    var(--color-primary);
+
+
+                font-weight:
+                    var(--fw-bold);
+
+
+            }
+
+        }
+
     }
 
-    li {
-      color: var(--text-color-base);
-      padding: 1rem 1.6rem;
-      cursor: pointer;
-      user-select: none;
-      list-style: none;
-      font-size: var(--text-xl);
-      transition: all .1s;
-      &:hover,
-      &.custom-select__item--selected {
-        transform: translateY(3px);
-        color: var(--color-primary);
-      }
-      &:last-child {
-        border-bottom-right-radius: 1rem;
-        border-bottom-left-radius: 1rem;
-      }
-      &:first-child {
-        border-top-left-radius: 1rem;
-        border-top-right-radius: 1rem;
-      }
+}
+
+
+
+/* ==========================================================
+   ANIMATION
+========================================================== */
+
+@keyframes dropdown-open {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(-.8rem);
+
     }
-  }
+
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0);
+
+    }
+}
+
+
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@include respond(phone) {
+
+    .custom-select {
+
+
+        &__selected {
+
+            height:
+                4.4rem;
+
+            font-size:
+                var(--fs-base);
+
+            padding:
+                0 var(--space-4);
+        }
+
+
+
+        &__items {
+
+            max-height:
+                22rem;
+
+
+            li {
+
+                min-height:
+                    4.2rem;
+
+                font-size:
+                    var(--fs-base);
+            }
+        }
+
+    }
+
 }

@@ -1,84 +1,328 @@
 @import '../../../../../themes/styles/_mixins';
 
 .products-list {
-  display: flex;
-  flex-direction: column;
-  //gap: var(--x-l-spacing);
-  padding-bottom: 4rem;
-  &__header {
+
     display: flex;
-    justify-content: space-between;
-    margin: var(--x-l-spacing);
-    margin-top: var(--2x-l-spacing);
-
-    @include respond(phone) {
-      margin-left:  0;
-      margin-right: 0;
-    }
-    .header-text {
-      font-size: var(--text-base);
-      font-weight: var(--font-bold);
-      align-self: center;
-    }
-    .header-btns {
-       display: flex;
-       gap: var(--sm-spacing);
-
-       &__btn {
-        border: none;
-        background-color: transparent;
-        box-shadow: var(--box-shadow-light);
-        cursor: pointer;
-          transition: all .2s;
-          &:hover {
-            transform: translateY(-1px);
-          }
-          &:active {
-            transform: translateY(-.5px);
-          }
-        &--active {
-          background-color: var(--color-primary);
-          border-radius: 1rem;
-          padding: 1rem 1.5rem;
-          ion-icon {
-            color: var(--bg-main);
-          }
-
-        }
-        &--inActive {
-          background-color: var(--color-primary-tints);
-          border-radius: 1rem;
-          padding: 1rem 1.5rem;
-        }
-       }
-       ion-icon {
-        font-size: (--text-5xl);
-       }
-    }
-  }
-  &__items {
-    display: flex;
-    position: relative;
     flex-direction: column;
-  }
-  &__items-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
-    padding: 0 4rem;
-    @include respond(tab-land){
-      grid-template-columns: repeat(2, 1fr);
+
+    padding: 2rem;
+    padding-bottom: var(--space-8);
+
+
+
+
+    /* ==========================================================
+       HEADER
+    ========================================================== */
+
+    &__header {
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        margin-bottom: var(--space-6);
+
+        padding:
+            var(--space-4)
+            var(--space-5);
+
+        background:
+            var(--bg-main);
+
+        border:
+            1px solid
+            var(--border-default);
+
+        border-radius:
+            var(--radius-xl);
+
+
+        @include respond(phone) {
+
+            padding:
+                var(--space-4);
+
+        }
+
+
+
+        .header-text {
+
+
+            font-family:
+                var(--font-heading);
+
+            font-size:
+                var(--fs-lg);
+
+            font-weight:
+                var(--fw-medium);
+
+            color:
+                var(--text-primary);
+
+
+            span {
+
+                color:
+                    var(--color-primary);
+
+                font-weight:
+                    var(--fw-bold);
+
+            }
+
+        }
+
+
+
+        /* ======================================================
+           VIEW SWITCHER
+        ====================================================== */
+
+        .header-btns {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                var(--space-4);
+
+
+
+            &__btn {
+
+
+                width:
+                    4.4rem;
+
+                height:
+                    4.4rem;
+
+
+                display:
+                    flex;
+
+                align-items:
+                    center;
+
+                justify-content:
+                    center;
+
+
+
+                border:
+                    1px solid
+                    var(--border-default);
+
+
+                border-radius:
+                    var(--radius-lg);
+
+
+                background:
+                    var(--bg-main);
+
+
+                color:
+                    var(--text-secondary);
+
+
+                cursor:
+                    pointer;
+
+
+                transition:
+                    all .2s ease;
+
+
+
+                ion-icon {
+
+                    font-size:
+                        var(--fs-xl);
+
+                }
+
+
+
+                &:hover {
+
+                    border-color:
+                        var(--color-primary);
+
+                    color:
+                        var(--color-primary);
+
+                    transform:
+                        translateY(-2px);
+
+                }
+
+
+
+                &:active {
+
+                    transform:
+                        translateY(0);
+
+                }
+
+
+
+                &--active {
+
+                    background:
+                        var(--color-primary);
+
+
+                    border-color:
+                        var(--color-primary);
+
+
+                    color:
+                        var(--text-inverse);
+
+
+
+                    ion-icon {
+
+                        color:
+                            var(--text-inverse);
+
+                    }
+
+
+                    &:hover {
+
+                        background:
+                            var(--color-primary-hover);
+
+                        color:
+                            var(--text-inverse);
+
+                    }
+
+                }
+
+
+                &--inActive {
+
+                    background:
+                        var(--bg-main);
+
+                }
+
+            }
+
+        }
+
     }
-    @include respond(tab-port) {
-      grid-template-columns: 1fr;
-      padding: 0;
+
+
+
+
+    /* ==========================================================
+       LIST VIEW
+    ========================================================== */
+
+
+    &__items {
+
+
+        display:
+            flex;
+
+        flex-direction:
+            column;
+
+        gap:
+            var(--space-4);
+
     }
-  }
-  &__pagination {
-    position: fixed;
-    bottom: 0%;
-    right: 0;
-    transform: translate(0, -50%);
-    margin-right: 5%;
-  }
+
+
+
+
+
+    /* ==========================================================
+       GRID VIEW
+    ========================================================== */
+
+
+    &__items-grid {
+
+
+        display:
+            grid;
+
+
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+
+        gap:
+            var(--space-6);
+
+
+
+        @include respond(tab-land) {
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+        }
+
+
+
+        @include respond(tab-port) {
+
+            grid-template-columns:
+                1fr;
+
+        }
+
+
+
+        @include respond(phone) {
+
+            gap:
+                var(--space-5);
+
+        }
+
+    }
+
+
+
+
+    /* ==========================================================
+       PAGINATION
+    ========================================================== */
+
+
+    &__pagination {
+
+
+        display:
+            flex;
+
+        justify-content:
+            center;
+
+
+        margin-top:
+            var(--space-8);
+
+
+        padding:
+            var(--space-4)
+            0;
+
+    }
+
 }

@@ -6,7 +6,7 @@
         <app-filter  [metaData]="metaData()"></app-filter>
       </section>
       <!-- List products -->
-      <section class="products-content__list">
+      <section *ngIf="allProducts().length && allProducts().length > 3 " class="products-content__list">
         <app-products-list [pagination]="metaData().pagination" [products]="allProducts()"></app-products-list>
       </section>
     </div>

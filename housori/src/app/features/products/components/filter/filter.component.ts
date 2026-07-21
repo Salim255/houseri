@@ -49,25 +49,73 @@ export class FilterComponent {
     this.listenToFormChange();
   }
 
-  submitSearch() {
-    const price = this.filterFormFields.get('price')?.value;
-    const search = this.filterFormFields.get('search')?.value;
-    const company = this.filterFormFields.get('company')?.value
-    const category = this.filterFormFields.get('category')?.value;
-    const sort =  this.filterFormFields.get('alphaSort')?.value;
-    const shipping = this.filterFormFields.get('shipping')?.value;
+ submitSearch() {
 
-    if (price) this.params = this.params.set('price[lte]', price.toString());
-    if (search) this.params = this.params.set('search', search);
-    if (company) this.params = this.params.set('company', company);
-    if (category) this.params = this.params.set('category', category);
-    if (sort) this.params = this.params.set('alphaSort', sort);
-    if (typeof shipping === 'boolean') this.params = this.params.set('shipping', shipping);
+  let params = new HttpParams();
 
-    this.productsService.getAllProducts(this.params).subscribe(data =>{
+  const {
+    price,
+    search,
+    company,
+    category,
+    alphaSort,
+    shipping
+  } = this.filterFormFields.value;
 
-    });
+
+  if(price) {
+    params = params.set(
+      'price[lte]',
+      price.toString()
+    );
   }
+
+
+  if(search) {
+    params = params.set(
+      'search',
+      search.trim()
+    );
+  }
+
+
+  if(company) {
+    params = params.set(
+      'company',
+      company
+    );
+  }
+
+
+  if(category) {
+    params = params.set(
+      'category',
+      category
+    );
+  }
+
+
+  if(alphaSort) {
+    params = params.set(
+      'alphaSort',
+      alphaSort
+    );
+  }
+
+
+  if(shipping !== null) {
+    params = params.set(
+      'shipping',
+      shipping
+    );
+  }
+
+  console.log(params);
+  this.productsService
+      .getAllProducts(params)
+      .subscribe();
+
+}
   resetFilter(){
     this.buildForm();
     this.categoryValue.set('all');
