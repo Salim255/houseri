@@ -1,55 +1,30 @@
 @import "../../../themes/styles/mixins";
+
+
 /* ==========================================================
    HEADER
 ========================================================== */
 
 .header {
-   position:
 
-        sticky;
+    position: sticky;
 
+    top: 0;
+    left: 0;
+    right: 0;
 
-    top:
+    z-index: 1000;
 
-        0;
-
-
-    left:
-
-        0;
-
-
-    right:
-
-        0;
-
-
-    z-index:
-
-        1000;
-
-
-    width:
-
-        100%;
-
+    width: 100%;
 
     background:
-
         var(--bg-main);
 
-
     border-bottom:
-
-        1px solid
-        var(--border-default);
-
+        1px solid var(--border-default);
 
     box-shadow:
-
         var(--shadow-sm);
-
-
 
 }
 
@@ -61,17 +36,11 @@
 
 .header__top {
 
-    display:
+    display: flex;
 
-        flex;
+    justify-content: flex-end;
 
-    justify-content:
-
-        flex-end;
-
-    align-items:
-
-        center;
+    align-items: center;
 
 
     padding:
@@ -81,25 +50,25 @@
 
 
     background:
-
         var(--bg-secondary);
 
 }
 
 
 
+
+/* ==========================================================
+   GUEST AUTH
+========================================================== */
+
+
 .header__auth {
 
-    display:
+    display: flex;
 
-        flex;
-
-    align-items:
-
-        center;
+    align-items: center;
 
     gap:
-
         var(--space-3);
 
 }
@@ -109,43 +78,30 @@
 .header__auth-link,
 .header__auth-button {
 
-    border:
+    border: none;
 
-        none;
+    background: transparent;
 
-    background:
-
-        transparent;
+    padding: 0;
 
 
-    padding:
-
-        0;
-
-
-    cursor:
-
-        pointer;
+    cursor: pointer;
 
 
     color:
-
         var(--text-secondary);
 
 
     font-family:
-
         var(--font-base);
 
 
     font-size:
-
         var(--fs-sm);
 
 
     transition:
-
-        color .18s ease;
+        color .2s ease;
 
 }
 
@@ -155,7 +111,6 @@
 .header__auth-button:hover {
 
     color:
-
         var(--color-primary);
 
 }
@@ -165,7 +120,6 @@
 .header__auth-button {
 
     font-weight:
-
         var(--fw-medium);
 
 }
@@ -175,20 +129,491 @@
 .header__auth-divider {
 
     width:
-
         1px;
 
-
     height:
-
         1.4rem;
 
 
     background:
-
         var(--border-default);
 
 }
+
+
+
+
+
+/* ==========================================================
+   USER PROFILE
+========================================================== */
+
+
+.header__profile {
+
+    position:
+        relative;
+
+}
+
+
+
+.header__profile-trigger {
+
+
+    display:
+        inline-flex;
+
+
+    align-items:
+        center;
+
+
+    gap:
+        var(--space-3);
+
+
+
+    padding:
+        .4rem
+        .8rem
+        .4rem
+        .5rem;
+
+
+
+    border:
+        1px solid var(--border-default);
+
+
+
+    background:
+        var(--bg-main);
+
+
+
+    border-radius:
+        999px;
+
+
+
+    cursor:
+        pointer;
+
+
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        border-color .2s ease;
+
+
+}
+
+
+
+.header__profile-trigger:hover {
+
+
+    transform:
+        translateY(-1px);
+
+
+
+    border-color:
+        var(--color-primary-soft);
+
+
+
+    box-shadow:
+        var(--shadow-sm);
+
+
+}
+
+
+
+.header__profile-trigger ion-icon {
+
+
+    font-size:
+        1.5rem;
+
+
+    color:
+        var(--text-secondary);
+
+
+}
+
+
+
+
+.header__avatar {
+
+
+    width:
+        3.2rem;
+
+
+    height:
+        3.2rem;
+
+
+
+    display:
+        flex;
+
+
+    align-items:
+        center;
+
+
+    justify-content:
+        center;
+
+
+
+    border-radius:
+        50%;
+
+
+
+    background:
+        var(--color-primary-soft);
+
+
+
+    color:
+        var(--color-primary);
+
+
+
+    font-size:
+        var(--fs-sm);
+
+
+
+    font-weight:
+        var(--fw-bold);
+
+
+
+    text-transform:
+        uppercase;
+
+}
+
+
+
+.header__profile-name {
+
+
+    color:
+        var(--text-primary);
+
+
+
+    font-size:
+        var(--fs-sm);
+
+
+
+    font-weight:
+        var(--fw-medium);
+
+
+}
+
+
+
+
+
+/* ==========================================================
+   PROFILE DROPDOWN
+========================================================== */
+
+
+.header__profile-menu {
+
+
+    position:
+        absolute;
+
+
+    right:
+        0;
+
+
+    top:
+        calc(100% + 1rem);
+
+
+
+    width:
+        22rem;
+
+
+
+    padding:
+        .8rem;
+
+
+
+    background:
+        var(--bg-main);
+
+
+
+    border:
+        1px solid var(--border-default);
+
+
+
+    border-radius:
+        var(--radius-xl);
+
+
+
+    box-shadow:
+        var(--shadow-lg);
+
+
+
+    opacity:
+        0;
+
+
+
+    visibility:
+        hidden;
+
+
+
+    transform:
+        translateY(.8rem);
+
+
+
+    transition:
+
+        opacity .2s ease,
+        transform .2s ease,
+        visibility .2s ease;
+
+
+}
+
+
+
+
+.header__profile:hover
+.header__profile-menu {
+
+
+    opacity:
+        1;
+
+
+
+    visibility:
+        visible;
+
+
+
+    transform:
+        translateY(0);
+
+
+}
+
+
+
+
+.header__profile-info {
+
+
+    padding:
+        1rem;
+
+
+
+    border-bottom:
+        1px solid var(--border-default);
+
+
+
+    margin-bottom:
+        .5rem;
+
+
+}
+
+
+
+.header__profile-info strong {
+
+
+    display:
+        block;
+
+
+
+    color:
+        var(--text-primary);
+
+
+
+    font-size:
+        var(--fs-base);
+
+
+
+    font-weight:
+        var(--fw-semibold);
+
+
+}
+
+
+
+.header__profile-info span {
+
+
+    display:
+        block;
+
+
+
+    margin-top:
+        .3rem;
+
+
+
+    color:
+        var(--text-secondary);
+
+
+
+    font-size:
+        var(--fs-xs);
+
+
+}
+
+
+
+
+
+.header__profile-item {
+
+
+    width:
+        100%;
+
+
+
+    display:
+        flex;
+
+
+
+    align-items:
+        center;
+
+
+
+    gap:
+        var(--space-3);
+
+
+
+    padding:
+        1rem;
+
+
+
+    border:
+        none;
+
+
+
+    background:
+        transparent;
+
+
+
+    border-radius:
+        var(--radius-lg);
+
+
+
+    cursor:
+        pointer;
+
+
+
+    color:
+        var(--text-primary);
+
+
+
+    font-size:
+        var(--fs-sm);
+
+
+
+    transition:
+        background .2s ease,
+        color .2s ease;
+
+
+}
+
+
+
+.header__profile-item ion-icon {
+
+
+    font-size:
+        1.8rem;
+
+
+    color:
+        var(--text-secondary);
+
+
+}
+
+
+
+.header__profile-item:hover {
+
+
+    background:
+        var(--bg-secondary);
+
+
+
+    color:
+        var(--color-primary);
+
+
+}
+
+
+
+.header__profile-item:hover ion-icon {
+
+
+    color:
+        var(--color-primary);
+
+
+}
+
+
+
 
 
 
@@ -196,38 +621,41 @@
    MAIN NAVIGATION
 ========================================================== */
 
+
 .header__nav {
 
-    display:
 
+    display:
         flex;
 
 
     align-items:
-
         center;
 
 
-    justify-content:
 
+    justify-content:
         space-between;
 
 
-    gap:
 
+    gap:
         var(--space-6);
 
 
-    height:
 
+    height:
         5.6rem;
 
 
-    padding-inline:
 
+    padding-inline:
         var(--space-8);
 
+
 }
+
+
 
 
 
@@ -235,51 +663,48 @@
    LOGO
 ========================================================== */
 
+
 .header__logo {
 
-    display:
 
+    display:
         flex;
 
 
     align-items:
-
         center;
 
 
-    gap:
 
+    gap:
         var(--space-3);
 
 
-    text-decoration:
 
+    text-decoration:
         none;
 
 
-    color:
 
+    color:
         var(--text-primary);
 
 
-    font-family:
 
+    font-family:
         var(--font-heading);
 
 
-    font-size:
 
+    font-size:
         var(--fs-xl);
 
 
-    font-weight:
 
+    font-weight:
         var(--fw-bold);
 
 
-    white-space:
-
-        nowrap;
 
 }
 
@@ -287,16 +712,18 @@
 
 .header__logo ion-icon {
 
-    color:
 
+    font-size:
+        2rem;
+
+
+
+    color:
         var(--color-primary);
 
 
-    font-size:
-
-        2rem;
-
 }
+
 
 
 
@@ -304,36 +731,37 @@
    MENU
 ========================================================== */
 
+
 .header__menu {
 
-    display:
 
+    display:
         flex;
 
 
     align-items:
-
         center;
 
 
-    gap:
 
+    gap:
         var(--space-7);
 
 
-    list-style:
 
+    list-style:
         none;
 
 
-    padding:
-
-        0;
-
 
     margin:
-
         0;
+
+
+
+    padding:
+        0;
+
 
 }
 
@@ -341,49 +769,35 @@
 
 .header__menu-link {
 
-    position:
 
+    position:
         relative;
 
 
-    display:
-
-        inline-flex;
-
-
-    align-items:
-
-        center;
-
-
-    height:
-
-        100%;
-
 
     text-decoration:
-
         none;
 
 
-    color:
 
+    color:
         var(--text-secondary);
 
 
-    font-size:
 
+    font-size:
         var(--fs-base);
 
 
-    font-weight:
 
+    font-weight:
         var(--fw-medium);
 
 
-    transition:
 
-        color .18s ease;
+    transition:
+        color .2s ease;
+
 
 }
 
@@ -391,9 +805,10 @@
 
 .header__menu-link:hover {
 
-    color:
 
+    color:
         var(--text-primary);
+
 
 }
 
@@ -401,71 +816,79 @@
 
 .header__menu-link--active {
 
-    color:
 
+    color:
         var(--color-primary);
 
+
 }
+
 
 
 
 .header__menu-link--active::after {
 
+
     content:"";
 
 
-    position:
 
+    position:
         absolute;
 
 
-    bottom:
 
-        -0.2rem;
+    bottom:
+        -.5rem;
+
 
 
     left:
-
         0;
 
 
-    width:
 
+    width:
         100%;
 
 
-    height:
 
+    height:
         2px;
 
 
-    background:
 
+    background:
         var(--color-primary);
 
 
-    border-radius:
 
-        var(--radius-pill);
+    border-radius:
+        999px;
+
 
 }
 
 
 
+
+
+
 /* ==========================================================
-   ACTIONS
+   CART
 ========================================================== */
+
 
 .header__actions {
 
-    display:
 
+    display:
         flex;
 
 
     align-items:
-
         center;
+
 
 }
 
@@ -473,65 +896,61 @@
 
 .header__cart {
 
-    position:
 
+    position:
         relative;
 
 
-    display:
-
-        flex;
-
-
-    align-items:
-
-        center;
-
-
-    justify-content:
-
-        center;
-
 
     width:
-
         3.8rem;
+
 
 
     height:
-
         3.8rem;
 
 
-    border-radius:
 
-        var(--radius-lg);
+    display:
+        flex;
+
+
+
+    align-items:
+        center;
+
+
+
+    justify-content:
+        center;
+
 
 
     border:
-
         1px solid transparent;
 
 
-    background:
 
+    border-radius:
+        var(--radius-lg);
+
+
+
+    background:
         transparent;
 
 
-    color:
-
-        var(--text-primary);
-
 
     cursor:
-
         pointer;
 
 
-    transition:
 
-        background .18s ease,
-        border-color .18s ease;
+    transition:
+        background .2s ease,
+        border-color .2s ease;
+
 
 }
 
@@ -539,14 +958,15 @@
 
 .header__cart:hover {
 
-    background:
 
+    background:
         var(--bg-secondary);
 
 
-    border-color:
 
+    border-color:
         var(--border-default);
+
 
 }
 
@@ -554,9 +974,10 @@
 
 .header__cart ion-icon {
 
-    font-size:
 
+    font-size:
         2rem;
+
 
 }
 
@@ -564,61 +985,59 @@
 
 .header__cart ion-badge {
 
-    position:
 
+    position:
         absolute;
 
 
-    top:
 
-        -0.3rem;
+    top:
+        -.3rem;
+
 
 
     right:
+        -.3rem;
 
-        -0.3rem;
-
-
-    display:
-
-        flex;
-
-
-    align-items:
-
-        center;
-
-
-    justify-content:
-
-        center;
 
 
     min-width:
-
         1.8rem;
+
 
 
     height:
-
         1.8rem;
 
 
-    padding-inline:
 
-        var(--space-1);
+    display:
+        flex;
+
+
+
+    align-items:
+        center;
+
+
+
+    justify-content:
+        center;
+
 
 
     border-radius:
+        999px;
 
-        var(--radius-pill);
 
 
     font-size:
-
         var(--fs-xs);
 
+
 }
+
+
 
 
 
@@ -627,27 +1046,27 @@
 ========================================================== */
 
 
-/*
-1200px and below
-Tablet landscape
-*/
+@include respond(tab-land) {
 
-@include respond(tab-land){
 
     .header__nav {
 
         padding-inline:
-
             var(--space-6);
 
     }
 
+}
+
+
+
+@include respond(tab-port) {
+
 
     .header__menu {
 
-        gap:
-
-            var(--space-5);
+        display:
+            none;
 
     }
 
@@ -655,46 +1074,12 @@ Tablet landscape
 
 
 
-/*
-900px and below
-Tablet portrait
-*/
-
-@include respond(tab-port){
-
-    .header__nav {
-
-        padding-inline:
-
-            var(--space-5);
-
-    }
-
-
-    .header__menu {
-
-        gap:
-
-            var(--space-4);
-
-    }
-
-}
-
-
-
-/*
-600px and below
-Mobile
-*/
-
-@include respond(phone){
+@include respond(phone) {
 
 
     .header__top {
 
         display:
-
             none;
 
     }
@@ -703,26 +1088,44 @@ Mobile
 
     .header__nav {
 
-        height:
 
+        height:
             5rem;
 
 
         padding-inline:
-
             var(--space-5);
+
 
     }
 
 
 
-    .header__menu {
+    .header__profile-name {
 
         display:
-
             none;
 
     }
 
+
+
+    .header__profile-trigger {
+
+
+        border:
+            none;
+
+
+        padding:
+            .2rem;
+
+
+
+        box-shadow:
+            none;
+
+
+    }
 
 }

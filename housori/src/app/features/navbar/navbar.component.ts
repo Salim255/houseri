@@ -19,6 +19,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   authType = signal<AuthType | null>(null);
   openMenu = signal<boolean>(false);
   showMenuBtn = signal<boolean>(false);
+  userInfo = signal<{ firstName: string; isGuest: boolean } | null>(null);
+
   cartStateSubscription!: Subscription;
   authTypeSubscription!: Subscription;
   authSubscription!: Subscription;
@@ -39,7 +41,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscribeToCartState();
     this.subscribeToAuthType();
-    this.subscribeToUserAuthenticated();
+    this.subscribeToUserInfo();
     this.subscribeToSideBarStatus();
 
      window.addEventListener('resize', () => {
@@ -54,12 +56,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.openMenu.set(false);
     })
   }
-  subscribeToUserAuthenticated():void{
-    this.authSubscription = this.authService.userIsAuthenticated.subscribe(auth => {
-      if ((!auth && this.userIsAuthenticated) !== auth) {
-        this.userIsAuthenticated = auth;
-        this.authType.set(AuthType.LOGIN);
-      }
+
+  subscribeToUserInfo():void{
+    this.authSubscription = this.authService.getUserInfo.subscribe((userInfo: { isGuest: boolean; firstName: string; } | null) => {
+      this.userInfo.set(userInfo);
     })
   }
 
@@ -87,13 +87,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   onSignUp(): void{
+    this.authService.logout();
     this.authService.setAuthType(AuthType.LOGIN);
-
+    this.router.navigateByUrl("/auth")
   }
 
   onRegister(): void{
+    this.authService.logout();
     this.authService.setAuthType(AuthType.SIGNUP);
-
+    this.router.navigateByUrl("/auth")
   }
 
   get showAuthBar(): boolean {
@@ -103,6 +105,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
   onMenu(): void {
     this.openMenu.set(this.showMenuBtn());
   };
+
+  get showGuestActions(): boolean {
+    const user = this.userInfo();
+
+    return !user || user.isGuest;
+  }
+
+  logout(): void {
+    this.authService.logout();
+  }
 
   ngOnDestroy(): void {
     this.sidBarStatusSubscription?.unsubscribe();

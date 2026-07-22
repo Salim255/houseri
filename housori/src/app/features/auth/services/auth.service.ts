@@ -58,21 +58,18 @@ export class AuthService {
     this.userIsAuthenticatedSubject.next(true);
   }
 
-  get getUserTitle(): Observable<boolean> {
+  get getUserInfo(): Observable<{isGuest: boolean, firstName: string} | null> {
     return this.userSubject.pipe(
       map(user => {
-        if (user) return user?.isGuestUser
-        else return false;
+        if (user) return  {isGuest: user?.isGuestUser, firstName: user.userFirstName}
+        else return null;
       })
     )
   }
 
-  get getUserFirstName(): Observable<string | null> {
-    return this.userSubject.pipe(
-      map(user => {
-        if (user) return user?.userFirstName
-        else return null;
-      })
-    )
+
+  logout(){
+    this.userIsAuthenticatedSubject.next(false);
+    this.userSubject.next(null)
   }
 }
