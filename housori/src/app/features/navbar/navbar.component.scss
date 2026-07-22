@@ -393,18 +393,14 @@
     transform:
         translateY(.8rem);
 
-
+    z-index: 1;
 
     transition:
 
         opacity .2s ease,
         transform .2s ease,
         visibility .2s ease;
-
-
 }
-
-
 
 
 .header__profile:hover

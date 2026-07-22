@@ -109,7 +109,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   get showGuestActions(): boolean {
     const user = this.userInfo();
 
-    return !user || user.isGuest;
+    return !user || !user.isGuest;
   }
 
   logout(): void {
