@@ -1,0 +1,521 @@
+/* ==========================================================
+   TOAST DESIGN SYSTEM
+========================================================== */
+
+
+.toast-container {
+
+
+    .ngx-toastr {
+
+
+        width:
+            min(42rem, calc(100vw - 3rem));
+
+
+
+        min-height:
+            8.5rem;
+
+
+
+        padding:
+            var(--space-6);
+
+
+
+        display:
+            flex;
+
+
+
+        flex-direction:
+            column;
+
+
+
+        align-items:
+            flex-start;
+
+
+
+        justify-content:
+            center;
+
+
+
+        background:
+            var(--bg-main) !important;
+
+
+
+        border:
+            1px solid
+            var(--border-default);
+
+
+
+        border-left:
+            .45rem solid
+            var(--color-primary);
+
+
+
+        border-radius:
+            var(--radius-xl);
+
+
+
+        box-shadow:
+            var(--shadow-lg);
+
+
+
+        color:
+            var(--text-primary);
+
+
+
+        opacity:
+            1;
+
+
+
+        font-family:
+            var(--font-base);
+
+
+
+        backdrop-filter:
+            blur(14px);
+
+
+
+        transition:
+
+            transform .2s ease,
+
+            box-shadow .2s ease;
+
+
+
+
+
+        &:hover {
+
+
+            transform:
+                translateY(-2px);
+
+
+
+            box-shadow:
+                var(--shadow-xl);
+
+
+        }
+
+
+    }
+
+
+
+
+
+
+
+    /* ======================================================
+       TITLE
+    ====================================================== */
+
+
+    .toast-title {
+
+
+        width:
+            100%;
+
+
+
+        margin:
+            0 0 var(--space-3) 0;
+
+
+
+        color:
+            var(--color-primary);
+
+
+
+        font-family:
+            var(--font-heading);
+
+
+
+        font-size:
+            var(--fs-lg);
+
+
+
+        font-weight:
+            var(--fw-semibold);
+
+
+
+        line-height:
+            1.3;
+
+
+
+    }
+
+
+
+
+
+
+
+    /* ======================================================
+       MESSAGE
+    ====================================================== */
+
+
+    .toast-message {
+
+
+        width:
+            100%;
+
+
+
+        color:
+            var(--text-secondary);
+
+
+
+        font-size:
+            var(--fs-base);
+
+
+
+        font-weight:
+            var(--fw-normal);
+
+
+
+        line-height:
+            1.7;
+
+
+
+    }
+
+
+
+
+
+
+
+    /* ======================================================
+       CLOSE BUTTON
+    ====================================================== */
+
+
+    .toast-close-button {
+
+
+        position:
+            absolute;
+
+
+
+        top:
+            var(--space-3);
+
+
+
+        right:
+            var(--space-4);
+
+
+
+        color:
+            var(--text-secondary);
+
+
+
+        opacity:
+            .7;
+
+
+
+        font-size:
+            2rem;
+
+
+
+        transition:
+            color .2s ease;
+
+
+
+        &:hover {
+
+
+            color:
+                var(--text-primary);
+
+
+        }
+
+
+    }
+
+
+
+
+
+
+
+    /* ======================================================
+       PROGRESS BAR
+    ====================================================== */
+
+
+    .toast-progress {
+
+
+        height:
+            .35rem;
+
+
+
+        bottom:
+            0;
+
+
+
+        left:
+            0;
+
+
+
+        background:
+            var(--color-primary) !important;
+
+
+
+        border-radius:
+
+            0 0 var(--radius-xl) var(--radius-xl);
+
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+/* ==========================================================
+   SUCCESS
+========================================================== */
+
+
+.toast-success {
+
+
+    border-left-color:
+        var(--color-success);
+
+
+
+    .toast-title {
+
+        color:
+            var(--color-success);
+
+    }
+
+
+
+    .toast-progress {
+
+        background:
+            var(--color-success) !important;
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+/* ==========================================================
+   WARNING
+========================================================== */
+
+
+.toast-warning {
+
+
+    border-left-color:
+        var(--color-warning);
+
+
+
+    .toast-title {
+
+        color:
+            var(--color-warning);
+
+    }
+
+
+
+    .toast-progress {
+
+        background:
+            var(--color-warning) !important;
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+/* ==========================================================
+   ERROR
+========================================================== */
+
+
+.toast-error {
+
+
+    border-left-color:
+        var(--color-danger);
+
+
+
+    .toast-title {
+
+        color:
+            var(--color-danger);
+
+    }
+
+
+
+    .toast-progress {
+
+        background:
+            var(--color-danger) !important;
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+
+@include respond(phone) {
+
+
+    .toast-container {
+
+
+        width:
+            100%;
+
+
+
+        padding:
+            var(--space-4);
+
+
+
+
+        .ngx-toastr {
+
+
+            width:
+                100%;
+
+
+
+            min-height:
+                9rem;
+
+
+
+            padding:
+                var(--space-5);
+
+
+
+        }
+
+
+
+
+
+        .toast-title {
+
+
+            font-size:
+                var(--fs-base);
+
+
+            margin-bottom:
+                var(--space-2);
+
+
+        }
+
+
+
+
+
+        .toast-message {
+
+
+            font-size:
+                var(--fs-sm);
+
+
+            line-height:
+                1.6;
+
+
+        }
+
+
+    }
+
+}

@@ -1,6 +1,5 @@
 <div class="cart">
 
-
     <div class="cart__container">
 
 
@@ -13,6 +12,7 @@
                     Shopping Cart
                 </span>
 
+
                 <h2 class="heading-primary">
                     Your basket
                 </h2>
@@ -22,7 +22,11 @@
 
 
 
-            <section class="cart__body">
+
+            <!-- CART CONTENT -->
+            <section
+                class="cart__body"
+                *ngIf="productsNm > 0">
 
 
                 <section class="cart__items">
@@ -30,7 +34,9 @@
 
                     <p class="cart__items-nb">
 
-                        {{ productsNm }} products in your cart
+                        {{ productsNm }}
+                        {{ productsNm === 1 ? 'product' : 'products' }}
+                        in your cart
 
                     </p>
 
@@ -66,12 +72,14 @@
                 </section>
 
 
-
             </section>
 
 
 
 
+
+
+            <!-- EMPTY CART -->
             <div
                 class="cart__placeholder"
                 *ngIf="productsNm === 0">
@@ -83,6 +91,7 @@
 
 
             </div>
+
 
 
         </section>

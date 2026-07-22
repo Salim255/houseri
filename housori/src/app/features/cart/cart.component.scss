@@ -1,22 +1,19 @@
 @import '../../../themes/styles/mixins';
 
 
+/* ==========================================================
+   CART PAGE
+========================================================== */
 
 .cart {
 
 
-
     &__container {
-
 
         padding-top:
             var(--space-8);
 
-
     }
-
-
-
 
 
 
@@ -24,18 +21,13 @@
 
     &__content {
 
-
         @include page-layout();
-
 
         position:
             relative;
 
-
         min-height:
             60rem;
-
-
 
     }
 
@@ -43,82 +35,56 @@
 
 
 
-
-
+    /* ======================================================
+       HEADER
+    ====================================================== */
 
     &__header {
-
 
         margin-bottom:
             var(--space-8);
 
 
-
     }
-
-
-
-
 
 
 
 
     &__badge {
 
-
         display:
             inline-flex;
-
 
         align-items:
             center;
 
 
-
         padding:
-            var(--space-2)
-            var(--space-4);
-
+            .6rem 1.4rem;
 
 
         margin-bottom:
             var(--space-4);
 
 
-
         border-radius:
             var(--radius-pill);
-
 
 
         background:
             var(--color-primary-soft);
 
 
-
         color:
             var(--color-primary);
-
 
 
         font-size:
             var(--fs-sm);
 
 
-
         font-weight:
-            var(--fw-bold);
-
-
-
-        text-transform:
-            uppercase;
-
-
-
-        letter-spacing:
-            .05rem;
-
+            var(--fw-semibold);
 
 
     }
@@ -129,6 +95,9 @@
 
 
 
+    /* ======================================================
+       BODY
+    ====================================================== */
 
 
     &__body {
@@ -138,15 +107,12 @@
             grid;
 
 
-
         grid-template-columns:
-            1.8fr .8fr;
-
+            1.4fr .6fr;
 
 
         gap:
             var(--space-8);
-
 
 
         align-items:
@@ -154,18 +120,85 @@
 
 
 
-
-
-
-        @include respond(tab-land) {
-
+        @include respond(tab-port){
 
             grid-template-columns:
                 1fr;
 
-
         }
 
+    }
+
+
+
+
+
+
+    /* ======================================================
+       ITEMS SECTION
+    ====================================================== */
+
+
+    &__items {
+
+
+        background:
+            var(--bg-main);
+
+
+        border:
+            1px solid
+            var(--border-default);
+
+
+        border-radius:
+            var(--radius-xl);
+
+
+        padding:
+            var(--space-6);
+
+
+        box-shadow:
+            var(--shadow-sm);
+
+
+    }
+
+
+
+
+
+
+    &__items-nb {
+
+
+        padding-bottom:
+            var(--space-4);
+
+
+        margin-bottom:
+            var(--space-6);
+
+
+        border-bottom:
+            1px solid
+            var(--border-default);
+
+
+
+        color:
+            var(--text-secondary);
+
+
+
+        font-size:
+            var(--fs-base);
+
+
+
+        font-weight:
+            var(--fw-medium);
 
 
     }
@@ -176,9 +209,40 @@
 
 
 
+    &__item {
 
 
-    &__items,
+        padding-block:
+            var(--space-5);
+
+
+
+        border-bottom:
+            1px solid
+            var(--border-default);
+
+
+
+        &:last-child {
+
+            border-bottom:
+                none;
+
+        }
+
+
+    }
+
+
+
+
+
+
+    /* ======================================================
+       ORDER TOTAL CARD
+    ====================================================== */
+
+
     .order-total {
 
 
@@ -208,106 +272,20 @@
 
 
 
-    }
-
-
-
-
-
-
-
-
-
-    &__items-nb {
-
-
-        padding-bottom:
-            var(--space-4);
-
-
-
-        margin-bottom:
-            var(--space-5);
-
-
-
-        border-bottom:
-            1px solid
-            var(--border-default);
-
-
-
-        color:
-            var(--text-secondary);
-
-
-
-        font-size:
-            var(--fs-base);
-
-
-
-        font-weight:
-            var(--fw-medium);
-
-
-
-    }
-
-
-
-
-
-
-
-
-    &__item {
-
-
-        margin-bottom:
-            var(--space-5);
-
-
-
-        &:last-child {
-
-
-            margin-bottom:
-                0;
-
-
-        }
-
-
-
-    }
-
-
-
-
-
-
-
-
-    .order-total {
-
-
         position:
             sticky;
 
 
 
         top:
-            var(--space-6);
+            8rem;
 
 
 
-        @include respond(tab-land) {
-
+        @include respond(tab-port){
 
             position:
                 static;
-
 
         }
 
@@ -320,6 +298,10 @@
 
 
 
+
+    /* ======================================================
+       EMPTY STATE
+    ====================================================== */
 
 
     &__placeholder {
@@ -329,58 +311,21 @@
             absolute;
 
 
-
         inset:
             0;
-
 
 
         display:
             flex;
 
 
-
         justify-content:
             center;
-
 
 
         align-items:
             center;
 
-
-
-        pointer-events:
-            none;
-
-
-
     }
-
-
-
-
-
-
-
-    @include respond(phone) {
-
-
-
-        &__items,
-        .order-total {
-
-
-            padding:
-                var(--space-5);
-
-
-        }
-
-
-    }
-
-
-
 
 }

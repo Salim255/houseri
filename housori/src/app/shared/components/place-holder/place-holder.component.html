@@ -1,8 +1,20 @@
 <div class="place-holder">
-  <p  class="place-holder__text"> {{ mainText }}</p>
-  <a
-    routerLink="/products"
-    class="btn btn__primary btn__primary--full place-holder__btn">
-    {{ btnText }}
-  </a>
+
+    <div class="place-holder__icon">
+        <ion-icon name="bag-outline"></ion-icon>
+    </div>
+
+
+    <h3 class="place-holder__title">
+        {{ mainText }}
+    </h3>
+
+
+    <app-button
+        type="button"
+        (click)="onNavigate()"
+        variant="primary">
+        {{ btnText }}
+    </app-button>
+
 </div>

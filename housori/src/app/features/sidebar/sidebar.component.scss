@@ -1,25 +1,59 @@
 @import "../../../themes/styles/mixins";
 
 
+
+/* ==========================================================
+   DEFAULT
+   Desktop: sidebar disabled
+========================================================== */
+
+
+.sidebar-overlay,
+.sidebar {
+
+    display:
+        none;
+
+}
+
+
+
+
+
+
 /* ==========================================================
    OVERLAY
 ========================================================== */
 
+
 .sidebar-overlay {
 
-    position: fixed;
 
-    inset: 0;
+    position:
+        fixed;
 
-    z-index: 9998;
+
+    inset:
+        0;
+
+
+    z-index:
+        9998;
+
+
 
     background:
         rgba(0, 0, 0, .25);
 
+
+
     backdrop-filter:
         blur(6px);
 
+
 }
+
+
 
 
 
@@ -29,25 +63,42 @@
    SIDEBAR
 ========================================================== */
 
+
 .sidebar {
 
-    position: fixed;
 
-    top: 0;
-
-    left: 0;
-
-    z-index: 9999;
+    position:
+        fixed;
 
 
-    height: 100vh;
 
-    width: min(34rem, 85vw);
+    top:
+        0;
 
 
-    display: flex;
 
-    flex-direction: column;
+    left:
+        0;
+
+
+
+    z-index:
+        9999;
+
+
+
+    height:
+        100vh;
+
+
+
+    width:
+        min(34rem, 85vw);
+
+
+
+    flex-direction:
+        column;
 
 
 
@@ -70,7 +121,12 @@
     animation:
         sidebar-in .25s ease-out;
 
+
 }
+
+
+
+
 
 
 
@@ -88,27 +144,36 @@
         6rem;
 
 
+
     padding:
         var(--space-5);
+
 
 
     display:
         flex;
 
 
+
     align-items:
         center;
+
 
 
     justify-content:
         space-between;
 
 
+
     border-bottom:
         1px solid
         var(--border-default);
 
+
 }
+
+
+
 
 
 
@@ -120,16 +185,20 @@
         flex;
 
 
+
     align-items:
         center;
+
 
 
     gap:
         var(--space-3);
 
 
+
     text-decoration:
         none;
+
 
 
     color:
@@ -141,12 +210,16 @@
         var(--font-heading);
 
 
+
     font-size:
         var(--fs-xl);
 
 
+
     font-weight:
         var(--fw-bold);
+
+
 
 
 
@@ -157,12 +230,18 @@
             var(--color-primary);
 
 
+
         font-size:
             2rem;
+
 
     }
 
 }
+
+
+
+
 
 
 
@@ -175,24 +254,30 @@
         4rem;
 
 
+
     height:
         4rem;
+
 
 
     border:
         none;
 
 
+
     background:
         transparent;
+
 
 
     display:
         flex;
 
 
+
     align-items:
         center;
+
 
 
     justify-content:
@@ -204,8 +289,10 @@
         pointer;
 
 
+
     color:
         var(--text-secondary);
+
 
 
     border-radius:
@@ -219,10 +306,13 @@
 
 
 
+
     ion-icon {
+
 
         font-size:
             2.6rem;
+
 
     }
 
@@ -236,12 +326,19 @@
             var(--bg-secondary);
 
 
+
         color:
             var(--color-primary);
 
+
     }
 
+
 }
+
+
+
+
 
 
 
@@ -259,11 +356,13 @@
         1;
 
 
+
     padding:
         var(--space-5);
 
 
 }
+
 
 
 
@@ -276,26 +375,33 @@
         none;
 
 
+
     display:
         flex;
+
 
 
     flex-direction:
         column;
 
 
+
     gap:
         var(--space-2);
+
 
 
     padding:
         0;
 
 
+
     margin:
         0;
 
+
 }
+
 
 
 
@@ -307,7 +413,11 @@
     width:
         100%;
 
+
 }
+
+
+
 
 
 
@@ -320,6 +430,7 @@
         flex;
 
 
+
     align-items:
         center;
 
@@ -327,6 +438,7 @@
 
     width:
         100%;
+
 
 
     padding:
@@ -365,6 +477,8 @@
 
 
 
+
+
     &:hover {
 
 
@@ -372,14 +486,18 @@
             var(--bg-secondary);
 
 
+
         color:
             var(--text-primary);
+
 
 
         transform:
             translateX(.4rem);
 
+
     }
+
 
 
 
@@ -401,9 +519,15 @@
         font-weight:
             var(--fw-semibold);
 
+
     }
 
+
 }
+
+
+
+
 
 
 
@@ -426,7 +550,11 @@
         1px solid
         var(--border-default);
 
+
 }
+
+
+
 
 
 
@@ -439,8 +567,10 @@
         100%;
 
 
+
     height:
         4.8rem;
+
 
 
     border:
@@ -463,12 +593,15 @@
         flex;
 
 
+
     align-items:
         center;
 
 
+
     justify-content:
         center;
+
 
 
     gap:
@@ -501,12 +634,20 @@
 
 
 
+
+
+
     ion-icon {
+
 
         font-size:
             2rem;
 
+
     }
+
+
+
 
 
 
@@ -529,7 +670,79 @@
 
     }
 
+
 }
+
+
+
+
+
+
+
+
+
+/* ==========================================================
+   TABLET + MOBILE ENABLE
+========================================================== */
+
+
+@include respond(tab-port) {
+
+
+    .sidebar-overlay {
+
+
+        display:
+            block;
+
+
+    }
+
+
+
+
+    .sidebar {
+
+
+        display:
+            flex;
+
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ==========================================================
+   PHONE
+========================================================== */
+
+
+@include respond(phone) {
+
+
+    .sidebar {
+
+
+        width:
+            85vw;
+
+
+    }
+
+
+}
+
+
+
 
 
 
@@ -546,11 +759,15 @@
 
     from {
 
+
         transform:
             translateX(-100%);
 
+
+
         opacity:
             .6;
+
 
     }
 
@@ -558,32 +775,15 @@
 
     to {
 
+
         transform:
             translateX(0);
+
+
 
         opacity:
             1;
 
-    }
-
-}
-
-
-
-
-
-/* ==========================================================
-   RESPONSIVE
-========================================================== */
-
-
-@include respond(phone) {
-
-
-    .sidebar {
-
-        width:
-            85vw;
 
     }
 

@@ -2,6 +2,8 @@ import { Component } from "@angular/core";
 import { CheckoutService } from "../../services/checkout.service";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ShippingAddress } from "../../services/checkout-http.service";
+import { ToastService } from "src/app/shared/services/toast.service";
+import { AuthService } from "src/app/features/auth/services/auth.service";
 
 type Field = {
   label: string;
@@ -18,6 +20,8 @@ export class ShippingAddressForm{
   shippingFields!: FormGroup;
   fromFields: Field [] = [];
   constructor(
+    private authService: AuthService,
+    private toastService: ToastService,
     private formBuilder: FormBuilder,
     private checkoutService: CheckoutService,
   ){
@@ -40,6 +44,15 @@ export class ShippingAddressForm{
 
 
   onPlaceOrder(){
+
+    const isGuest = this.authService.getCurrentUser();
+    if(isGuest) {
+      this.toastService.warning(
+        "You're shopping as a guest. Please create an account to place your order.",
+        "Almost there!"
+      );
+    }
+
     if (this.shippingFields.invalid){
       this.shippingFields.markAllAsTouched();
       return;

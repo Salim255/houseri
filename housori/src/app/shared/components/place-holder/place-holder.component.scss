@@ -1,6 +1,384 @@
+@import "../../../../themes/styles/mixins";
+
+
+/* ==========================================================
+   EMPTY STATE PLACE HOLDER
+========================================================== */
+
+
 .place-holder {
-  text-align: center;
-  &__text {
-    margin-bottom: 3rem;
-  }
+
+    width: min(42rem, 90vw);
+
+    padding:
+        var(--space-10)
+        var(--space-8);
+
+
+
+    display:
+        flex;
+
+
+
+    flex-direction:
+        column;
+
+
+
+    align-items:
+        center;
+
+
+
+    justify-content:
+        center;
+
+
+
+    text-align:
+        center;
+
+    gap: var(--space-4);
+
+    animation:
+        fade-in .25s ease-out;
+
+
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+
+
+
+
+    &:hover {
+
+        transform:
+            translateY(-2px);
+
+    }
+
+
+
+
+
+
+
+    /* ======================================================
+       ICON
+    ====================================================== */
+
+
+    &__icon {
+
+
+        width:
+            6.8rem;
+
+
+
+        height:
+            6.8rem;
+
+
+
+
+        display:
+            flex;
+
+
+
+        align-items:
+            center;
+
+
+
+        justify-content:
+            center;
+
+
+
+
+
+        margin-bottom:
+            var(--space-7);
+
+
+
+
+
+        border-radius:
+            var(--radius-pill);
+
+
+
+
+        background:
+            var(--color-primary-soft);
+
+
+
+
+        color:
+            var(--color-primary);
+
+
+
+
+
+        ion-icon {
+
+
+            font-size:
+                3.4rem;
+
+
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+
+    /* ======================================================
+       TITLE
+    ====================================================== */
+
+
+    &__title {
+
+
+        margin:
+            0 0
+            var(--space-4);
+
+
+
+
+        color:
+            var(--text-primary);
+
+
+
+        font-family:
+            var(--font-heading);
+
+
+
+
+        font-size:
+            var(--fs-lg);
+
+
+
+
+        font-weight:
+            var(--fw-semibold);
+
+
+
+
+        line-height:
+            1.4;
+
+
+    }
+
+
+
+
+
+
+
+
+    /* ======================================================
+       DESCRIPTION
+    ====================================================== */
+
+
+    &__text {
+
+
+        max-width:
+            32rem;
+
+
+
+        margin:
+            0 0
+            var(--space-8);
+
+
+
+
+        color:
+            var(--text-secondary);
+
+
+
+
+        font-size:
+            var(--fs-base);
+
+
+
+
+        font-weight:
+            var(--fw-normal);
+
+
+
+        line-height:
+            1.7;
+
+
+    }
+
+
+
+
+
+
+
+    /* ======================================================
+       ACTION
+    ====================================================== */
+
+
+    &__btn {
+
+
+        width:
+            min(100%, 24rem);
+
+
+    }
+
+
+
+}
+
+
+
+
+
+
+
+/* ==========================================================
+   ANIMATION
+========================================================== */
+
+
+@keyframes fade-in {
+
+
+    from {
+
+        opacity:
+            0;
+
+
+        transform:
+            translateY(1rem);
+
+    }
+
+
+
+    to {
+
+        opacity:
+            1;
+
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+
+
+
+
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+
+@include respond(phone) {
+
+
+    .place-holder {
+
+
+        padding:
+            var(--space-8)
+            var(--space-5);
+
+
+
+
+        &__icon {
+
+
+            width:
+                5.6rem;
+
+
+
+            height:
+                5.6rem;
+
+
+
+            margin-bottom:
+                var(--space-6);
+
+
+
+            ion-icon {
+
+                font-size:
+                    2.8rem;
+
+            }
+
+        }
+
+
+
+
+
+        &__title {
+
+            font-size:
+                var(--fs-base);
+
+        }
+
+
+
+
+        &__text {
+
+            margin-bottom:
+                var(--space-6);
+
+        }
+
+
+    }
+
 }

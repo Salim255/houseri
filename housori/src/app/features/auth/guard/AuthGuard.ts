@@ -17,7 +17,6 @@ export class AuthGuard implements CanMatch {
   ): Observable<boolean | UrlTree> {
       return this.authService.userIsAuthenticated.pipe(
         map((user) => {
-          console.log("Hello", user)
             if(user) {
               return true;
             }

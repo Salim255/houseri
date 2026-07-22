@@ -67,6 +67,9 @@ export class AuthService {
     )
   }
 
+  getCurrentUser(): boolean {
+    return this.userSubject?.value?.isGuestUser ?? false;
+  }
 
   logout(){
     this.userIsAuthenticatedSubject.next(false);
