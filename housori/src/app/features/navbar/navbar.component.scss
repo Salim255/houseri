@@ -947,7 +947,9 @@
         background .2s ease,
         border-color .2s ease;
 
-
+  ion-badge {
+    background-color: var(--color-primary);
+  }
 }
 
 
