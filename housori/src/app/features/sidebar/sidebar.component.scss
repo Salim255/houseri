@@ -1,0 +1,791 @@
+@import "../../../themes/styles/mixins";
+
+
+
+/* ==========================================================
+   DEFAULT
+   Desktop: sidebar disabled
+========================================================== */
+
+
+.sidebar-overlay,
+.sidebar {
+
+    display:
+        none;
+
+}
+
+
+
+
+
+
+/* ==========================================================
+   OVERLAY
+========================================================== */
+
+
+.sidebar-overlay {
+
+
+    position:
+        fixed;
+
+
+    inset:
+        0;
+
+
+    z-index:
+        9998;
+
+
+
+    background:
+        rgba(0, 0, 0, .25);
+
+
+
+    backdrop-filter:
+        blur(6px);
+
+
+}
+
+
+
+
+
+
+
+/* ==========================================================
+   SIDEBAR
+========================================================== */
+
+
+.sidebar {
+
+
+    position:
+        fixed;
+
+
+
+    top:
+        0;
+
+
+
+    left:
+        0;
+
+
+
+    z-index:
+        9999;
+
+
+
+    height:
+        100vh;
+
+
+
+    width:
+        min(34rem, 85vw);
+
+
+
+    flex-direction:
+        column;
+
+
+
+    background:
+        var(--bg-main);
+
+
+
+    border-right:
+        1px solid
+        var(--border-default);
+
+
+
+    box-shadow:
+        var(--shadow-lg);
+
+
+
+    animation:
+        sidebar-in .25s ease-out;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+
+.sidebar__header {
+
+
+    height:
+        6rem;
+
+
+
+    padding:
+        var(--space-5);
+
+
+
+    display:
+        flex;
+
+
+
+    align-items:
+        center;
+
+
+
+    justify-content:
+        space-between;
+
+
+
+    border-bottom:
+        1px solid
+        var(--border-default);
+
+
+}
+
+
+
+
+
+
+
+.sidebar__logo {
+
+
+    display:
+        flex;
+
+
+
+    align-items:
+        center;
+
+
+
+    gap:
+        var(--space-3);
+
+
+
+    text-decoration:
+        none;
+
+
+
+    color:
+        var(--text-primary);
+
+
+
+    font-family:
+        var(--font-heading);
+
+
+
+    font-size:
+        var(--fs-xl);
+
+
+
+    font-weight:
+        var(--fw-bold);
+
+
+
+
+
+    ion-icon {
+
+
+        color:
+            var(--color-primary);
+
+
+
+        font-size:
+            2rem;
+
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+.sidebar__close {
+
+
+    width:
+        4rem;
+
+
+
+    height:
+        4rem;
+
+
+
+    border:
+        none;
+
+
+
+    background:
+        transparent;
+
+
+
+    display:
+        flex;
+
+
+
+    align-items:
+        center;
+
+
+
+    justify-content:
+        center;
+
+
+
+    cursor:
+        pointer;
+
+
+
+    color:
+        var(--text-secondary);
+
+
+
+    border-radius:
+        var(--radius-lg);
+
+
+
+    transition:
+        all .2s ease;
+
+
+
+
+
+    ion-icon {
+
+
+        font-size:
+            2.6rem;
+
+
+    }
+
+
+
+
+    &:hover {
+
+
+        background:
+            var(--bg-secondary);
+
+
+
+        color:
+            var(--color-primary);
+
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ==========================================================
+   NAVIGATION
+========================================================== */
+
+
+.sidebar__nav {
+
+
+    flex:
+        1;
+
+
+
+    padding:
+        var(--space-5);
+
+
+}
+
+
+
+
+
+
+.sidebar__list {
+
+
+    list-style:
+        none;
+
+
+
+    display:
+        flex;
+
+
+
+    flex-direction:
+        column;
+
+
+
+    gap:
+        var(--space-2);
+
+
+
+    padding:
+        0;
+
+
+
+    margin:
+        0;
+
+
+}
+
+
+
+
+
+
+.sidebar__item {
+
+
+    width:
+        100%;
+
+
+}
+
+
+
+
+
+
+
+
+.sidebar__link {
+
+
+    display:
+        flex;
+
+
+
+    align-items:
+        center;
+
+
+
+    width:
+        100%;
+
+
+
+    padding:
+        var(--space-4)
+        var(--space-5);
+
+
+
+    border-radius:
+        var(--radius-lg);
+
+
+
+    text-decoration:
+        none;
+
+
+
+    color:
+        var(--text-secondary);
+
+
+
+    font-size:
+        var(--fs-lg);
+
+
+
+    font-weight:
+        var(--fw-medium);
+
+
+
+    transition:
+        all .2s ease;
+
+
+
+
+
+    &:hover {
+
+
+        background:
+            var(--bg-secondary);
+
+
+
+        color:
+            var(--text-primary);
+
+
+
+        transform:
+            translateX(.4rem);
+
+
+    }
+
+
+
+
+
+
+    &--active {
+
+
+        background:
+            var(--color-primary-soft);
+
+
+
+        color:
+            var(--color-primary);
+
+
+
+        font-weight:
+            var(--fw-semibold);
+
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+
+.sidebar__footer {
+
+
+    padding:
+        var(--space-5);
+
+
+
+    border-top:
+        1px solid
+        var(--border-default);
+
+
+}
+
+
+
+
+
+
+
+
+.sidebar__login {
+
+
+    width:
+        100%;
+
+
+
+    height:
+        4.8rem;
+
+
+
+    border:
+        1px solid
+        var(--border-default);
+
+
+
+    background:
+        var(--bg-secondary);
+
+
+
+    border-radius:
+        var(--radius-xl);
+
+
+
+    display:
+        flex;
+
+
+
+    align-items:
+        center;
+
+
+
+    justify-content:
+        center;
+
+
+
+    gap:
+        var(--space-3);
+
+
+
+    color:
+        var(--text-primary);
+
+
+
+    font-size:
+        var(--fs-base);
+
+
+
+    font-weight:
+        var(--fw-medium);
+
+
+
+    cursor:
+        pointer;
+
+
+
+    transition:
+        all .2s ease;
+
+
+
+
+
+
+    ion-icon {
+
+
+        font-size:
+            2rem;
+
+
+    }
+
+
+
+
+
+
+    &:hover {
+
+
+        border-color:
+            var(--color-primary);
+
+
+
+        color:
+            var(--color-primary);
+
+
+
+        transform:
+            translateY(-2px);
+
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ==========================================================
+   TABLET + MOBILE ENABLE
+========================================================== */
+
+
+@include respond(tab-port) {
+
+
+    .sidebar-overlay {
+
+
+        display:
+            block;
+
+
+    }
+
+
+
+
+    .sidebar {
+
+
+        display:
+            flex;
+
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ==========================================================
+   PHONE
+========================================================== */
+
+
+@include respond(phone) {
+
+
+    .sidebar {
+
+
+        width:
+            85vw;
+
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ==========================================================
+   ANIMATION
+========================================================== */
+
+
+@keyframes sidebar-in {
+
+
+    from {
+
+
+        transform:
+            translateX(-100%);
+
+
+
+        opacity:
+            .6;
+
+
+    }
+
+
+
+    to {
+
+
+        transform:
+            translateX(0);
+
+
+
+        opacity:
+            1;
+
+
+    }
+
+
+}

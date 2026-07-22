@@ -1,26 +1,268 @@
-.pagination {
-  display: flex;
-  border-radius: 1rem;
-  background-color: var(--bg-secondary);
-  gap: .4rem;
-  &__prev,
-  &__next,
-  &__current {
-    border: none;
-    background-color: var(--bg-main);
-    padding-left: 1rem;
-    padding-right: 1rem;
-    cursor: pointer;
-  }
+@import "../../../../themes/styles/mixins";
 
-  &__current {
-    padding: 1rem 1.5rem;
-    &--active {
-      background-color: var(--color-primary-tints);
+.pagination {
+
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+
+    padding: var(--space-2);
+
+    background:
+        var(--bg-secondary);
+
+    border:
+        1px solid
+        var(--border-default);
+
+    border-radius:
+        var(--radius-xl);
+
+    box-shadow:
+        var(--shadow-sm);
+
+}
+
+
+/* ==========================================================
+   COMMON BUTTON STYLE
+========================================================== */
+
+.pagination__prev,
+.pagination__next,
+.pagination__current {
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+
+    min-width: 3.8rem;
+    height: 3.8rem;
+
+
+    border:
+        1px solid
+        transparent;
+
+
+    border-radius:
+        var(--radius-md);
+
+
+    background:
+        transparent;
+
+
+    color:
+        var(--text-secondary);
+
+
+    font-family:
+        var(--font-base);
+
+
+    font-size:
+        var(--fs-sm);
+
+
+    font-weight:
+        var(--fw-medium);
+
+
+    cursor:
+        pointer;
+
+
+    transition:
+        background-color .2s ease,
+        color .2s ease,
+        border-color .2s ease,
+        transform .2s ease,
+        box-shadow .2s ease;
+
+
+}
+
+
+
+/* ==========================================================
+   HOVER
+========================================================== */
+
+
+.pagination__prev:hover:not(:disabled),
+.pagination__next:hover:not(:disabled),
+.pagination__current:hover:not(.pagination__current--active) {
+
+
+    background:
+        var(--bg-main);
+
+
+    color:
+        var(--color-primary);
+
+
+    border-color:
+        var(--border-default);
+
+
+    transform:
+        translateY(-1px);
+
+
+    box-shadow:
+        var(--shadow-sm);
+
+}
+
+
+
+/* ==========================================================
+   ACTIVE PAGE
+========================================================== */
+
+
+.pagination__current--active {
+
+
+    background:
+        var(--color-primary);
+
+
+    color:
+        var(--text-inverse);
+
+
+    border-color:
+        var(--color-primary);
+
+
+    box-shadow:
+        var(--shadow-sm);
+
+
+}
+
+
+
+/* ==========================================================
+   PREV NEXT
+========================================================== */
+
+
+.pagination__prev,
+.pagination__next {
+
+
+    padding-inline:
+        var(--space-4);
+
+
+}
+
+
+
+/* ==========================================================
+   DISABLED
+========================================================== */
+
+
+.pagination button:disabled {
+
+
+    cursor:
+        not-allowed;
+
+
+    opacity:
+        .45;
+
+
+    background:
+        transparent;
+
+
+    color:
+        var(--text-muted);
+
+
+    transform:
+        none;
+
+
+    box-shadow:
+        none;
+
+}
+
+
+
+/* ==========================================================
+   ACTIVE PRESS
+========================================================== */
+
+
+.pagination button:active:not(:disabled) {
+
+
+    transform:
+        translateY(0);
+
+
+}
+
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+
+@include respond(phone) {
+
+
+    .pagination {
+
+
+        width:
+            100%;
+
+
+        justify-content:
+            center;
+
+
     }
-  }
-  &__next {}
-  &__prev{
-    border-radius: 1rem 0;
-  }
+
+
+    .pagination__prev,
+    .pagination__next {
+
+
+        min-width:
+            auto;
+
+
+        padding-inline:
+            var(--space-3);
+
+
+    }
+
+
+    .pagination__current {
+
+
+        min-width:
+            3.4rem;
+
+
+        height:
+            3.4rem;
+
+    }
+
 }

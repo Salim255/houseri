@@ -1,10 +1,11 @@
 import { Component, OnDestroy, OnInit, signal } from "@angular/core";
-import { CartDetails, CartService } from "../features/cart/services/cart-service";
+import { CartDetails, CartService } from "../cart/services/cart-service";
 import { Subscription } from "rxjs";
-import { AuthType } from "../features/auth/services/auth.service";
-import { AuthService } from "../features/auth/services/auth.service";
-import {CoreService} from "../core/services/core.service";
+import { AuthType } from "../auth/services/auth.service";
+import { AuthService } from "../auth/services/auth.service";
+import {CoreService} from "../../core/services/core.service";
 import { LikeContent, NavbarService } from "./services/navbar.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-navbar",
@@ -18,6 +19,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   authType = signal<AuthType | null>(null);
   openMenu = signal<boolean>(false);
   showMenuBtn = signal<boolean>(false);
+  userInfo = signal<{ firstName: string; isGuest: boolean } | null>(null);
+
   cartStateSubscription!: Subscription;
   authTypeSubscription!: Subscription;
   authSubscription!: Subscription;
@@ -26,6 +29,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   navLinks: LikeContent[];
 
   constructor(
+    private router: Router,
     private navbarService: NavbarService,
     private coreService: CoreService,
     private authService: AuthService,
@@ -37,7 +41,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscribeToCartState();
     this.subscribeToAuthType();
-    this.subscribeToUserAuthenticated();
+    this.subscribeToUserInfo();
     this.subscribeToSideBarStatus();
 
      window.addEventListener('resize', () => {
@@ -52,12 +56,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.openMenu.set(false);
     })
   }
-  subscribeToUserAuthenticated():void{
-    this.authSubscription = this.authService.userIsAuthenticated.subscribe(auth => {
-      if ((!auth && this.userIsAuthenticated) !== auth) {
-        this.userIsAuthenticated = auth;
-        this.authType.set(AuthType.LOGIN);
-      }
+
+  subscribeToUserInfo():void{
+    this.authSubscription = this.authService.getUserInfo.subscribe((userInfo: { isGuest: boolean; firstName: string; } | null) => {
+      this.userInfo.set(userInfo);
     })
   }
 
@@ -83,11 +85,17 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.authType() === AuthType.GUEST || this.userIsAuthenticated
     );
   }
+
   onSignUp(): void{
+    this.authService.logout();
     this.authService.setAuthType(AuthType.LOGIN);
+    this.router.navigateByUrl("/auth")
   }
+
   onRegister(): void{
+    this.authService.logout();
     this.authService.setAuthType(AuthType.SIGNUP);
+    this.router.navigateByUrl("/auth")
   }
 
   get showAuthBar(): boolean {
@@ -97,6 +105,25 @@ export class NavbarComponent implements OnInit, OnDestroy {
   onMenu(): void {
     this.openMenu.set(this.showMenuBtn());
   };
+
+  onOpenSidebar(): void {
+      this.openMenu.set(true);
+    }
+
+
+  onCloseSidebar(): void {
+    this.openMenu.set(false);
+  }
+
+  get showGuestActions(): boolean {
+    const user = this.userInfo();
+
+    return !user || user.isGuest;
+  }
+
+  logout(): void {
+    this.authService.logout();
+  }
 
   ngOnDestroy(): void {
     this.sidBarStatusSubscription?.unsubscribe();

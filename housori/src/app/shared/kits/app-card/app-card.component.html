@@ -1,0 +1,19 @@
+<section
+    class="app-card"
+    [class.app-card--hoverable]="hoverable">
+    <header *ngIf="title || subtitle" class="app-card__header">
+      <h3 *ngIf="title" class="app-card__title">
+        {{ title }}
+      </h3>
+      <p *ngIf="subtitle" class="app-card__subtitle">
+        {{ subtitle }}
+      </p>
+    </header>
+
+    <div class="app-card__body">
+      <ng-content></ng-content>
+    </div>
+    <footer *ngIf="footer" class="app-card__footer">
+        <ng-content select="[card-footer]"></ng-content>
+    </footer>
+</section>

@@ -1,65 +1,154 @@
-<form [formGroup]="filterFormFields" class="filter">
-  <section class="filter__top-section">
-    <div class="search-input">
-      <label for="search">Search Products</label>
-      <input formControlName="search" placeholder="search" />
-    </div>
-    <div class="category-options">
-      <label for="category"> Select Category </label>
-      <div class="category-options__select">
-        <app-custom-select
-        formControlName="category"
-        [options]="metaData.categories || []">
-        </app-custom-select>
-      </div>
-    </div>
-    <div class="company-options">
-      <label for="company"> Select Company </label>
-      <div class="company-options__select">
-        <app-custom-select
-        formControlName="company"
-        [options]="metaData.companies || []"></app-custom-select>
-      </div>
-    </div>
-    <div class="sort-options">
-      <label for="alphaSort" color="empty" position="stacked"> Sort By </label>
-      <div class="sort-options__select">
-        <app-custom-select
-          formControlName="alphaSort"
-          [options]="sortOptions || []"></app-custom-select>
-      </div>
-  </div>
-  </section>
-  <section class="filter__bottom-section">
-    <div class="price-range">
-      <div class="price-range__label">
-        <label for="price" class="title"> Price </label>
-        <output > {{ priceValue() | currency }} </output>
-      </div>
-      <ion-range
-        formControlName="price"
-        [min]="10"
-        [max]="100000" [step]="100">
-      </ion-range>
-    </div>
-    <div class="free-shipping">
-      <label for="shipping" > Free Shipping </label>
-      <ion-toggle formControlName="shipping"></ion-toggle>
-    </div>
-    <div class="search-btn">
-      <button
-        class="btn btn__secondary btn__secondary--full"
-        (click)="submitSearch()">
-        SEARCH
-      </button>
-    </div>
-    <div class="reset-btn">
-      <button
-        class="btn btn__secondary btn__secondary--full"
-        (click)="resetFilter()">
-        RESET
-      </button>
-    </div>
-  </section>
-</form>
+<form
+    class="filter"
+    [formGroup]="filterFormFields">
 
+    <!-- =======================================================
+         SEARCH
+    ======================================================== -->
+
+    <section class="filter__row">
+
+        <div class="filter__field filter__field--search">
+
+            <label for="search">
+                Search Products
+            </label>
+
+            <input
+                id="search"
+                type="text"
+                formControlName="search"
+                placeholder="Search furniture..." />
+
+        </div>
+
+        <div class="filter__actions">
+
+            <app-button
+               [fullWidth]="true"
+                type="submit"
+                variant="primary"
+                (click)="submitSearch()">
+
+                Search
+
+            </app-button>
+
+            <app-button
+                [fullWidth]="true"
+                variant="secondary"
+                (click)="resetFilter()">
+
+                Reset
+
+            </app-button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         FILTERS
+    ======================================================== -->
+
+    <section class="filter__row">
+
+        <div class="filter__field">
+
+            <label>
+                Category
+            </label>
+
+            <app-custom-select
+                formControlName="category"
+                [options]="metaData.categories || []">
+
+            </app-custom-select>
+
+        </div>
+
+
+        <div class="filter__field">
+
+            <label>
+                Company
+            </label>
+
+            <app-custom-select
+                formControlName="company"
+                [options]="metaData.companies || []">
+
+            </app-custom-select>
+
+        </div>
+
+
+        <div class="filter__field">
+
+            <label>
+                Sort By
+            </label>
+
+            <app-custom-select
+                formControlName="alphaSort"
+                [options]="sortOptions">
+
+            </app-custom-select>
+
+        </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         PRICE + SHIPPING
+    ======================================================== -->
+
+    <section class="filter__row">
+
+        <div class="filter__field filter__field--price">
+
+            <div class="price-range__header">
+
+                <label>
+                    Price
+                </label>
+
+                <output>
+
+                    {{ priceValue() | currency }}
+
+                </output>
+
+            </div>
+
+            <ion-range
+                formControlName="price"
+                [min]="10"
+                [max]="100000"
+                [step]="100">
+
+            </ion-range>
+
+        </div>
+
+
+        <div class="filter__shipping">
+
+            <label>
+
+                Free Shipping
+
+            </label>
+
+            <ion-toggle
+                formControlName="shipping">
+
+            </ion-toggle>
+
+        </div>
+
+    </section>
+
+</form>

@@ -1,58 +1,72 @@
+/* ============================================================
+   GLOBAL RESET
+============================================================ */
+
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
+
+
+/* ============================================================
+   ROOT TYPOGRAPHY SCALING
+============================================================ */
+
 html {
-  // Percentage for user's browser font-size setting
-  font-size: 62.5%; // 10 / 16 = 0.625 * 100;
+  font-size: 62.5%; /* 1rem = 10px */
 
   @include respond(tab-land) {
-    font-size: 56.25%; // 1 rem = 9 px =>  8/16 = 0.5=> 56.25%
+    font-size: 56.25%; /* 1rem = 9px */
   }
 
   @include respond(tab-port) {
-    font-size: 50%; // 1rem = 8 This the content that we passed into the mixin
-  }
-
-  @include respond(phone) {
-    //font-size: 25%; // 1rem = 4 This the content that we passed into the mixin
+    font-size: 50%; /* 1rem = 8px */
   }
 
   @include respond(big-desktop) {
-    font-size: 75%; // 1 rem = 12 / 16 = 0.75 => 75%
-  }
-  body {
-    font-family: var(--font-base);
-    color: var(--text-main);
-    background-color: var(--bg-main);
-    line-height: 1;
-    font-size: var(--text-base);
-    a,
-    a:link,
-    a:visited,
-    a:active{
-      text-decoration: none;
-      //color: var(--text-main);
-      cursor: pointer;
-    }
-
-    select, input {
-      border: none;;
-      outline: none;
-    }
-
-    ion-item {
-      --background: transparent;
-    }
+    font-size: 75%; /* 1rem = 12px */
   }
 }
+
+
+/* ============================================================
+   BASE BODY STYLES
+============================================================ */
+
+body {
+  font-family: var(--font-base);
+  font-size: var(--fs-base);
+  color: var(--text-primary);
+  background-color: var(--bg-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  select,
+  input {
+    border: none;
+    outline: none;
+    font-family: inherit;
+    font-size: inherit;
+  }
+
+  ion-item {
+    --background: transparent;
+  }
+}
+
+
+/* ============================================================
+   FORM STATES
+============================================================ */
 
 input.ng-invalid.ng-touched {
   border: 1px solid var(--color-danger);
-}
-
-/* 🟢 Optional: green border when valid */
-input.ng-valid.ng-touched {
-  //border-color: green;
 }

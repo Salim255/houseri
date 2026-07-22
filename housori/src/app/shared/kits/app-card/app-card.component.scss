@@ -1,0 +1,201 @@
+:host {
+
+    display: block;
+
+}
+
+
+
+/* ==========================================================
+   CARD
+========================================================== */
+
+
+.app-card {
+
+    display: flex;
+
+    flex-direction: column;
+
+
+    background:
+
+        var(--bg-main);
+
+
+    border:
+
+        1px solid
+        var(--border-default);
+
+
+    border-radius:
+
+        var(--radius-xl);
+
+
+    overflow: hidden;
+
+
+    transition:
+
+        border-color .18s ease,
+        box-shadow .18s ease,
+        transform .18s ease;
+
+}
+
+
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+
+.app-card__header {
+
+    padding:
+
+        var(--space-6);
+
+
+    padding-bottom:
+
+        var(--space-4);
+
+
+    border-bottom:
+
+        1px solid
+        var(--border-default);
+
+}
+
+
+
+.app-card__title {
+
+    margin: 0;
+
+
+    color:
+
+        var(--text-primary);
+
+
+    font-family:
+
+        var(--font-heading);
+
+
+    font-size:
+
+        var(--fs-xl);
+
+
+    font-weight:
+
+        var(--fw-bold);
+
+}
+
+
+
+.app-card__subtitle {
+
+    margin:
+
+        var(--space-2)
+        0
+        0;
+
+
+    color:
+
+        var(--text-secondary);
+
+
+    font-size:
+
+        var(--fs-sm);
+
+}
+
+
+
+/* ==========================================================
+   BODY
+========================================================== */
+
+
+.app-card__body {
+
+    padding:
+
+        var(--space-6);
+
+}
+
+
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+
+.app-card__footer {
+
+    display:
+
+        flex;
+
+
+    justify-content:
+
+        flex-end;
+
+
+    align-items:
+
+        center;
+
+
+    gap:
+
+        var(--space-3);
+
+
+    padding:
+
+        var(--space-5)
+        var(--space-6);
+
+
+    border-top:
+
+        1px solid
+        var(--border-default);
+
+}
+
+
+
+/* ==========================================================
+   HOVER
+========================================================== */
+
+
+.app-card--hoverable:hover {
+
+
+    border-color:
+
+        var(--border-strong);
+
+
+    box-shadow:
+
+        var(--shadow-sm);
+
+
+}

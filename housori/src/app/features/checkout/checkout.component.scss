@@ -1,48 +1,375 @@
 @import '../../../themes/styles/mixins';
 
+
 .checkout {
 
-  &__container {
-    padding-top: 14rem;
-  }
-  &__content {
-    @include page-layout();
-    position: relative;
-  }
-  &__body {
-    display: flex;
-    gap: var(--x-l-spacing);
-    &>section {
-      flex: 1;
-    }
-     p {
-        color: var(--grey-2);
-        font-size: var(--text-2xl);
-        font-weight: var(--font-medium);
-      }
-    .shipping-info {
-      app-shipping-address-form {
-        margin-top: var(--md-spacing);
-        display: inline-block;
-        width: 100%;
-      }
-    }
-    .order-details {
-      app-order-total {
-        margin-top: var(--md-spacing);
-        display: inline-block;
-        width: 100%;
-      }
-    }
-    @include respond(tab-port) {
-      flex-direction: column-reverse;
-    }
-  }
 
-  &__place-holder {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 50%;
-  }
+    &__container {
+
+        padding-top:
+            var(--space-8);
+
+    }
+
+
+
+
+
+
+    &__content {
+
+        @include page-layout();
+
+        position:
+            relative;
+
+        min-height:
+            60rem;
+
+    }
+
+
+
+
+
+
+
+    &__header {
+
+        margin-bottom:
+            var(--space-8);
+
+
+    }
+
+
+
+
+
+
+
+    &__badge {
+
+
+        display:
+            inline-flex;
+
+
+        align-items:
+            center;
+
+
+        justify-content:
+            center;
+
+
+
+        padding:
+            var(--space-2)
+            var(--space-4);
+
+
+
+        margin-bottom:
+            var(--space-4);
+
+
+
+        border-radius:
+            var(--radius-pill);
+
+
+
+        background:
+            var(--color-primary-soft);
+
+
+
+        color:
+            var(--color-primary);
+
+
+
+        border:
+            1px solid
+            var(--color-primary-soft);
+
+
+
+        font-size:
+            var(--fs-sm);
+
+
+
+        font-weight:
+            var(--fw-bold);
+
+
+
+        letter-spacing:
+            .05rem;
+
+
+
+        text-transform:
+            uppercase;
+
+
+    }
+
+
+
+
+
+
+
+    &__body {
+
+
+        display:
+            grid;
+
+
+
+        grid-template-columns:
+            1.2fr .8fr;
+
+
+
+        gap:
+            var(--space-8);
+
+
+
+        align-items:
+            start;
+
+
+
+
+
+
+        @include respond(tab-port) {
+
+
+            grid-template-columns:
+                1fr;
+
+
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+    .shipping-info,
+    .order-details {
+
+
+        background:
+            var(--bg-main);
+
+
+
+        border:
+            1px solid
+            var(--border-default);
+
+
+
+        border-radius:
+            var(--radius-xl);
+
+
+
+        padding:
+            var(--space-6);
+
+
+
+        box-shadow:
+            var(--shadow-sm);
+
+
+
+
+        & > p {
+
+
+            margin-bottom:
+                var(--space-5);
+
+
+
+            color:
+                var(--text-primary);
+
+
+
+            font-family:
+                var(--font-heading);
+
+
+
+            font-size:
+                var(--fs-xl);
+
+
+
+            font-weight:
+                var(--fw-bold);
+
+
+
+        }
+
+
+
+
+
+        app-shipping-address-form,
+        app-order-total {
+
+
+            display:
+                block;
+
+
+
+            width:
+                100%;
+
+
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+    .shipping-info {
+
+
+        app-shipping-address-form {
+
+
+            margin-top:
+                var(--space-4);
+
+
+        }
+
+    }
+
+
+
+
+
+
+
+
+    .order-details {
+
+
+        app-order-total {
+
+
+            margin-top:
+                var(--space-4);
+
+
+        }
+
+    }
+
+
+
+
+
+
+
+
+    &__placeholder {
+
+
+        position:
+            absolute;
+
+
+
+        inset:
+            0;
+
+
+
+        display:
+            flex;
+
+
+
+        justify-content:
+            center;
+
+
+
+        align-items:
+            center;
+
+
+
+        pointer-events:
+            none;
+
+
+    }
+
+
+
+
+
+
+
+    @include respond(phone) {
+
+
+        &__content {
+
+
+            min-height:
+                auto;
+
+
+        }
+
+
+
+
+
+        .shipping-info,
+        .order-details {
+
+
+            padding:
+                var(--space-5);
+
+
+        }
+
+
+
+    }
+
+
+
 }

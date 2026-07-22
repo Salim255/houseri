@@ -6,12 +6,16 @@ import { LoginComponent } from "./components/login/login.component";
 import { RegisterComponent } from "./components/register/register.component";
 import { AuthFormComponent } from "./components/auth-form/auth-form.component";
 import { ReactiveFormsModule } from "@angular/forms";
+import { SharedModule } from "src/app/shared/shared.module";
+import { AuthRoutingModule } from "./auth-routing.module";
 
 @NgModule({
  imports: [
   CommonModule,
   IonicModule,
-  ReactiveFormsModule
+  ReactiveFormsModule,
+  AuthRoutingModule,
+  SharedModule
 ],
  declarations: [
   AuthComponent,

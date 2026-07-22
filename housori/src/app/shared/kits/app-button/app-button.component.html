@@ -1,0 +1,31 @@
+<button
+
+    [type]="type"
+
+    class="app-button"
+
+    [class.app-button--primary]="variant === 'primary'"
+
+    [class.app-button--secondary]="variant === 'secondary'"
+
+    [class.app-button--danger]="variant === 'danger'"
+
+    [class.app-button--ghost]="variant === 'ghost'"
+
+    [class.app-button--outline]="variant === 'outline'"
+
+    [class.app-button--loading]="loading"
+
+    [class.app-button--full]="fullWidth"
+
+    [disabled]="disabled || loading">
+
+    <span *ngIf="loading" class="app-button__spinner"></span>
+
+    <span class="app-button__label">
+
+        <ng-content />
+
+    </span>
+
+</button>

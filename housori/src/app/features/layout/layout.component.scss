@@ -1,0 +1,56 @@
+@import "../../../themes/styles/mixins";
+
+/* ==========================================================
+   APP LAYOUT
+========================================================== */
+
+
+.app-layout {
+    height: 100dvh;
+    background: var(--bg-main);
+
+    display: grid;
+    grid-template-rows: auto 1fr;
+    overflow: hidden;
+}
+
+
+
+/* ==========================================================
+   CONTENT
+========================================================== */
+
+
+.app-layout__content {
+   /* critical for scroll inside grid */
+  min-height: 0;
+
+ flex: 1;
+  width: 100%;
+
+  /* enable scrolling */
+  overflow-y: auto;
+}
+
+
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+
+@include respond(tab-land) {
+
+}
+
+
+
+@include respond(tab-port) {
+
+}
+
+
+
+@include respond(phone) {
+
+}

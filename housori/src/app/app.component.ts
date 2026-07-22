@@ -12,7 +12,10 @@ export class AppComponent implements OnInit {
   authSubscription!: Subscription;
   previousAuthSate: boolean = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.subscribeToAuth();
@@ -22,8 +25,10 @@ export class AppComponent implements OnInit {
     this.authSubscription = this.authService.userIsAuthenticated.subscribe(auth => {
       //Updates only when auth changes to false (unauthenticated).
       // Will not update if auth changes to true
-      if(!auth && this.previousAuthSate !== auth) {
-        this.previousAuthSate = auth;
+      if (auth) {
+        this.router.navigateByUrl('/');
+      } else {
+        this.router.navigateByUrl('/auth');
       }
     })
   }

@@ -1,0 +1,183 @@
+<header class="header">
+
+    <!-- ======================================================
+         TOP BAR
+    ======================================================= -->
+
+    <section class="header__top">
+
+        <!-- Guest -->
+        <ng-container *ngIf="showGuestActions; else authenticatedUser">
+
+            <div class="header__auth">
+
+                <button
+                    class="header__auth-link"
+                    (click)="onSignUp()">
+
+                    Sign in
+
+                </button>
+
+                <span class="header__auth-divider"></span>
+
+                <button
+                    class="header__auth-button"
+                    (click)="onRegister()">
+
+                    Create account
+
+                </button>
+
+            </div>
+
+        </ng-container>
+
+        <!-- Logged user -->
+        <ng-template #authenticatedUser>
+
+            <div class="header__profile">
+
+                <button class="header__profile-trigger">
+
+                    <div class="header__avatar">
+                        {{ userInfo()?.firstName?.charAt(0) }}
+                    </div>
+
+                    <span class="header__profile-name">
+                        {{ userInfo()?.firstName }}
+                    </span>
+
+                    <ion-icon name="chevron-down-outline"></ion-icon>
+
+                </button>
+
+                <div class="header__profile-menu">
+
+                    <div class="header__profile-info">
+
+                        <strong>
+                            {{ userInfo()?.firstName }}
+                        </strong>
+
+                        <span>
+                            Welcome back
+                        </span>
+
+                    </div>
+
+                    <button
+                        class="header__profile-item"
+                        routerLink="/orders">
+
+                        <ion-icon
+                            name="bag-handle-outline">
+                        </ion-icon>
+
+                        Orders
+
+                    </button>
+
+                    <button
+                        class="header__profile-item">
+
+                        <ion-icon
+                            name="person-outline">
+                        </ion-icon>
+
+                        Account
+
+                    </button>
+
+                    <button
+                        class="header__profile-item"
+                        (click)="logout()">
+
+                        <ion-icon
+                            name="log-out-outline">
+                        </ion-icon>
+
+                        Logout
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </ng-template>
+
+    </section>
+
+
+
+    <!-- ======================================================
+         NAVIGATION
+    ======================================================= -->
+
+    <nav class="header__nav">
+
+        <a
+            (click)="onOpenSidebar()"
+            class="header__logo">
+
+            <ion-icon
+                name="cube-outline">
+            </ion-icon>
+
+            <span>
+                Housori
+            </span>
+
+        </a>
+
+
+
+        <ul class="header__menu">
+
+            <li
+                *ngFor="let link of navLinks">
+
+                <a
+                    [routerLink]="link.path"
+                    routerLinkActive="header__menu-link--active"
+                    class="header__menu-link">
+
+                    {{ link.label }}
+
+                </a>
+
+            </li>
+
+        </ul>
+
+
+
+        <div class="header__actions">
+
+            <button
+                class="header__cart"
+                routerLink="/cart">
+
+                <ion-icon
+                    name="cart-outline">
+                </ion-icon>
+
+                <ion-badge>
+
+                    {{ numItemInCart }}
+
+                </ion-badge>
+
+            </button>
+
+        </div>
+
+    </nav>
+
+</header>
+
+<app-sidebar
+    *ngIf="openMenu()"
+    (close)="onCloseSidebar()">
+</app-sidebar>

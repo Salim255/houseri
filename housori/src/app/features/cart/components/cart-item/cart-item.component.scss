@@ -1,164 +1,577 @@
 @import '../../../../../themes/styles/mixins';
-@mixin pseudoStyle() {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  background-color: var(--grey-3);
-  transform: translate(-50%, -50%);
-  transform-origin: center center;
-  box-shadow: -2px 4px 2px rgba(0,0,0, 0.05);
-  transition: all .2s ease ;
-}
+
+
 .cart-item {
-  display: grid;
-  grid-template-columns: 6fr 3fr 3fr;
 
-  gap: var(--sm-spacing);
-  @include respond(tab-port) {
-    gap: var(--2xs-spacing);
-  }
-  &__figure {
-    display: flex;
-    gap: var(--sm-spacing);
-    margin: 0;
-    img {
-      width: 16rem;
-      height: 10rem;
-      border-radius: 1rem;
-      @include respond(phone) {
-        height: 10rem;
-        width: 12rem;
-      }
-    }
-    figCaption {
+    display: grid;
 
-      .product-name {
-        font-weight: var(--font-medium);
-        color: var(--grey-2);
-        margin-bottom: var(--xs-spacing);
-        font-size: var(--text-xl);
-      }
+    grid-template-columns:
+        1fr auto auto;
 
-      .product-company {
-        font-size: var(--text-lg);
-      }
-    }
-  }
+    align-items: center;
+
+    gap:
+        var(--space-6);
+
+    padding:
+        var(--space-5);
+
+    border-radius:
+        var(--radius-xl);
+
+    background:
+        var(--bg-main);
+
+    border:
+        1px solid
+        var(--border-default);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
 
 
-  &__adjust-btns {
-    display: flex;
-    justify-content: center;
-    justify-items: center;
-    margin-top: var(--sm-spacing);
-    gap: var(--sm-spacing);
-  }
-  &__plus,
-  &__minus {
-    border: none;
-    background-color: transparent;
-    position: relative;
-    cursor: pointer;
-    align-self: center;
-  }
-  &__nb {
-    font-size: var(--text-xl);
-    align-self: center;
-    @include respond(phone) {
-      font-size: var(--text-sm);
-    }
-  }
-  &__plus {
-    position: relative;
-    width: 1.5rem;
-    height: 1.5rem;
 
-    &::before,
-    &::after {
-      @include pseudoStyle();
+    &:hover {
+
+        transform:
+            translateY(-2px);
+
+        box-shadow:
+            var(--shadow-sm);
+
     }
 
-    &::before {
-      width: 100%;   // horizontal bar
-      height: 0.4rem;
+
+
+
+
+    /* =====================================================
+       PRODUCT
+    ====================================================== */
+
+    &__figure {
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        gap:
+            var(--space-5);
+
+        margin:
+            0;
+
+
+        img {
+
+            width:
+                12rem;
+
+            height:
+                8rem;
+
+            object-fit:
+                cover;
+
+            border-radius:
+                var(--radius-lg);
+
+
+            @include respond(phone){
+
+                width:
+                    9rem;
+
+                height:
+                    7rem;
+
+            }
+
+        }
+
+
+
+        figcaption {
+
+
+            .product-name {
+
+                margin:
+                    0 0 var(--space-2);
+
+
+                font-size:
+                    var(--fs-lg);
+
+                font-weight:
+                    var(--fw-semibold);
+
+                color:
+                    var(--text-primary);
+
+            }
+
+
+
+
+            .product-company {
+
+                margin:
+                    0;
+
+                font-size:
+                    var(--fs-base);
+
+                color:
+                    var(--text-secondary);
+
+            }
+
+        }
+
     }
 
-    &::after {
-      width: 0.4rem; // vertical bar
-      height: 100%;
+
+
+
+
+
+
+    /* =====================================================
+       QUANTITY
+    ====================================================== */
+
+    &__amount {
+
+        display:
+            flex;
+
+        flex-direction:
+            column;
+
+        align-items:
+            center;
+
+        gap:
+            var(--space-3);
+
     }
 
-    &:hover::after,
-    &:hover::before{
-      transform: translate(-50%, -50%) scale(1.2);
+
+
+
+    &__title {
+
+        font-size:
+            var(--fs-sm);
+
+        color:
+            var(--text-secondary);
+
+        text-transform:
+            uppercase;
+
+        letter-spacing:
+            .08rem;
+
     }
 
-    &:active::after,
-    &:active::before{
-      transform: translate(-50%, -50%) scale(.9);
-      background-color: var(--color-primary-tints);
+
+
+
+
+    &__adjust-btns {
+
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        gap:
+            var(--space-3);
+
+
+        padding:
+            .6rem 1rem;
+
+
+        border-radius:
+            var(--radius-lg);
+
+
+        background:
+            var(--bg-secondary);
+
+
+        border:
+            1px solid
+            var(--border-default);
+
     }
 
-    @include respond(phone) {
-      width: 1rem;
-      height: 1rem;
-      &::before {
-        height: 0.3rem;
-      }
-      &::after {
-        width: 0.3rem; // vertical bar
-      }
-    }
-  }
 
-  &__minus {
-    height: 1.5rem;
-    width: 1.5rem;
-    &::after {
-      @include pseudoStyle();
-      width: 100%;   // horizontal bar
-      height: 0.4rem;
+
+
+
+
+    &__plus,
+    &__minus {
+
+
+        position:
+            relative;
+
+
+        width:
+            2rem;
+
+
+        height:
+            2rem;
+
+
+        border:
+            none;
+
+
+        background:
+            transparent;
+
+
+        cursor:
+            pointer;
+
+
+        transition:
+            transform .15s ease;
+
+
+
+        &:hover {
+
+            transform:
+                scale(1.15);
+
+        }
+
+
+
+        &:active {
+
+            transform:
+                scale(.9);
+
+        }
+
+
     }
 
-    &:hover::after {
-      transform: translate(-50%, -50%) scale(1.2);
+
+
+
+
+    &__plus {
+
+
+        &::before,
+        &::after {
+
+            content:"";
+
+            position:absolute;
+
+            top:50%;
+            left:50%;
+
+
+            background:
+                var(--text-primary);
+
+
+            border-radius:
+                1rem;
+
+
+            transform:
+                translate(-50%,-50%);
+
+            transition:
+                background .2s ease;
+
+        }
+
+
+
+        &::before {
+
+            width:
+                1.2rem;
+
+            height:
+                .2rem;
+
+        }
+
+
+        &::after {
+
+            width:
+                .2rem;
+
+            height:
+                1.2rem;
+
+        }
+
+
+        &:hover::before,
+        &:hover::after {
+
+            background:
+                var(--color-primary);
+
+        }
+
     }
-    &:active::after {
-      transform: translate(-50%, -50%) scale(0.95);
+
+
+
+
+
+
+
+    &__minus {
+
+
+        &::after {
+
+            content:"";
+
+            position:absolute;
+
+            width:
+                1.2rem;
+
+            height:
+                .2rem;
+
+
+            top:
+                50%;
+
+            left:
+                50%;
+
+
+            background:
+                var(--text-primary);
+
+
+            border-radius:
+                1rem;
+
+
+            transform:
+                translate(-50%,-50%);
+
+        }
+
+
+
+        &:hover::after {
+
+            background:
+                var(--color-primary);
+
+        }
+
     }
-    @include respond(phone) {
-      width: 1rem;
-      height: 1rem;
+
+
+
+
+
+
+    &__nb {
+
+        min-width:
+            2.5rem;
+
+        text-align:
+            center;
+
+        font-size:
+            var(--fs-base);
+
+        font-weight:
+            var(--fw-semibold);
+
     }
-  }
-  &__title{
-    text-align: center;
-    font-size: var(--text-lg);
-  }
-  &__remove {
-    border: none;
-    margin-top: var(--sm-spacing);
-    text-align: center;
-    button {
-      border: none;
-      background-color: transparent;
-      color: var(--color-danger-tints);
-      transition: all .2s ease;
-      cursor: pointer;
-      &:hover {
-        transform: scale(1.2);
-      }
-      &:active {
-         transform: scale(0.9);
-      }
+
+
+
+
+
+
+
+    /* =====================================================
+       REMOVE
+    ====================================================== */
+
+
+    &__remove {
+
+
+        button {
+
+
+            border:
+                none;
+
+
+            background:
+                transparent;
+
+
+            cursor:
+                pointer;
+
+
+            color:
+                var(--color-danger);
+
+
+
+            font-size:
+                var(--fs-sm);
+
+
+
+            transition:
+                color .2s ease,
+                transform .2s ease;
+
+
+
+            &:hover {
+
+                color:
+                    var(--color-danger-dark);
+
+                transform:
+                    translateY(-1px);
+
+            }
+
+
+
+            &:active {
+
+                transform:
+                    scale(.95);
+
+            }
+
+        }
+
     }
-  }
-  &__price {
-    font-size: var(--text-lg);
-    text-align: right;
-    @include respond(tab-port) {
-      font-size: var(--text-sm);
+
+
+
+
+
+
+
+    /* =====================================================
+       PRICE
+    ====================================================== */
+
+
+    &__price {
+
+
+        font-size:
+            var(--fs-lg);
+
+
+        font-weight:
+            var(--fw-semibold);
+
+
+        color:
+            var(--text-primary);
+
+
+        white-space:
+            nowrap;
+
+
     }
-  }
+
+
+
+
+
+
+
+    @include respond(tab-port){
+
+
+        grid-template-columns:
+            1fr;
+
+
+        gap:
+            var(--space-5);
+
+
+
+        &__amount {
+
+            flex-direction:
+                row;
+
+            justify-content:
+                space-between;
+
+        }
+
+
+
+        &__price {
+
+            text-align:
+                right;
+
+        }
+
+
+    }
+
+
+
+
+    @include respond(phone){
+
+
+        padding:
+            var(--space-4);
+
+
+
+        &__figure {
+
+            gap:
+                var(--space-3);
+
+        }
+
+
+    }
+
 }

@@ -1,42 +1,331 @@
 @import '../../../themes/styles/mixins';
 
+
+/* ==========================================================
+   CART PAGE
+========================================================== */
+
 .cart {
-  &__container {
-    padding-top: 14rem;
-  }
-  &__content {
-    @include page-layout();
-    display: flex;
-    flex-direction: column;
-  }
-  &__body {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: var(--x-l-spacing);
-    @include respond(tab-port) {
-      grid-template-columns: 1fr
-    }
-  }
-  &__items-nb {
-    border-bottom: 1px solid var(--grey-5);
-    padding-bottom: var(--2xs-spacing);
-    color: var(--grey-2);
-    font-size: var(--text-xl);
-    font-weight: var(--font-medium);
-  }
-  &__item {
-    margin-top: var(--x-l-spacing);
-  }
 
-  &__place-holder {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 35%;
-    top: 60%;
 
-    @include respond(tab-port) {
-      left: 50%;
+    &__container {
+
+        padding-top:
+            var(--space-8);
+
     }
-  }
+
+
+
+
+
+    &__content {
+
+        @include page-layout();
+
+        position:
+            relative;
+
+        min-height:
+            60rem;
+
+    }
+
+
+
+
+
+    /* ======================================================
+       HEADER
+    ====================================================== */
+
+    &__header {
+
+        margin-bottom:
+            var(--space-8);
+
+
+    }
+
+
+
+
+    &__badge {
+
+        display:
+            inline-flex;
+
+        align-items:
+            center;
+
+
+        padding:
+            .6rem 1.4rem;
+
+
+        margin-bottom:
+            var(--space-4);
+
+
+        border-radius:
+            var(--radius-pill);
+
+
+        background:
+            var(--color-primary-soft);
+
+
+        color:
+            var(--color-primary);
+
+
+        font-size:
+            var(--fs-sm);
+
+
+        font-weight:
+            var(--fw-semibold);
+
+
+    }
+
+
+
+
+
+
+
+    /* ======================================================
+       BODY
+    ====================================================== */
+
+
+    &__body {
+
+
+        display:
+            grid;
+
+
+        grid-template-columns:
+            1.4fr .6fr;
+
+
+        gap:
+            var(--space-8);
+
+
+        align-items:
+            start;
+
+
+
+        @include respond(tab-port){
+
+            grid-template-columns:
+                1fr;
+
+        }
+
+    }
+
+
+
+
+
+
+    /* ======================================================
+       ITEMS SECTION
+    ====================================================== */
+
+
+    &__items {
+
+
+        background:
+            var(--bg-main);
+
+
+        border:
+            1px solid
+            var(--border-default);
+
+
+        border-radius:
+            var(--radius-xl);
+
+
+        padding:
+            var(--space-6);
+
+
+        box-shadow:
+            var(--shadow-sm);
+
+
+    }
+
+
+
+
+
+
+    &__items-nb {
+
+
+        padding-bottom:
+            var(--space-4);
+
+
+        margin-bottom:
+            var(--space-6);
+
+
+        border-bottom:
+            1px solid
+            var(--border-default);
+
+
+
+        color:
+            var(--text-secondary);
+
+
+
+        font-size:
+            var(--fs-base);
+
+
+
+        font-weight:
+            var(--fw-medium);
+
+
+    }
+
+
+
+
+
+
+
+    &__item {
+
+
+        padding-block:
+            var(--space-5);
+
+
+
+        border-bottom:
+            1px solid
+            var(--border-default);
+
+
+
+        &:last-child {
+
+            border-bottom:
+                none;
+
+        }
+
+
+    }
+
+
+
+
+
+
+    /* ======================================================
+       ORDER TOTAL CARD
+    ====================================================== */
+
+
+    .order-total {
+
+
+        background:
+            var(--bg-main);
+
+
+
+        border:
+            1px solid
+            var(--border-default);
+
+
+
+        border-radius:
+            var(--radius-xl);
+
+
+
+        padding:
+            var(--space-6);
+
+
+
+        box-shadow:
+            var(--shadow-sm);
+
+
+
+        position:
+            sticky;
+
+
+
+        top:
+            8rem;
+
+
+
+        @include respond(tab-port){
+
+            position:
+                static;
+
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+    /* ======================================================
+       EMPTY STATE
+    ====================================================== */
+
+
+    &__placeholder {
+
+
+        position:
+            absolute;
+
+
+        inset:
+            0;
+
+
+        display:
+            flex;
+
+
+        justify-content:
+            center;
+
+
+        align-items:
+            center;
+
+    }
+
 }
-

@@ -1,0 +1,27 @@
+:root {
+  /* BACKGROUND */
+  --bg-main: var(--white);
+  --bg-secondary: var(--grey-50);
+  --bg-muted: var(--grey-100);
+
+  /* TEXT */
+  --text-primary: var(--grey-900);
+  --text-secondary: var(--grey-700);
+  --text-muted: var(--grey-500);
+  --text-inverse: var(--white);
+
+  /* BORDER */
+  --border-default: var(--grey-200);
+  --border-strong: var(--grey-300);
+
+  /* BRAND */
+  --color-primary: var(--primary-600);
+  --color-primary-hover: var(--primary-700);
+  --color-primary-soft: var(--primary-50);
+
+  /* DANGER */
+  --color-danger: var(--danger-600);
+  --color-danger-soft: var(--danger-50);
+
+  --color-warning: var(--danger-300)
+}

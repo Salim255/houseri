@@ -1,61 +1,382 @@
 @import '../../../themes/styles/mixins';
 
-.single-product {
-  display: flex;
-  flex-direction: column;
-  &__container {
-    padding-top: 14rem;
-  }
-  &__content {
-    @include page-layout();
-    height: calc(100vh - 14rem);
 
-  }
-  &__figure {
-    display: flex;
-    gap: var(--x-l-spacing);
-    height: 100%;
-    @include respond(tab-port){
-      flex-direction: column;
+.single-product {
+
+    &__container {
+        padding-top: var(--space-8);
     }
-  }
-  &__img {
-    flex: 1;
-    img {
-      width: 100%;
-      height: 70%;
-      object-fit: cover;
-      border-radius: var(--radius-3xl);
-      @include respond(tab-port){
-        height: 40rem;
-      }
+
+    &__content {
+      @include page-layout();
     }
-    @include respond(tab-port){
-      flex: unset;
+
+    &__figure {
+
+        display: grid;
+
+        grid-template-columns: 1.1fr .9fr;
+
+        align-items: center;
+
+        gap: var(--space-8);
+
+        margin: 0;
+
+        @include respond(tab-port) {
+
+
+            grid-template-columns:
+                1fr;
+
+
+
+        }
+
+
     }
-  }
-  &__description {
-    flex: 1;
-  }
-  &__name{
-    font-weight: var(--font-bold);
-    color: var(--grey-2);
-    font-size: var(--text-2xl);
-    margin-bottom: var(--sm-spacing);
-  }
-  &__paragraph, &__price {
-    line-height: 1.5;
-    margin-bottom: var(--sm-spacing);
-  }
-  &__price {
-    margin-bottom: var(--sm-spacing);
-    font-size: var(--text-lg);
-  }
-  &__add-btn{
-    border: none;
-    margin-top: var(--sm-spacing);
-    @include respond(tab-port){
-      width: 100%;
+
+
+
+
+
+
+
+    &__image {
+
+
+        overflow:
+            hidden;
+
+
+
+        border-radius:
+            var(--radius-2xl);
+
+
+
+        background:
+            var(--bg-main);
+
+
+
+        box-shadow:
+            var(--shadow-md);
+
+
+
+
+        img {
+
+
+            display:
+                block;
+
+
+
+            width:
+                100%;
+
+
+
+            height:
+                50rem;
+
+
+
+            object-fit:
+                cover;
+
+
+
+            transition:
+                transform .4s ease;
+
+
+
+        }
+
+
+
+
+        &:hover img {
+
+
+            transform:
+                scale(1.03);
+
+
+        }
+
+
+
+
+
+        @include respond(tab-port) {
+
+
+            img {
+
+
+                height:
+                    40rem;
+
+
+            }
+
+
+        }
+
+
+
+
+        @include respond(phone) {
+
+
+            img {
+
+
+                height:
+                    28rem;
+
+
+            }
+
+
+        }
+
+
     }
-  }
+
+
+
+
+
+
+
+    &__details {
+
+
+        display:
+            flex;
+
+
+        flex-direction:
+            column;
+
+
+
+        justify-content:
+            center;
+
+
+
+        margin:
+            0;
+
+
+    }
+
+
+
+
+
+
+
+    &__badge {
+
+
+        width:
+            fit-content;
+
+
+
+        padding:
+            var(--space-2)
+            var(--space-4);
+
+
+
+        margin-bottom:
+            var(--space-5);
+
+
+
+        border-radius:
+            var(--radius-pill);
+
+
+
+        background:
+            var(--color-primary-soft);
+
+
+
+        color:
+            var(--color-primary);
+
+
+
+        font-size:
+            var(--fs-sm);
+
+
+
+        font-weight:
+            var(--fw-medium);
+
+
+
+    }
+
+
+
+
+
+
+
+
+    &__name {
+
+
+        color:
+            var(--text-primary);
+
+
+
+        font-family:
+            var(--font-heading);
+
+
+
+        font-size:
+            var(--fs-4xl);
+
+
+
+        font-weight:
+            var(--fw-bold);
+
+
+
+        line-height:
+            1.2;
+
+
+
+        margin-bottom:
+            var(--space-4);
+
+
+
+        @include respond(phone) {
+
+
+            font-size:
+                var(--fs-3xl);
+
+
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+    &__price {
+
+
+        color:
+            var(--color-primary);
+
+
+
+        font-size:
+            var(--fs-3xl);
+
+
+
+        font-weight:
+            var(--fw-bold);
+
+
+
+        margin-bottom:
+            var(--space-5);
+
+
+    }
+
+
+
+
+
+
+
+    &__description {
+
+
+        color:
+            var(--text-secondary);
+
+
+
+        font-size:
+            var(--fs-lg);
+
+
+
+        line-height:
+            1.7;
+
+
+
+        max-width:
+            50rem;
+
+
+
+        margin-bottom:
+            var(--space-7);
+
+
+    }
+
+
+
+
+
+
+
+    &__actions {
+
+
+        .app-button {
+
+
+            min-width:
+                20rem;
+
+
+
+            @include respond(phone) {
+
+
+                width:
+                    100%;
+
+
+            }
+
+
+        }
+
+    }
+
+
 }

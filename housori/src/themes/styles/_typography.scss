@@ -1,199 +1,25 @@
-@import '../styles/_mixins';
-
 :root {
-  // 1. FONT FAMILY
+  /* FONT FAMILY */
   --font-base: 'Inter', sans-serif;
   --font-heading: 'Poppins', sans-serif;
 
-  // 2. FONT SIZES(px)
-  // 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 /
-  // 62 / 74 / 86 / 98
-  --text-xs: .8rem;
-  --text-sm: 1rem;
-  --text-base: 1.4rem;
-  --text-lg: 1.6rem;
-  --text-xl: 1.8rem;
-  --text-2xl: 2rem;
-  --text-3xl: 2.4rem;
-  --text-4xl: 3rem;
-  --text-5xl: 3.6rem;
-  --text-6xl: 4.4rem;
-  --text-7xl: 5.2rem;
-  --text-8xl: 6.2rem;
+  /* FONT SIZE SCALE */
+  --fs-xs: 0.8rem;
+  --fs-sm: 1rem;
+  --fs-base: 1.4rem;
+  --fs-lg: 1.6rem;
+  --fs-xl: 1.8rem;
+  --fs-2xl: 2rem;
+  --fs-3xl: 2.4rem;
+  --fs-4xl: 3rem;
+  --fs-5xl: 3.6rem;
+  --fs-6xl: 4.4rem;
+  --fs-7xl: 5.2rem;
+  --fs-8xl: 6.2rem;
 
-  // 3. FONT WEIGHTS
-  --font-light: 300;
-  --font-normal: 400; // Default
-  --font-medium: 500;
-  --font-bold: 700;
-
-
-  // 5. LINE HEIGHT
-
-  // SPACING SYSTEM (px)
-  // 2 / 4 / 8 / 12 / 16 / 24 / 32 / 32 / 48 / 64 / 80 / 96 / 128
-  --4xs-spacing: 0.2rem;
-  --3xs-spacing: 0.4rem;
-  --2xs-spacing: 0.8rem;
-  --xs-spacing: 1.2rem;
-  --sm-spacing: 1.6rem;
-  --md-spacing: 2.4rem;
-  --l-spacing: 3.2rem;
-  --x-l-spacing: 4rem;
-  --2x-l-spacing: 6rem;
-
-  // 06 ====  Shadows =======
-  --box-shadow-light:  0rem 1rem  2rem rgba(0, 0, 0, 0.2);
-  --box-shadow-light-medium: 0rem .5rem  1rem rgba(0, 0, 0, 0.2);
-  --box-shadow-light-small:  0rem .25rem  1rem rgba(0, 0, 0, 0.07);
-
-  // Blur & filter =====
-  --main-blur:  rgba(192, 192, 192, 0.4);
-  --main-filter: blur(5px);
-
-  // 07 === Border Radius ======
-  --radius-none: 0;
-  --radius-sm: 0.2rem;
-  --radius-md: 0.4rem;
-  --radius-lg: 0.8rem;
-  --radius-xl: 1.2rem;
-  --radius-2xl: 1.6rem;
-  --radius-3xl: 2rem;
-  --radius-strong: 10rem;
-  --radius-full: 50%;
+  /* FONT WEIGHT */
+  --fw-light: 300;
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
 }
-
-// Heading
-// 01 Primary
-.heading-primary {
-  font-size: var(--text-5xl);
-  font-weight: var(--font-bold);
-  line-height: 1.05;
-  letter-spacing: -.5px;
-  margin-bottom: var(--l-spacing);
-
-  @include respond(tab-land) {
-    font-size: var(--text-6xl);
-  }
-  @include respond(tab-port) {
-    font-size: var(--text-5xl);
-  }
-  @include respond(phone) {
-    font-size: var(--text-4xl);
-  }
-}
-
-.heading-secondary {
-  font-size: var(--text-4xl);
-  letter-spacing: -.4px;
-    margin-bottom: var(--md-spacing);
-  @include respond(tab-land) {
-    font-size: var(--text-3xl);
-  }
-  @include respond(tab-port) {
-    font-size: var(--text-3xl);
-  }
-  @include respond(phone) {
-    font-size: var(--text-2xl);
-  }
-}
-
-.heading-tertiary {
-  font-size: var(--text-3xl);
-  letter-spacing: -.3px;
-  color: var(--grey-2);
-}
-
-.heading-quaternary {
-  font-size: var(--text-lg); // slightly smaller than heading-tertiary
-  letter-spacing: -.2px;
-  margin-bottom: var(--xs-spacing);
-  font-weight: var(--font-medium);
-}
-
-
-.heading-primary,
-.heading-secondary,
-.heading-tertiary {
-  color: var(--grey-2);
-  font-weight: var(--font-bold);
-  line-height: 1.05;
-}
-
-.btn {
-  display: inline-block;
-  cursor: pointer;
-  text-decoration: none;
-  border: none;
-  transition: all .2s ease-in;
-  position: relative;
-  color: var(--bg-main);
-  box-shadow: var(--box-shadow-light);
-  border-radius: var(--radius-strong);
-  &__primary {
-    padding: 1.5rem 3rem;
-    font-size: var(--text-xl);
-    &--full {
-      background-color: var(--color-primary);
-    }
-    &--outline {
-      outline: 2px solid var(--color-primary);
-      color: var(--color-primary);
-    }
-    &--disabled {
-      background-color: #cccccc;   // soft grey background
-      color: #666666;              // muted text
-      border: none;
-      cursor: not-allowed;
-    }
-    &:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--box-shadow-light);
-    }
-    &:active {
-      transform: translateY(-1px);
-      box-shadow: var(--box-shadow-light);
-    }
-    &:hover::after {
-      background-color: var(--color-primary);;
-      transform: scaleX(1.4) scaleY(1.6);
-      opacity: 0;// To fade up
-    }
-  }
-  &__secondary {
-    box-shadow: var(--box-shadow-light);
-    padding: 1rem 2rem;
-    &--outline {
-      border-color: 2px solid var(--color-primary) ;
-    }
-    &--full {
-      background-color: var(--color-primary);
-    }
-     &:hover {
-      transform: translateY(-1.5px);
-      box-shadow: var(--box-shadow-light);
-    }
-    &:active {
-      transform: translateY(-.5px);
-      box-shadow: var(--box-shadow-light);
-    }
-    &:hover::after {
-      background-color: var(--color-primary);;
-      transform: scaleX(1.1) scaleY(1.5);
-      opacity: 0;// To fade up
-    }
-  }
-  &::after{
-    content: "";
-    display: inline-block;
-    border-radius: var(--radius-strong);
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: all .4s;
-  }
-}
-

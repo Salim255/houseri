@@ -1,0 +1,511 @@
+/* ==========================================================
+   APP BUTTON
+========================================================== */
+
+.app-button {
+
+    position: relative;
+
+    isolation: isolate;
+
+    overflow: hidden;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: var(--space-3);
+
+    min-height: 4rem;
+
+    padding: 1.5rem 3rem;
+
+
+
+    border-radius:
+        var(--radius-xl);
+
+    background:
+        transparent;
+
+    color:
+        var(--text-primary);
+
+    font-family:
+        var(--font-base);
+
+    font-size:
+        var(--fs-base);
+
+    font-weight:
+        var(--fw-medium);
+
+    line-height: 1;
+
+    text-decoration: none;
+
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    user-select: none;
+
+    -webkit-tap-highlight-color: transparent;
+
+    transition:
+        all .2s ease-in;
+    box-shadow: var(--box-shadow-light);
+
+    border-radius: 999px;
+}
+
+
+
+/* ==========================================================
+   RIPPLE LAYER
+========================================================== */
+
+.app-button::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: inherit;
+
+    transition: all .4s ease;
+
+    z-index: -1;
+
+}
+
+
+
+/* ==========================================================
+   FULL WIDTH
+========================================================== */
+
+.app-button--full {
+
+    width: 100%;
+
+}
+
+
+
+/* ==========================================================
+   PRIMARY
+========================================================== */
+
+/* ==========================================================
+   PRIMARY
+========================================================== */
+
+.app-button--primary {
+
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: visible;
+
+    background:
+        var(--color-primary);
+
+    color:
+        var(--text-inverse);
+
+    border:
+        none;
+
+    border-radius: 999px;
+}
+
+
+
+/* ==========================================================
+   PRIMARY EFFECT LAYER
+========================================================== */
+
+.app-button--primary::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    border-radius:
+        inherit;
+
+    background:
+        var(--color-primary);
+
+    z-index: -1;
+
+    transition:
+        all .4s ease;
+
+}
+
+
+
+/* ==========================================================
+   PRIMARY HOVER
+========================================================== */
+
+.app-button--primary:hover:not(:disabled) {
+
+    transform:
+        translateY(-2px);
+
+     box-shadow:
+        var(--shadow-lg);
+
+}
+
+
+
+.app-button--primary:hover:not(:disabled)::after {
+
+    transform:
+        scaleX(1.1)
+        scaleY(1.4);
+
+    opacity: 0;
+
+}
+
+
+
+/* ==========================================================
+   PRIMARY ACTIVE
+========================================================== */
+
+.app-button--primary:active:not(:disabled) {
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        var(--shadow-sm);
+}
+
+
+
+/* ==========================================================
+   PRIMARY FOCUS
+========================================================== */
+
+.app-button--primary:focus-visible {
+
+    outline: none;
+
+}
+
+
+
+/* ==========================================================
+   PRIMARY DISABLED
+========================================================== */
+
+.app-button--primary:disabled {
+
+    background:
+        var(--grey-300);
+
+    color:
+        var(--grey-500);
+
+    box-shadow:
+        none;
+
+    cursor:
+        not-allowed;
+
+    transform:
+        none;
+
+}
+
+
+
+.app-button--primary:disabled::after {
+
+    display: none;
+
+}
+
+
+
+/* ==========================================================
+   SECONDARY
+========================================================== */
+
+.app-button--secondary {
+
+    position: relative;
+
+    overflow: visible;
+
+    z-index: 1;
+
+    background: var(--bg-main);
+
+    color: var(--text-primary);
+
+    border-color: var(--border-default);
+
+    box-shadow: var(--shadow-sm);
+    border-radius: 999px;
+}
+
+
+
+/* ==========================================================
+   RIPPLE
+========================================================== */
+
+.app-button--secondary::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -1;
+
+    border-radius: inherit;
+
+    background: var(--bg-main);
+
+    border: inherit;
+
+    transition:
+        transform .4s ease,
+        opacity .4s ease,
+        background-color .4s ease;
+
+}
+
+
+
+/* ==========================================================
+   HOVER
+========================================================== */
+
+.app-button--secondary:hover:not(:disabled) {
+
+    background: var(--bg-secondary);
+
+    border-color: var(--border-strong);
+
+    transform: translateY(-2px);
+
+    box-shadow: var(--shadow-md);
+
+}
+
+
+
+.app-button--secondary:hover:not(:disabled)::after {
+
+    background: var(--bg-secondary);
+
+    transform: scaleX(1.1) scaleY(1.4);
+
+    opacity: 0;
+
+}
+
+
+
+/* ==========================================================
+   ACTIVE
+========================================================== */
+
+.app-button--secondary:active:not(:disabled) {
+
+    transform: translateY(-1px);
+
+    box-shadow: var(--shadow-sm);
+
+}
+
+
+
+/* ==========================================================
+   FOCUS
+========================================================== */
+
+.app-button--secondary:focus-visible {
+
+    outline: none;
+
+    box-shadow:
+        0 0 0 .3rem var(--color-primary-soft),
+        var(--shadow-md);
+}
+
+
+/* ==========================================================
+   OUTLINE
+========================================================== */
+/* ==========================================================
+   OUTLINE
+========================================================== */
+
+.app-button--outline {
+
+    position: relative;
+
+    overflow: visible;
+
+    background:
+        var(--bg-main);
+
+    color:
+        var(--color-primary);
+
+    border:
+        1px solid var(--color-primary);
+
+}
+
+
+
+/* ==========================================================
+   EFFECT LAYER
+========================================================== */
+
+.app-button--outline::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: inherit;
+
+    background: var(--color-primary);
+
+    opacity: 0;
+
+    z-index: -1;
+
+    transition:
+        transform .4s ease,
+        opacity .4s ease;
+
+}
+
+
+
+/* ==========================================================
+   HOVER
+========================================================== */
+
+.app-button--outline:hover:not(:disabled) {
+
+    color:
+        var(--text-inverse);
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        var(--shadow-lg);
+
+}
+
+
+
+.app-button--outline:hover:not(:disabled)::after {
+
+    opacity: 1;
+
+    transform:
+        scale(1);
+
+}
+
+
+
+/* ==========================================================
+   ACTIVE
+========================================================== */
+
+.app-button--outline:active:not(:disabled) {
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        var(--shadow-sm);
+
+}
+
+/* ==========================================================
+   DISABLED
+========================================================== */
+
+.app-button--secondary:disabled {
+
+    background: var(--grey-100);
+
+    color: var(--grey-400);
+
+    border-color: var(--grey-200);
+
+    box-shadow: none;
+
+    cursor: not-allowed;
+
+}
+
+
+
+.app-button--secondary:disabled::after {
+
+    display: none;
+
+}
+
+
+
+/* ==========================================================
+   LABEL
+========================================================== */
+
+.app-button__label {
+
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 2;
+
+}
+

@@ -1,8 +1,8 @@
-  <section class="intro">
-      <div class="intro__description">
-        <h1 class="heading-primary"> {{ homeHeader }} </h1>
-        <p> {{ description }} </p>
-        <a routerLink="/products" class="btn btn__primary btn__primary--full">Our products</a>
-      </div>
-      <img  loading="lazy" class="intro__hero" src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZnVybml0dXJlfGVufDB8fDB8fHww" alt="home" />
-    </section>
+<section class="intro">
+    <div class="intro__description">
+      <h1 class="heading-primary"> {{ homeHeader }} </h1>
+      <p> {{ description }} </p>
+      <app-button variant="primary" (click)="onNavigate()">Our products</app-button>
+    </div>
+    <img  loading="lazy" class="intro__hero" src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZnVybml0dXJlfGVufDB8fDB8fHww" alt="home" />
+</section>

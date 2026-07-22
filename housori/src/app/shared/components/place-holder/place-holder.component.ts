@@ -1,4 +1,11 @@
-import { Component, Input, SimpleChanges } from "@angular/core";
+import { Component, Input, OnChanges, SimpleChanges } from "@angular/core";
+import { Router } from "@angular/router";
+
+interface PlaceholderConfig {
+  text: string;
+  button: string;
+  route: string;
+}
 
 @Component({
   selector: 'app-place-holder',
@@ -6,28 +13,123 @@ import { Component, Input, SimpleChanges } from "@angular/core";
   styleUrls: ['./place-holder.component.scss'],
   standalone: false,
 })
+export class Placeholder implements OnChanges {
 
-export class Placeholder {
-  @Input() componentName!: string;
-  mainText: string = '';
-  btnText: string = '';
-  placeHolderData = [{ btn: 'Keep Shopping' , text: 'You cart is empty. keep shopping to find a product' }]
-  constructor(){}
+
+  @Input()
+  componentName!: 'cart' | 'orders' | 'checkout';
+
+
+  mainText = '';
+  btnText = '';
+
+
+
+  private readonly placeholderData: Record<string, PlaceholderConfig> = {
+
+
+    cart: {
+
+      text:
+        'Your cart is empty. Explore our products and find something you love.',
+
+      button:
+        'Keep Shopping',
+
+      route:
+        '/products'
+
+    },
+
+
+
+    orders: {
+
+      text:
+        'You have no orders yet. Start shopping and your orders will appear here.',
+
+      button:
+        'Start Shopping',
+
+      route:
+        '/products'
+
+    },
+
+
+
+    checkout: {
+
+      text:
+        'Your cart is empty. Add products before completing your order.',
+
+      button:
+        'Browse Products',
+
+      route:
+        '/products'
+
+    }
+
+  };
+
+
+
+
+  constructor(
+    private router: Router
+  ){}
+
+
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.setData();
+
+    if(changes['componentName']) {
+
+      this.setData();
+
+    }
+
   }
 
-  setData(){
-    switch(this.componentName){
-      case 'checkout':
-        this.btnText = this.placeHolderData[0].btn;
-        this.mainText = this.placeHolderData[0].text;
-        return;
-      default:
-        this.btnText = this.placeHolderData[0].btn;
-        this.mainText = this.placeHolderData[0].text;
-        return;
+
+
+
+
+  private setData(): void {
+
+    const data = this.placeholderData[this.componentName];
+
+
+    if(!data) {
+
+      return;
+
     }
+
+
+    this.mainText = data.text;
+
+    this.btnText = data.button;
+
   }
+
+
+
+
+
+
+  onNavigate(): void {
+
+    const data = this.placeholderData[this.componentName];
+
+
+    if(data) {
+
+      this.router.navigateByUrl(data.route);
+
+    }
+
+  }
+
 }

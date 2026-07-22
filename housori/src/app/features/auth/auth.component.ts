@@ -1,12 +1,23 @@
-import { Component, OnInit, signal } from "@angular/core";
+import { Component, ElementRef, OnInit, signal } from "@angular/core";
 import { AuthService, AuthType } from "./services/auth.service";
 import { Subscription } from "rxjs";
 import { AuthFormService } from "./services/auth-form.service";
+import { NG_VALUE_ACCESSOR } from "@angular/forms";
+import { Router } from "@angular/router";
+
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],
   standalone: false,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: AuthComponent,
+      multi: true
+    }
+  ]
+
 })
 
 export class AuthComponent implements OnInit {
@@ -16,9 +27,12 @@ export class AuthComponent implements OnInit {
   private formValidationSubscription!: Subscription;
   private authSubscription!: Subscription;
   private userIsAuthenticated: boolean = false;
+
   constructor(
+    private router: Router,
     private authFormService: AuthFormService,
     private authService: AuthService,
+    private elementRef: ElementRef
   ){}
 
   ngOnInit(): void {
@@ -60,7 +74,7 @@ export class AuthComponent implements OnInit {
   }
 
   onGuest(): void{
-    this.authService.setAuthType(AuthType.GUEST);
+    this.authService.setGuestUser();
   }
 
   onSwitch(): void{
@@ -74,6 +88,7 @@ export class AuthComponent implements OnInit {
   get showAuthModal(): boolean {
     return (this.authType() !== AuthType.GUEST) && (!this.userIsAuthenticated);
   }
+
   ngOnDestroy(): void {
     this.authTypeSubscription?.unsubscribe();
     this.formValidationSubscription?.unsubscribe();

@@ -16,7 +16,6 @@ export class FeaturedComponent implements OnInit {
     this.products = [];
   }
 
-
   ngOnInit(): void {
     this.productsService.getFeaturedProducts().subscribe();
     this.subscribeToFeatured();

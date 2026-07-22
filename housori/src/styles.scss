@@ -1,6 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 @import './themes/styles/typography';
-@import './themes/styles/colors';
+@import "./themes/styles/tokens/colors";
+@import "./themes/styles/semantic/colors";
+
 @import './themes/styles/mixins';
 @import './themes/styles/_base';
+@import "./themes/styles/radius";
+@import "./themes/styles/shadows";
+@import "./themes/styles/spacing";
 
+@import "./themes/styles/components/toast";
+/* ==========================================================
+   TOAST OVERRIDE
+========================================================== */
+/* ==========================================================
+   TOAST THEME
+========================================================== */

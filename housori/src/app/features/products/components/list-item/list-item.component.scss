@@ -1,70 +1,299 @@
 @import '../../../../../themes/styles/mixins';
 
+
 .items-item {
-  font-size: 1.4rem;
-  display: flex;
-  justify-content: space-between;
-  transition: all .2s;
-  padding: 2rem;
-  margin: 1rem 0;
-  @include respond(tab-port){
-    box-shadow: var(--box-shadow-light-small);
-    padding: 0;
-  }
-  @include respond(phone){
-    border-radius: 2rem;
-  }
-  &:hover {
-    cursor: pointer;
-    transform: translateY(-3px);
-    box-shadow: var(--box-shadow-light-small);
-  }
-  &:active{
-    transform: translateY(-1px);
-  }
-  &__details {
+
     display: flex;
-    gap: var(--x-l-spacing);
-    @include respond(phone){
-      gap: var(--md-spacing);
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: var(--space-6);
+
+
+    padding: var(--space-5);
+
+
+    background:
+        var(--bg-main);
+
+
+    border:
+        1px solid
+        var(--border-default);
+
+
+    border-radius:
+        var(--radius-xl);
+
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        border-color .2s ease;
+
+
+
+    &:hover {
+
+        cursor: pointer;
+
+
+        transform:
+            translateY(-3px);
+
+
+        box-shadow:
+            var(--shadow-sm);
+
+
+        border-color:
+            var(--border-strong);
+
     }
-    .details-img {
-      height: 16rem;
-      width: 24rem;
-      object-fit: cover;
-      border-radius: 1rem;
-      transition: all .2s;
-      @include respond(phone){
-        height: 14rem;
-        width: 20rem;
-      }
-      cursor: pointer;
-      &:hover {
-        //transform: scaleY(1.02);
-        box-shadow: var(--box-shadow-light);
-        @include respond(tab-port){
-          box-shadow: unset;
+
+
+
+    &:active {
+
+        transform:
+            translateY(-1px);
+
+    }
+
+
+
+    /*
+    ============================
+        PRODUCT DETAILS
+    ============================
+    */
+
+
+    &__details {
+
+        display: flex;
+
+        align-items: center;
+
+
+        gap:
+            var(--space-6);
+
+
+        margin: 0;
+
+
+
+        @include respond(phone){
+
+            gap:
+                var(--space-4);
+
         }
-      }
+
     }
-    .details-title {
-      @include respond(tab-port){
-        padding: 2rem 0rem 0 0;
-      }
-      font-size: var(--text-xl);
-      .product-name {
-        margin-bottom: 1rem;
-        font-weight: var(--font-medium);
-        color: var(--grey-2);
-      }
-      .product-company {
-        font-size: var(--text-lg);
-      }
+
+
+
+    /*
+    ============================
+        IMAGE
+    ============================
+    */
+
+
+    &__image {
+
+
+        width:
+            20rem;
+
+
+        height:
+            14rem;
+
+
+        object-fit:
+            cover;
+
+
+        border-radius:
+            var(--radius-lg);
+
+
+
+        transition:
+            transform .2s ease;
+
+
+
+        @include respond(phone){
+
+            width:
+                11rem;
+
+
+            height:
+                10rem;
+
+        }
+
+
+
+        &:hover {
+
+            transform:
+                scale(1.02);
+
+        }
+
     }
-  }
-  &__price {
+
+
+
+
+    /*
+    ============================
+        CONTENT
+    ============================
+    */
+
+
+    &__content {
+
+
+        display:
+            flex;
+
+
+        flex-direction:
+            column;
+
+
+        gap:
+            var(--space-2);
+
+
+    }
+
+
+
+    &__name {
+
+
+        margin:
+            0;
+
+
+        color:
+            var(--text-primary);
+
+
+        font-size:
+            var(--fs-lg);
+
+
+        font-weight:
+            var(--fw-medium);
+
+
+    }
+
+
+
+    &__company {
+
+
+        margin:
+            0;
+
+
+        color:
+            var(--text-secondary);
+
+
+        font-size:
+            var(--fs-base);
+
+    }
+
+
+
+
+    /*
+    ============================
+        PRICE
+    ============================
+    */
+
+
+    &__price {
+
+
+        font-size:
+            var(--fs-xl);
+
+
+        font-weight:
+            var(--fw-bold);
+
+
+        color:
+            var(--color-primary);
+
+
+        white-space:
+            nowrap;
+
+
+
+        @include respond(phone){
+
+            font-size:
+                var(--fs-lg);
+
+        }
+
+    }
+
+
+
+    /*
+    ============================
+        MOBILE
+    ============================
+    */
+
+
     @include respond(tab-port){
-      padding: 2rem 2rem 0 0;
+
+
+        padding:
+            var(--space-4);
+
+
+
     }
-  }
+
+
+
+    @include respond(phone){
+
+
+        gap:
+            var(--space-3);
+
+
+
+        &__details {
+
+            flex: 1;
+
+        }
+
+
+    }
+
 }

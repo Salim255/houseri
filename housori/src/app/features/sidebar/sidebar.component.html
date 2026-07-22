@@ -1,0 +1,125 @@
+<div
+    class="sidebar-overlay"
+    (click)="onClose()">
+</div>
+
+
+<aside class="sidebar">
+
+
+    <header class="sidebar__header">
+
+
+        <a
+            routerLink="/"
+            class="sidebar__logo"
+            (click)="onClose()">
+
+
+            <ion-icon
+                name="cube-outline">
+            </ion-icon>
+
+
+            <span>
+                Housori
+            </span>
+
+
+        </a>
+
+
+
+        <button
+            class="sidebar__close"
+            type="button"
+            (click)="onClose()">
+
+
+            <ion-icon
+                name="close-outline">
+            </ion-icon>
+
+
+        </button>
+
+
+    </header>
+
+
+
+
+
+    <nav class="sidebar__nav">
+
+
+        <ul class="sidebar__list">
+
+
+            <li
+                class="sidebar__item"
+                *ngFor="let link of navLinks">
+
+
+
+                <a
+                    class="sidebar__link"
+
+                    [routerLink]="link.path"
+
+                    routerLinkActive="sidebar__link--active"
+
+                    [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+
+                    (click)="onClose()">
+
+
+
+                    {{ link.label }}
+
+
+                </a>
+
+
+
+            </li>
+
+
+        </ul>
+
+
+    </nav>
+
+
+
+
+
+
+    <footer class="sidebar__footer">
+
+
+        <button
+            class="sidebar__login"
+            type="button"
+            (click)="onLogin()">
+
+
+
+            <ion-icon
+                name="person-outline">
+            </ion-icon>
+
+
+            <span>
+                Login
+            </span>
+
+
+        </button>
+
+
+    </footer>
+
+
+
+</aside>

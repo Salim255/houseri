@@ -1,22 +1,118 @@
 <div class="checkout">
-  <div class="checkout__container">
-    <div class="checkout__content">
-      <h1 class="checkout__header heading-primary">Place your order</h1>
-      <div class="checkout__body" *ngIf="cartItems().length" >
-        <section class="shipping-info">
-          <p> Shipping information: </p>
-          <app-shipping-address-form ></app-shipping-address-form>
-        </section>
-        <section class="order-details">
-          <p > Order summary: </p>
-          <app-order-total [totalDetails]="totalDetails()"></app-order-total>
-        </section>
-      </div>
-      <div class="checkout__place-holder">
-        <app-place-holder *ngIf="!cartItems().length" [componentName]="'checkout'"></app-place-holder>
-      </div>
-    </div>
-  </div>
-</div>
-<app-payment *ngIf="orderIsPlaced()"></app-payment>
 
+
+    <div class="checkout__container">
+
+
+        <section class="checkout__content">
+
+
+            <header class="checkout__header">
+
+
+                <span class="checkout__badge">
+
+                    Checkout
+
+                </span>
+
+
+                <h2 class="heading-primary">
+
+                    Place your order
+
+                </h2>
+
+
+            </header>
+
+
+
+
+
+            <div
+                class="checkout__body"
+                *ngIf="cartItems().length">
+
+
+
+                <section class="checkout-section shipping-info">
+
+
+                    <h2 class="checkout-section__title">
+
+                        Shipping information
+
+                    </h2>
+
+
+
+                    <app-shipping-address-form>
+
+                    </app-shipping-address-form>
+
+
+                </section>
+
+
+
+
+
+
+                <section class="checkout-section order-details">
+
+
+                    <h2 class="checkout-section__title">
+
+                        Order summary
+
+                    </h2>
+
+
+
+                    <app-order-total
+                        [totalDetails]="totalDetails()">
+
+                    </app-order-total>
+
+
+                </section>
+
+
+
+            </div>
+
+
+
+
+
+
+            <div class="checkout__placeholder">
+
+
+                <app-place-holder
+                    *ngIf="!cartItems().length"
+                    [componentName]="'checkout'">
+
+                </app-place-holder>
+
+
+            </div>
+
+
+
+        </section>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+<app-payment
+    *ngIf="orderIsPlaced()">
+
+</app-payment>

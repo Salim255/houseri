@@ -1,22 +1,103 @@
 <div class="cart">
-  <div class="cart__container">
-    <div class="cart__content">
-      <h1 class="heading-primary">Shopping cart</h1>
 
-      <section class="cart__body">
-        <section class="cart__items">
-          <p class="cart__items-nb"> {{ productsNm }} product in your cart</p>
-          <div class="cart__item" *ngFor="let product of  cartItems; let index = index">
-            <app-cart-item  [item]="product" ></app-cart-item>
-          </div>
+    <div class="cart__container">
+
+
+        <section class="cart__content">
+
+
+            <header class="cart__header">
+
+                <span class="cart__badge">
+                    Shopping Cart
+                </span>
+
+
+                <h2 class="heading-primary">
+                    Your basket
+                </h2>
+
+            </header>
+
+
+
+
+
+            <!-- CART CONTENT -->
+            <section
+                class="cart__body"
+                *ngIf="productsNm > 0">
+
+
+                <section class="cart__items">
+
+
+                    <p class="cart__items-nb">
+
+                        {{ productsNm }}
+                        {{ productsNm === 1 ? 'product' : 'products' }}
+                        in your cart
+
+                    </p>
+
+
+
+                    <div
+                        class="cart__item"
+                        *ngFor="let product of cartItems">
+
+
+                        <app-cart-item
+                            [item]="product">
+                        </app-cart-item>
+
+
+                    </div>
+
+
+                </section>
+
+
+
+
+
+                <section class="order-total">
+
+
+                    <app-order-total
+                        [totalDetails]="totalDetails">
+                    </app-order-total>
+
+
+                </section>
+
+
+            </section>
+
+
+
+
+
+
+            <!-- EMPTY CART -->
+            <div
+                class="cart__placeholder"
+                *ngIf="productsNm === 0">
+
+
+                <app-place-holder
+                    [componentName]="'cart'">
+                </app-place-holder>
+
+
+            </div>
+
+
+
         </section>
-        <section class="order-total">
-          <app-order-total [totalDetails]="totalDetails"></app-order-total>
-        </section>
-      </section>
-       <div class="cart__place-holder" *ngIf="productsNm === 0">
-        <app-place-holder  [componentName]="'cart'"></app-place-holder>
-      </div>
+
+
     </div>
-  </div>
+
+
 </div>

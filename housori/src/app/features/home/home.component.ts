@@ -7,6 +7,4 @@ import { HomeService } from "./services/home.service";
   styleUrls: ['./home.component.scss'],
   standalone: false
 })
-export class HomeComponent {
-
-}
+export class HomeComponent {}
