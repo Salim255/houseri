@@ -118,7 +118,7 @@
     <nav class="header__nav">
 
         <a
-            routerLink="/"
+            (click)="onOpenSidebar()"
             class="header__logo">
 
             <ion-icon
@@ -176,3 +176,8 @@
     </nav>
 
 </header>
+
+<app-sidebar
+    *ngIf="openMenu()"
+    (close)="onCloseSidebar()">
+</app-sidebar>

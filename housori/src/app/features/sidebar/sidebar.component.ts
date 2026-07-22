@@ -1,6 +1,8 @@
-import { Component } from "@angular/core";
-import { NavbarService } from "../navbar/services/navbar.service";
+import { Component, OnInit } from "@angular/core";
 import { AuthService, AuthType } from "src/app/features/auth/services/auth.service";
+import { NavbarService, LikeContent } from "../navbar/services/navbar.service";
+import { Router } from "@angular/router";
+
 
 @Component({
   selector: 'app-sidebar',
@@ -8,18 +10,31 @@ import { AuthService, AuthType } from "src/app/features/auth/services/auth.servi
   styleUrls: ['./sidebar.component.scss'],
   standalone: false,
 })
+export class SidebarComponent implements OnInit {
 
-export class SidebarComponent {
+
+  navLinks: LikeContent[] = [];
+
   constructor(
-    private authService  : AuthService,
-    private navbarService: NavbarService){}
+    private router: Router,
+    private navbarService: NavbarService,
+    private authService: AuthService
+  ) {}
 
-  onClose(): void{
+
+  ngOnInit(): void {
+    this.navLinks = this.navbarService.navLinks;
+  }
+
+  onClose(): void {
     this.navbarService.onCloseSideBar();
   }
-  onLogin(): void {
 
+
+  onLogin(): void {
+    this.authService.logout();
     this.authService.setAuthType(AuthType.LOGIN);
+    this.router.navigateByUrl("/auth")
     this.onClose();
   }
 }

@@ -106,6 +106,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.openMenu.set(this.showMenuBtn());
   };
 
+  onOpenSidebar(): void {
+      this.openMenu.set(true);
+    }
+
+
+  onCloseSidebar(): void {
+    this.openMenu.set(false);
+  }
+
   get showGuestActions(): boolean {
     const user = this.userInfo();
 
