@@ -24,7 +24,7 @@ export interface GetProductsResponseDto {
 @Injectable({ providedIn: 'root' })
 export class ProductHttpService {
   private ENV = environment;
-  private readonly basePath = `${this.ENV.apiUrl}/products/`;
+  private readonly basePath = `${this.ENV.apiUrl}/products`;
 
   constructor(private httpClient:  HttpClient ){}
 
@@ -36,7 +36,7 @@ export class ProductHttpService {
 
   fetchFeaturedProducts(): Observable<GetProductsResponseDto>{
     return this.httpClient.get<GetProductsResponseDto>(
-        `${this.basePath}featured-products?featured=true`, { withCredentials: true }
+        `${this.basePath}/featured-products?featured=true`, { withCredentials: true }
     );
   }
 }

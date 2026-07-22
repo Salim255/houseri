@@ -16,7 +16,7 @@
     </div>
   </div>
 
-  <div [class]="isGallery()==='list'
+  <div *ngIf="products.length" [class]="isGallery()==='list'
     ? 'products-list__items'
     : 'products-list__items-grid'">
     <ng-container *ngIf="isGallery()==='list'; else gallery">
@@ -34,6 +34,7 @@
 
   <!-- Pagination section -->
   <div
+    *ngIf="products.length > 3"
     class="products-list__pagination">
     <app-pagination
       (goToPageEmitter)="goToPage($event)"
