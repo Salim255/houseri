@@ -1,0 +1,297 @@
+<section class="landing">
+
+
+    <!-- ======================================================
+         HERO
+    ======================================================= -->
+
+    <section class="landing__hero">
+
+
+        <div class="landing__content">
+
+
+          <span class="landing__badge">
+
+              Welcome to Housori
+
+          </span>
+
+
+          <h1 class="landing__title">
+
+              Discover furniture
+              <br>
+              that fits your
+              <br>
+              modern home.
+
+          </h1>
+
+
+          <p class="landing__description">
+
+              Explore a curated collection of furniture,
+              compare designs, and find the perfect pieces
+              to create a space you love.
+
+          </p>
+
+
+
+            <div class="landing__actions">
+
+
+                <app-button
+                    variant="primary"
+                    type="button"
+                    (click)="onGuest()">
+
+                    Browse as guest
+
+                </app-button>
+
+
+
+
+                <app-button
+                    variant="outline"
+                    type="button"
+                    (click)="onRegister()">
+
+                    Create account
+
+                </app-button>
+
+
+            </div>
+
+
+
+
+            <button
+                class="landing__login"
+                type="button"
+                (click)="onLogin()">
+
+                Already have an account?
+                <span>
+                    Sign in
+                </span>
+
+            </button>
+
+
+        </div>
+
+
+
+
+
+        <!-- ==================================================
+             VISUAL
+        =================================================== -->
+
+
+        <div class="landing__visual">
+
+
+            <div class="landing__card landing__card--main">
+
+
+                <div class="landing__mock-image">
+
+                    <img alt="landing" src="/assets/images/landing.jpg"/>
+                </div>
+
+
+
+            </div>
+
+
+
+            <div class="landing__card landing__card--small">
+
+
+                <ion-icon
+                    name="sparkles-outline">
+                </ion-icon>
+
+
+                Premium experience
+
+
+            </div>
+
+
+
+        </div>
+
+
+    </section>
+
+
+
+
+
+    <!-- ======================================================
+         FEATURES
+    ======================================================= -->
+
+
+    <section class="landing__features">
+
+
+        <article class="landing__feature">
+
+
+            <div class="landing__feature-icon">
+
+                <ion-icon name="diamond-outline"></ion-icon>
+
+            </div>
+
+
+            <h3>
+
+                Premium Design
+
+            </h3>
+
+
+            <p>
+
+                A carefully crafted interface
+                designed for a seamless experience.
+
+            </p>
+
+
+        </article>
+
+
+
+
+
+
+        <article class="landing__feature">
+
+
+            <div class="landing__feature-icon">
+
+                <ion-icon name="person-outline"></ion-icon>
+
+            </div>
+
+
+            <h3>
+
+                Guest Access
+
+            </h3>
+
+
+            <p>
+
+                Explore the platform instantly
+                without creating an account.
+
+            </p>
+
+
+        </article>
+
+
+
+
+
+
+        <article class="landing__feature">
+
+
+            <div class="landing__feature-icon">
+
+                <ion-icon name="shield-checkmark-outline"></ion-icon>
+
+            </div>
+
+
+            <h3>
+
+                Secure Shopping
+
+            </h3>
+
+
+            <p>
+
+                Create an account whenever
+                you are ready to complete purchases.
+
+            </p>
+
+
+        </article>
+
+
+
+    </section>
+
+
+
+
+
+
+    <!-- ======================================================
+         FINAL CTA
+    ======================================================= -->
+
+
+    <section class="landing__cta">
+
+
+        <h2>
+
+            Ready to discover Housori?
+
+        </h2>
+
+
+
+        <p>
+
+            Start exploring a new way to experience furniture.
+
+        </p>
+
+
+
+        <div class="landing__cta-actions">
+
+
+            <app-button
+                variant="primary"
+                (click)="onGuest()">
+
+                Browse as guest
+
+            </app-button>
+
+
+
+            <app-button
+                variant="outline"
+                (click)="onLogin()">
+
+                Sign in
+
+            </app-button>
+
+
+        </div>
+
+
+    </section>
+
+
+</section>
