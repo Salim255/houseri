@@ -110,12 +110,9 @@ export class FilterComponent {
     );
   }
 
-  console.log(params);
   this.productsService
       .getAllProducts(params)
-      .subscribe(ps => {
-        console.log(ps)
-      });
+      .subscribe();
 
 }
   resetFilter(){

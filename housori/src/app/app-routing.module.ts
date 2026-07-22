@@ -1,8 +1,13 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AuthGuard } from "./features/auth/guard/AuthGuard";
+import { LandingComponent } from "./features/landing/landing.component";
 
 const routes: Routes = [
+  {
+    path: "landing",
+    component: LandingComponent
+  },
   {
     path: 'auth',
     loadChildren: () => import('./features/auth/auth.module').then((m) => m.AuthModule)

@@ -8,6 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { LandingComponent } from './features/landing/landing.component';
 
 // Why important:
 // - CoreModule and SharedModule are imported to provide common services and components.
@@ -19,7 +20,8 @@ import { SharedModule } from './shared/shared.module';
 // - CommonModule provides common directives like ngIf and ngFor.
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LandingComponent
   ],
   imports: [
     IonicModule,

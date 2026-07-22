@@ -21,7 +21,7 @@ export class AuthGuard implements CanMatch {
               return true;
             }
 
-            const urlTree = this.router.parseUrl('/auth');
+            const urlTree = this.router.parseUrl('/landing');
             return urlTree;
          })
       )
