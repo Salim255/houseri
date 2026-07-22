@@ -6,9 +6,11 @@ import { HttpParams } from "@angular/common/http";
 
 @Injectable({ providedIn: 'root' })
 export class ProductsService {
-  productsSourceBehavior = new BehaviorSubject<{ products: Product[], meta: ApiMetaData } | null>(null);
+  private productsSourceBehavior = new BehaviorSubject<{ products: Product[], meta: ApiMetaData } | null>(null);
+  getAllProtects$ =  this.productsSourceBehavior.asObservable();
   private featuredProductsSourceBehavior = new BehaviorSubject< { products: Product[] } | null>(null);
   getFeaturedProductsSource$ = this.featuredProductsSourceBehavior.asObservable();
+
   constructor(private productHttpService: ProductHttpService){}
 
   getAllProducts(
@@ -16,7 +18,7 @@ export class ProductsService {
   ): Observable<GetProductsResponseDto>{
     return this.productHttpService.fetchAllProducts(paramsObject).pipe(
       tap((response => {
-
+        console.log(response);
         if (response.data) {
           this.productsSourceBehavior.next({
             products: response.data.products,
@@ -32,7 +34,7 @@ export class ProductsService {
     return this.productHttpService.fetchFeaturedProducts().pipe(
       tap((response => {
         if (response.data, "hello") {
-          this. featuredProductsSourceBehavior.next({
+          this.featuredProductsSourceBehavior.next({
             products: response.data.products,
           })
         }

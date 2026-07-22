@@ -30,7 +30,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   private subscribeToProducts(){
-    this.productsSubscription = this.productsService.productsSourceBehavior
+    this.productsSubscription = this.productsService.getAllProtects$
     .subscribe({
       next: (data) => {
 

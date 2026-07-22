@@ -113,7 +113,9 @@ export class FilterComponent {
   console.log(params);
   this.productsService
       .getAllProducts(params)
-      .subscribe();
+      .subscribe(ps => {
+        console.log(ps)
+      });
 
 }
   resetFilter(){
