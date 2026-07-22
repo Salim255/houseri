@@ -5,9 +5,8 @@ import { AuthGuard } from "../auth/guard/AuthGuard";
 
 const routes: Routes = [
   {
-    path: "dashboard",
+    path: "",
     component: LayoutComponent,
-    canActivate: [AuthGuard] ,
     children: [
         {
           path: '',
@@ -40,15 +39,6 @@ const routes: Routes = [
         },
     ]
   },
-  {
-    path: '',
-    loadChildren: () => import('../auth/auth.module').then((m) => m.AuthModule)
-  },
-  {
-    path:'**',
-    loadChildren: () => import('../error-page/error-page.module').then(m => m.ErrorPageModule)
-  },
-
 ]
 
 @NgModule({

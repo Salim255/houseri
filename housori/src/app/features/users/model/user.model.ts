@@ -4,6 +4,7 @@ export class User {
     private firstName: string,
     private lastName: string,
     private email: string,
+    private isGuest: boolean,
     private isEmailVerified: boolean,
     private createdAt: Date,
     private updatedAt: Date
@@ -13,5 +14,9 @@ export class User {
 
   get userFirstName() {
     return  this.firstName;
+  }
+
+  get isGuestUser() {
+    return this.isGuest;
   }
 }

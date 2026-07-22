@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, catchError, Observable, tap, throwError } from "rxjs";
+import { BehaviorSubject, catchError, map, Observable, of, switchMap, tap, throwError } from "rxjs";
 import { AuthHttpService, AuthResponsePayload, AuthStatusPayload } from "./auth-http.service";
 import { HttpResponse } from "@angular/common/http";
 import { User } from "../../users/model/user.model";
@@ -44,11 +44,35 @@ export class AuthService {
     return this.userIsAuthenticatedSubject.asObservable();
   }
 
-  setAuthType(authType: AuthType ): void{
+  setAuthType(authType: AuthType ): void {
     this.authTypeSubject.next(authType);
   }
 
   get getAuthType(): Observable<AuthType >{
     return this.authTypeSubject.asObservable();
+  }
+
+  setGuestUser(){
+    const fakeUser = new User("guest", "guest", "guest@gmail.com", true, true, new Date() , new Date());
+    this.userSubject.next(fakeUser);
+    this.userIsAuthenticatedSubject.next(true);
+  }
+
+  get getUserTitle(): Observable<boolean> {
+    return this.userSubject.pipe(
+      map(user => {
+        if (user) return user?.isGuestUser
+        else return false;
+      })
+    )
+  }
+
+  get getUserFirstName(): Observable<string | null> {
+    return this.userSubject.pipe(
+      map(user => {
+        if (user) return user?.userFirstName
+        else return null;
+      })
+    )
   }
 }
