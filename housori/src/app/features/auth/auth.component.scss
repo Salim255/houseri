@@ -1,7 +1,5 @@
 @import '../../../themes/styles/_mixins';
 
-
-
 .auth {
     display:flex;
     justify-content: center;
@@ -13,57 +11,34 @@
     &__card {
         margin: auto;
         width:  min(100%, 68rem);
-        background:
-            var(--bg-secondary);
-        border:
-            1px solid
-            var(--border-default);
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-default);
 
-        border-radius:
-            var(--radius-3xl);
+        border-radius: var(--radius-3xl);
 
-
-
-        padding:
-            var(--space-8);
+        padding: var(--space-8);
 
         border-radius: 2rem;
 
         @include respond(phone){
-
-            padding:
-                var(--space-5);
-
+          padding: var(--space-5);
         }
     }
     &__header {
-      text-align:
-          center;
-      margin-bottom:
-          var(--space-8);
+      text-align: center;
+      margin-bottom:var(--space-8);
     }
     &__badge {
-        display:
-            inline-flex;
-        align-items:
-            center;
-        padding:
-            .6rem
-            1.4rem;
-        margin-bottom:
-            var(--space-4);
-        border-radius:
-            var(--radius-pill);
-        background:
-            var(--color-primary-soft);
-        color:
-            var(--color-primary);
-        font-size:
-            var(--fs-sm);
-        font-weight:
-            var(--fw-semibold);
-        text-transform:
-            uppercase;
+        display: inline-flex;
+        align-items: center;
+        padding: .6rem 1.4rem;
+        margin-bottom: var(--space-4);
+        border-radius: var(--radius-pill);
+        background: var(--color-primary-soft);
+        color: var(--color-primary);
+        font-size: var(--fs-sm);
+        font-weight: var(--fw-semibold);
+        text-transform: uppercase;
     }
 
     &__subtitle {
